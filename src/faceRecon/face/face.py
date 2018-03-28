@@ -5,4 +5,5 @@ class Face():
 
         self.name=""
         self.datetime = datetime
-        self.probability = 0 
+        self.confidence = 0
+        self.file=""

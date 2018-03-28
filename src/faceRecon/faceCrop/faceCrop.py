@@ -35,16 +35,21 @@ def faceCrop(image, cv2, font, faceList):
 
     """
     fileCount=1
+    #files=[]
 
     for face in faceList:
         x1,y1=face.ulCorner
         x2,y2=face.lrCorner
-        cv2.rectangle(image,face.ulCorner,face.lrCorner,(0,255,0),0)
-        cv2.putText(image,'Admin!!', (x1,y1-20), font, 0.8, (0,255,0),2,cv2.LINE_AA)
+        #cv2.rectangle(image,face.ulCorner,face.lrCorner,(0,255,0),0)
+        #cv2.putText(image,'Admin!!', (x1,y1-20), font, 0.8, (0,255,0),2,cv2.LINE_AA)
 
         #roi_gray = gray[y:y+h, x:x+w]
         roi_color = image[y1:y2, x1:x2]
-        cv2.imwrite('cropped'+str(fileCount)+'.jpg', roi_color)
-        cv2.imwrite('imagen.jpg', image)
+        cFilename='cropped'+str(fileCount)+'.jpg'
+        cv2.imwrite(cFilename, roi_color)
+        face.file=cFilename
+        #files.append(cFilename)
+        #cv2.imwrite('cropped'+str(fileCount)+'.jpg', roi_color)
+        #cv2.imwrite('imagen.jpg', image)
         fileCount+=1
-    return image
+    #return files
