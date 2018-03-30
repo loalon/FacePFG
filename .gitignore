@@ -4,3 +4,13 @@ Burocracia/
 credenciales/
 otros/
 zzz/
+
+/src/facePal/*.iml
+/src/facePal/.gradle
+/src/facePal/local.properties
+/src/facePal/.idea/workspace.xml
+/src/facePal/.idea/libraries
+/src/facePal/.DS_Store
+/src/facePal/build
+/src/facePal/captures
+/src/facePal/.externalNativeBuild

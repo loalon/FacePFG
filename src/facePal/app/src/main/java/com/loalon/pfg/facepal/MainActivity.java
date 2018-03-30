@@ -163,20 +163,13 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-
     private Bitmap detectFace(Bitmap bitmap) {
-        //resetData();
         Bitmap newBitmap;
         FaceDetector faceDetector = new
                 FaceDetector.Builder(getApplicationContext()).setTrackingEnabled(false) .build();
 
-        //if(!faceDetector.isOperational()){
-          //  new AlertDialog.Builder(v.getContext()).setMessage("Could not set up the face detector!").show();
-           // return;
-        //}
         Frame frame = new Frame.Builder().setBitmap(bitmap).build();
         SparseArray<Face> faces = faceDetector.detect(frame);
-        //android.media.FaceDetector fdet_ = new android.media.FaceDetector(bitmap.getWidth(), bitmap.getHeight(), MAX_FACE);
         System.out.println("w " + bitmap.getWidth());
         System.out.println("h " + bitmap.getHeight());
         System.out.println("max " + MAX_FACE);
@@ -184,33 +177,20 @@ public class MainActivity extends AppCompatActivity {
         int y; //pos y
         int w; //
         int h;
-        //android.media.FaceDetector.Face[] fullResults = new android.media.FaceDetector.Face[MAX_FACE];
-        //int numFaces = fdet_.findFaces(bitmap, fullResults);
         System.out.println("numero de caras " + faces.size());
 
-        //return bitmap;
-
-        //if(fullResults.length != 1) {
         if(faces.size() != 1) {
             faceDetector.release();
-            return null;
+            return null; //0, 2 o mas caras devuelven null
         } else {
-            //coger el primer elemento
-            //FaceDetector.Face face=fullResults[0];
-            //PointF mid = new PointF();
-            //face.getMidPoint(mid);
-            Face face = faces.valueAt(0);
-            //float eyesDis = face.eyesDistance();
-            //float confidence = face.confidence();
-            //float pose = face.pose(android.media.FaceDetector.Face.EULER_Y);
-            //x=(int)(mid.x - eyesDis * 1.20f);
-            //y=(int) (mid.y - eyesDis * 0.55f);
+            Face face = faces.valueAt(0); //solo una cara
             x= (int) face.getPosition().x;
+            //la corrección de Y es necesaria, en ocasiones cambia el punto de origen
             int preY=(int) face.getPosition().y;
                 if (preY>0){
                     y= preY;
-                }else {
-                    y= -1* preY; //0,0 desde esquina superior izq, y es negativo
+                } else {
+                    y= -1* preY;
                 }
 
             w= (int) face.getWidth();
@@ -219,24 +199,15 @@ public class MainActivity extends AppCompatActivity {
             System.out.println("y " + y);
             System.out.println("w " + w);
             System.out.println("h " + h);
-            /*
-            Rect rect = new Rect( //x1,y1,x2,y2
-                    (int) (mid.x - eyesDis * 1.20f),
-                    (int) (mid.y - eyesDis * 0.55f),
-                    (int) (mid.x + eyesDis * 1.20f),
-                    (int) (mid.y + eyesDis * 1.85f));
-            w=rect.width();
-            h=rect.height();
-            */
-            //if (rect.height() * rect.width() > 100 * 100) {
-                //nada
-            //}
             newBitmap=Bitmap.createBitmap(bitmap, x, y, w, h);
             faceDetector.release();
-
             return newBitmap;
-
         }
+    }
 
+    private String reconFace(Bitmap bitmap){
+        String name;
+
+        return "";
     }
 }
