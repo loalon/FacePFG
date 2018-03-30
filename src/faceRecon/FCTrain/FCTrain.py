@@ -58,7 +58,7 @@ def addFace(service, personGroup, personName, image):
 		print(personName+" no se encuentra en el sistema, no puede anadirse cara")
 	else:
 		res=service.person.add_face(image, personGroup, id)
-		service.person_group.train("person1")
+		service.person_group.train(personGroup)
 		print(res)
 	
 def deletePerson(service, personGroup, name):
@@ -118,5 +118,5 @@ def detectPerson(service, personGroup, file):
 	print(res[0]['candidates'])
 	id=res[0]['candidates'][0]['personId']
 	conf=res[0]['candidates'][0]['confidence']
-	name=getNameByID(service, "person1", id)
+	name=getNameByID(service, personGroup, id)
 	print("Candidato: " + name + " Confianza: " +str(conf))
