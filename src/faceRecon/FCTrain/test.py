@@ -30,13 +30,13 @@ for file in fileList:
 
 #Bill vs. Ben
 #Primero todas las imagenes de Bill
-for file in billList:
-	FCT.detectPerson(CF, "person1",subFolder+file)
-	time.sleep(20) #necesario para saltar el limite de Azure
+#for file in billList:
+#	FCT.detectPerson(CF, "person1",subFolder+file)
+#	time.sleep(20) #necesario para saltar el limite de Azure
 #Todas las imagenes de Ben
-for file in benList:
-	FCT.detectPerson(CF, "person1",subFolder+file)
-	time.sleep(20)
+#for file in benList:
+#	FCT.detectPerson(CF, "person1",subFolder+file)
+#	time.sleep(20)
 
 #Imitador de Bill
 FCT.detectPerson(CF, "person1",subFolder+'billImpersonator.jpg')

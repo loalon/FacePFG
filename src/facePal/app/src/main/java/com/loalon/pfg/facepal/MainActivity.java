@@ -2,6 +2,8 @@ package com.loalon.pfg.facepal;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.ContextWrapper;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.PointF;
@@ -36,6 +38,8 @@ import android.preference.PreferenceManager;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -81,8 +85,13 @@ public class MainActivity extends AppCompatActivity {
                 //gallIntent.setType("image/*");
                 //startActivityForResult(Intent.createChooser(gallIntent, "Escoge imagen"), PICK_IMAGE);
                 if(faceLoaded){
-                    Snackbar.make(view, textTemp, Snackbar.LENGTH_LONG)
-                            .setAction("Action", null).show();
+                    //StringBuilder stringBuilder = new StringBuilder(Util.getBaseURL()).append("recognize");
+
+                    //Snackbar.make(view, stringBuilder.toString(), Snackbar.LENGTH_LONG)
+                            //.setAction("Action", null).show();
+                identiFace idfac = new identiFace("conocidos");
+                idfac.execute();
+
                 } else {
                     Snackbar.make(view, "No hay una cara cargada", Snackbar.LENGTH_LONG)
                             .setAction("Action", null).show();
@@ -200,6 +209,48 @@ public class MainActivity extends AppCompatActivity {
             System.out.println("w " + w);
             System.out.println("h " + h);
             newBitmap=Bitmap.createBitmap(bitmap, x, y, w, h);
+
+            ContextWrapper cw = new ContextWrapper(getApplicationContext());
+            // path to /data/data/yourapp/app_data/imageDir
+            File directory = cw.getDir("imageDir", Context.MODE_PRIVATE);
+            // Create imageDir
+            File mypath=new File(directory,"tempFace.jpg");
+
+            FileOutputStream fos = null;
+            try {
+                fos = new FileOutputStream(mypath);
+                // Use the compress method on the BitMap object to write image to the OutputStream
+                bitmap.compress(Bitmap.CompressFormat.PNG, 100, fos);
+            } catch (Exception e) {
+                e.printStackTrace();
+            } finally {
+                try {
+                    fos.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            System.out.println(directory.getAbsolutePath());
+            /*
+            FileOutputStream out = null;
+            try {
+                //out = new FileOutputStream("tempFace.png");
+                out = openFileOutput(filename, Context.MODE_PRIVATE);
+                bitmap.compress(Bitmap.CompressFormat.PNG, 100, out); // bmp is your Bitmap instance
+                // PNG is a lossless format, the compression factor (100) is ignored
+            } catch (Exception e) {
+                e.printStackTrace();
+            } finally {
+                try {
+                    if (out != null) {
+                        out.close();
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }*/
+
             faceDetector.release();
             return newBitmap;
         }
