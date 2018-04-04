@@ -6,6 +6,9 @@
 
     <!-- Strings related to Settings -->
 
+
+    <string name="results_noid">Desconocido</string>
+
     <!-- Example General settings -->
     <string name="pref_header_general">General</string>
 

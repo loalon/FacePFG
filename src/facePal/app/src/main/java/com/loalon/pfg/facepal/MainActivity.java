@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.ContextWrapper;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.PointF;
@@ -11,6 +12,7 @@ import android.graphics.Rect;
 import android.hardware.Camera;
 //import android.media.FaceDetector;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
@@ -19,6 +21,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.SparseArray;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -35,13 +38,25 @@ import android.support.v7.app.ActionBar;
 import android.preference.PreferenceFragment;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
+import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Toast;
+import android.content.Intent;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -49,7 +64,21 @@ public class MainActivity extends AppCompatActivity {
     private static final int MAX_FACE = 10;
     private ProgressDialog detectionProgressDialog;
     private boolean faceLoaded = false;
+    private Bitmap bitmap2;
+    private String consoleText = "neutral";
+    private String groupName="conocidos";
+    final Context context = this;
 
+    /*
+    builder.setMessage(R.string.dialog_message)
+            .setTitle(R.string.dialog_title);
+      alertDialogBuilder.setNegativeButton("No",new DialogInterface.OnClickListener() {
+        @Override
+        public void onClick(DialogInterface dialog, int which) {
+            finish();
+        }
+    });
+    */
 
 
     @Override
@@ -67,13 +96,16 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                Intent gallIntent = new Intent(Intent.ACTION_GET_CONTENT);
-                gallIntent.setType("image/*");
-                startActivityForResult(Intent.createChooser(gallIntent, "Escoge imagen"), PICK_IMAGE);
-
-                //Snackbar.make(view, textTemp, Snackbar.LENGTH_LONG)
-                  //      .setAction("Action", null).show();
-
+            Intent gallIntent = new Intent(Intent.ACTION_GET_CONTENT);
+            gallIntent.setType("image/*");
+            startActivityForResult(Intent.createChooser(gallIntent, "Escoge imagen"), PICK_IMAGE);
+            if(faceLoaded) {
+                Snackbar.make(view, "Imagen cargada", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            } else {
+                Snackbar.make(view, "Imagen no cargada", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
             }
         });
         Button buttonRecon = findViewById(R.id.button_recon);
@@ -89,8 +121,17 @@ public class MainActivity extends AppCompatActivity {
 
                     //Snackbar.make(view, stringBuilder.toString(), Snackbar.LENGTH_LONG)
                             //.setAction("Action", null).show();
-                identiFace idfac = new identiFace("conocidos");
-                idfac.execute();
+                //identiFace idfac = new identiFace("conocidos");
+                //idfac.execute();
+                    TextView textView = (TextView) findViewById(R.id.text_console);
+                    //FaceIdentificator faceide = new FaceIdentificator(MainActivity.this,"conocidos", bitmap2, consoleText);
+                    //faceide.execute();
+                    String personaID=Util.identiFace("conocidos", bitmap2);
+                    consoleText = Util.getName("conocidos", personaID);
+                    textView.setText(consoleText);
+                    Snackbar.make(view, consoleText, Snackbar.LENGTH_LONG)
+                    .setAction("Action", null).show();
+
 
                 } else {
                     Snackbar.make(view, "No hay una cara cargada", Snackbar.LENGTH_LONG)
@@ -104,7 +145,53 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(faceLoaded){
-                    Snackbar.make(view, textTemp, Snackbar.LENGTH_LONG)
+                    Intent intent = new Intent(context, TrainActivity.class);
+                    //EditText editText = (EditText) findViewById(R.id.editText);
+                    //String message = editText.getText().toString();
+                    //intent.putExtra(EXTRA_MESSAGE, message);
+                    startActivity(intent);
+                    /*
+                    //String faceid = Util.identiFace(groupName, bitmap2);
+                    //si faceid==NO_CANDIDATE
+                    LayoutInflater li = LayoutInflater.from(context);
+                    View promptsView = li.inflate(R.layout.input_text, null);
+
+                    AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+                            context);
+
+                    // set prompts.xml to alertdialog builder
+                    alertDialogBuilder.setView(promptsView);
+
+                    final EditText userInput = (EditText) promptsView
+                            .findViewById(R.id.editTextDialogUserInput);
+                    consoleText="ZZZ";
+                    // set dialog message
+                    alertDialogBuilder
+                            .setCancelable(false)
+                            .setPositiveButton("SI",
+                                    new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog,int id) {
+                                            // get user input and set it to result
+                                            // edit text
+                                            consoleText=userInput.getText().toString();
+                                        }
+                                    })
+                            .setNegativeButton("Cancelar",
+                                    new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog,int id) {
+                                            dialog.cancel();
+
+                                        }
+                                    });
+
+                    // create alert dialog
+                    AlertDialog alertDialog = alertDialogBuilder.create();
+
+                    // show it
+                    alertDialog.show();
+                    //String personaID=Util.identiFace("conocidos", bitmap2);
+                    */
+                        Snackbar.make(view, consoleText, Snackbar.LENGTH_LONG)
                             .setAction("Action", null).show();
                 } else {
                     Snackbar.make(view, "No hay una cara cargada", Snackbar.LENGTH_LONG)
@@ -151,7 +238,7 @@ public class MainActivity extends AppCompatActivity {
                 //Bitmap blank =
                 //pasarlo a detector de caras
                 //Bitmap bitmap2=detectFace(bitmap);
-                Bitmap bitmap2=detectFace(bitmap);
+                bitmap2=detectFace(bitmap);
                 //if (bitmap2 == null){
                 //cortar y devolver
                 ImageView imageView = (ImageView) findViewById(R.id.imageView1);
@@ -220,7 +307,7 @@ public class MainActivity extends AppCompatActivity {
             try {
                 fos = new FileOutputStream(mypath);
                 // Use the compress method on the BitMap object to write image to the OutputStream
-                bitmap.compress(Bitmap.CompressFormat.PNG, 100, fos);
+                newBitmap.compress(Bitmap.CompressFormat.PNG, 100, fos);
             } catch (Exception e) {
                 e.printStackTrace();
             } finally {
