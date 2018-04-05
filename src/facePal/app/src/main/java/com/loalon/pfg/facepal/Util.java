@@ -4,6 +4,7 @@ import android.content.BroadcastReceiver;
 
 import android.content.Context;
 
+import android.content.ContextWrapper;
 import android.content.Intent;
 
 import android.app.AlertDialog;
@@ -76,6 +77,8 @@ import android.graphics.drawable.BitmapDrawable;
 import android.widget.TextView;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URI;
 import java.util.ArrayList;
@@ -132,6 +135,68 @@ public class Util {
     private static final int MAX_FACE = 10;
 
     //Person[] hola = faceServiceClient.list
+
+    public static Bitmap detectFace(Bitmap bitmap) {
+        Bitmap newBitmap;
+        FaceDetector faceDetector = new
+                FaceDetector.Builder(GlobalClass.context).setTrackingEnabled(false) .build();
+
+        Frame frame = new Frame.Builder().setBitmap(bitmap).build();
+        SparseArray<Face> faces = faceDetector.detect(frame);
+        System.out.println("w " + bitmap.getWidth());
+        System.out.println("h " + bitmap.getHeight());
+        System.out.println("max " + MAX_FACE);
+        int x; //pos x
+        int y; //pos y
+        int w; //
+        int h;
+        System.out.println("numero de caras " + faces.size());
+
+        if(faces.size() != 1) {
+            faceDetector.release();
+            return null; //0, 2 o mas caras devuelven null
+        } else {
+            Face face = faces.valueAt(0); //solo una cara
+            x= (int) face.getPosition().x;
+            //la corrección de Y es necesaria, en ocasiones cambia el punto de origen
+            int preY=(int) face.getPosition().y;
+            if (preY>0){
+                y= preY;
+            } else {
+                y= -1* preY;
+            }
+
+            w= (int) face.getWidth();
+            h= (int) face.getHeight();
+            System.out.println("x " + x);
+            System.out.println("y " + y);
+            System.out.println("w " + w);
+            System.out.println("h " + h);
+            newBitmap=Bitmap.createBitmap(bitmap, x, y, w, h);
+
+            ContextWrapper cw = new ContextWrapper(GlobalClass.context);
+            File directory = cw.getDir("imageDir", Context.MODE_PRIVATE);
+            File mypath = new File(directory,"tempFace.jpg");
+
+            FileOutputStream fos = null;
+            try {
+                fos = new FileOutputStream(mypath);
+                newBitmap.compress(Bitmap.CompressFormat.PNG, 100, fos);
+            } catch (Exception e) {
+                e.printStackTrace();
+            } finally {
+                try {
+                    fos.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            System.out.println(directory.getAbsolutePath());
+            faceDetector.release();
+            return newBitmap;
+        }
+    }
 
     public static String getName(String groupName, String personID ) {
         HttpClient httpclient = HttpClients.createDefault();

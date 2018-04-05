@@ -34,75 +34,28 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="1"
-        android:id="@+id/button_browse"
+        android:text="Añadir cara"
+        android:id="@+id/button_addFace"
         android:layout_gravity="bottom|left"
         android:layout_alignParentBottom="true" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="2"
-        android:id="@+id/button_train"
+        android:text="Añadir persona"
+        android:id="@+id/button_addPerson"
         android:layout_gravity="bottom|right"
         android:clickable="false"
         android:layout_alignParentBottom="true" />
+
     <ImageView
         android:id="@+id/imageview_train"
-        app:srcCompat="@drawable/facepal"
-        android:layout_width="160dp"
-        android:layout_gravity="center|center"
-        android:layout_height="160dp"
-
+        android:layout_width="282dp"
+        android:layout_height="289dp"
         android:layout_above="@+id/button_image"
-        />
-
-
-
+        android:layout_gravity="center|center"
+        app:srcCompat="@drawable/facepal"
+        tools:layout_editor_absoluteX="-10dp"
+        tools:layout_editor_absoluteY="47dp" />
 
 </android.support.design.widget.CoordinatorLayout>
-<!--
-    <?xml version="1.0" encoding="utf-8"?>
-<android.support.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.loalon.pfg.facepal.TrainActivity">
-
-
-    <EditText
-        android:id="@+id/editText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Name"
-        tools:layout_editor_absoluteX="84dp"
-        tools:layout_editor_absoluteY="376dp" />
-
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="437dp" />
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button"
-        tools:layout_editor_absoluteX="279dp"
-        tools:layout_editor_absoluteY="437dp" />
-
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/facepal"
-        tools:layout_editor_absoluteX="81dp"
-        tools:layout_editor_absoluteY="102dp" />
-</android.support.widget.CoordinatorLayout>
--->
