@@ -19,12 +19,20 @@
         android:title="@string/pref_groupName" />
     <EditTextPreference
         android:capitalize="words"
-        android:defaultValue="xxx"
+        android:defaultValue="xxxxxxxxxxxxxxxxxxx"
         android:inputType="textCapWords"
         android:key="sKey_text"
         android:maxLines="1"
         android:selectAllOnFocus="true"
         android:title="@string/pref_sKey" />
+    <EditTextPreference
+        android:capitalize="words"
+        android:defaultValue="northeurope"
+        android:inputType="textCapWords"
+        android:key="sServer_text"
+        android:maxLines="1"
+        android:selectAllOnFocus="true"
+        android:title="@string/pref_sServer" />
 
     <!-- NOTE: Hide buttons to simplify the UI. Users can touch outside the dialog to
          dismiss it. -->

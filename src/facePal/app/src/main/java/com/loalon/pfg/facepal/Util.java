@@ -112,9 +112,7 @@ public class Util {
     private static String BASE_KEY = "6ff97ccedba642f78dc07a821122fc4d";
     private static String BASE_KEY_ALT ="3d1818c14a1a41faa2283c84a09cc2ea";
 
-    public static String getBaseURL(){
-        return BASE_URL;
-    }
+
     public static String getBaseKey(){
         return BASE_KEY;
     }
@@ -135,6 +133,16 @@ public class Util {
     private static final int MAX_FACE = 10;
 
     //Person[] hola = faceServiceClient.list
+    public static String getBaseURL() {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(GlobalClass.context);
+        final String serverName = prefs.getString("sServer_text", "northeurope");
+
+        StringBuilder stringBuilder = new StringBuilder("https://")
+                .append(serverName)
+                .append(".api.cognitive.microsoft.com/face/v1.0/");
+        return stringBuilder.toString();
+    }
+
 
     public static Bitmap detectFace(Bitmap bitmap) {
         Bitmap newBitmap;
@@ -369,29 +377,81 @@ public class Util {
         }
     }
 
-    public static String trainFace(String groupName, Bitmap bitmap){
-        //comparativa
-        //String id = identiFace(groupName, bitmap);
+    public static String trainFace(String groupName, String personName, Bitmap bitmap) {
+        HttpClient httpclient = HttpClients.createDefault();
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
 
-        //si existe la cara, devovler nombre y sugerir añadir a la coleccion
-            //conseguir id de esa persona
-            //aádir cara
-            //entrenar el sistema
-        //si no se reconoce la cara
-            //dialogo de insertar nombre
-                //si el nombre esta dado alta
-                    //persona ya dada del alta, inserte nombre nuevo
-                //si no esta dado de alta
-                    //dar de alta a la persona
-                    //agregar cara
-                    //entrenar el sistema
+        //añadir persona tras confirmacion
+
+        //con la persona añadida
 
         return "null";
     }
 
-    public static String addFace(String groupName, String personName, Bitmap bitmap){
+    public static String trainGroup(String groupName){
+        HttpClient httpclient = HttpClients.createDefault();
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
 
+        try {
+            StringBuilder stringBuilder = new StringBuilder(Util.getBaseURL()).append("persongroups/")
+                    .append(groupName).append("/train");
+
+            URIBuilder builder = new URIBuilder(stringBuilder.toString());
+            URI uri = builder.build();
+            HttpPost request = new HttpPost(uri);
+            request.setHeader("Content-Type", "application/octet-stream");
+            request.setHeader("Ocp-Apim-Subscription-Key", BASE_KEY);
+            //request.setEntity(new ByteArrayEntity(Util.toBase64(bitmap)));
+
+            HttpResponse response = httpclient.execute(request);
+            HttpEntity entity = response.getEntity();
+            String res2 = EntityUtils.toString(entity);
+
+            System.out.println("salida train " + res2);
+
+
+        } catch (Exception e){
+            return "ERROR";
+        }
         return "null";
+    }
+
+    public static String addFace(String groupName, String personName, Bitmap bitmap){
+        HttpClient httpclient = HttpClients.createDefault();
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+
+        //la persona existe porque se comprobo antes
+        //recoger el id
+        String personID = getPersonID(groupName,personName);
+        try {
+            StringBuilder stringBuilder = new StringBuilder(Util.getBaseURL()).append("persongroups/")
+                    .append(groupName).append("/persons/").append(personID)
+                    .append("/persistedFaces");
+
+            URIBuilder builder = new URIBuilder(stringBuilder.toString());
+            URI uri = builder.build();
+            HttpPost request = new HttpPost(uri);
+            request.setHeader("Content-Type", "application/octet-stream");
+            request.setHeader("Ocp-Apim-Subscription-Key", BASE_KEY);
+            request.setEntity(new ByteArrayEntity(Util.toBase64(bitmap)));
+
+            HttpResponse response = httpclient.execute(request);
+            HttpEntity entity = response.getEntity();
+            String res2 = EntityUtils.toString(entity);
+
+            String res3 = trainGroup(groupName);
+
+            System.out.println("salida addFace " + res2);
+            System.out.println("salida addFace+train " + res3);
+            return res2;
+
+        } catch (Exception e){
+            return "ERROR";
+        }
+        //return "ERROR";
     }
 
     public static String getPersonID(String groupName, String name){
@@ -427,7 +487,7 @@ public class Util {
                 return "Error en JSON recibido";
             }
 
-            return "NOT_ID";
+            return "NO_ID";
         } catch (Exception e){
             return "Conexion fallida, vuelva a intentarlo";
         }
@@ -435,9 +495,9 @@ public class Util {
 
     public static String addPerson(String groupName, String name) {
         //comprobar
-        if ("NOT_ID".equals(getPersonID(groupName,name))) {
-            return "ERROR";
-        }
+        //if (!"NO_ID".equals(getPersonID(groupName,name))) {
+        //    return "ERROR";
+        //}
 
         HttpClient httpclient = HttpClients.createDefault();
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
@@ -450,35 +510,38 @@ public class Util {
             URIBuilder builder = new URIBuilder(stringBuilder.toString());
             URI uri = builder.build();
             HttpPost request = new HttpPost(uri);
-
             request.setHeader("Content-Type", "application/json");
             request.setHeader("Ocp-Apim-Subscription-Key", BASE_KEY);
-            StringBuilder stringBuilder3 = new StringBuilder("{ \"personGroupId\": \"").append(groupName).append("\",");
-
-
-
-
-
-            StringBuilder stringBuilder2 = new StringBuilder(Util.getBaseURL()).append("identify/");
-            System.out.println(stringBuilder2.toString());
-            URIBuilder builder2 = new URIBuilder(stringBuilder2.toString());
-            URI uri2 = builder2.build();
-            HttpPut request2 = new HttpPut(uri);
-
             JSONObject bodyJson = new JSONObject();
-            bodyJson.put("name", groupName);
-            System.out.println("addPerson json " + bodyJson.toString());
+                try {
 
+                    bodyJson.put("name", name);
+                    System.out.println("addPerson json " + bodyJson.toString());
+                } catch (JSONException e) {
+                    return "Error en JSON recibido";
+                }
             StringEntity reqEntity = new StringEntity(bodyJson.toString());
-            request2.setEntity(reqEntity);
-            HttpResponse response2 = httpclient.execute(request2);
-            HttpEntity entity2 = response2.getEntity();
-            String res2 = EntityUtils.toString(entity2);
-            System.out.println("resultado final " + res2);
+            request.setEntity(reqEntity);
+
+            HttpResponse response = httpclient.execute(request);
+            HttpEntity entity = response.getEntity();
+            String res = EntityUtils.toString(entity);
+
+            String personFromJSON;
+
+            try { //parseo de JSON
+                JSONObject jsonObject = new JSONObject(res);
+                personFromJSON = jsonObject.getString("personId");
+                System.out.println("resultado addPErson " + personFromJSON);
+                return personFromJSON;
+            } catch (JSONException e) {
+                return "ERROR";
+            }
+            //System.out.println("resultado addPErson " + personFromJSON);
         } catch (Exception e){
             return "null";
         }
 
-        return "null";
+        //return "null";
     }
 }

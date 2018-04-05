@@ -19,6 +19,7 @@
 
     <string name="pref_sKey">Clave de suscripción</string>
     <string name="pref_groupName">Nombre de grupo</string>
+    <string name="pref_sServer">Nombre del servidor</string>
     <string name="pref_title_display_name">Display name</string>
     <string name="pref_default_display_name">John Smith</string>
 

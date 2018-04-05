@@ -68,8 +68,14 @@ public class MainActivity extends AppCompatActivity {
                 Snackbar.make(view, consoleText, Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             } else {
-                Snackbar.make(view, "No hay una cara cargada", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                final Snackbar snackBar= Snackbar.make(view, "No hay una cara cargada", Snackbar.LENGTH_INDEFINITE);
+                snackBar.setAction("OK", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        snackBar.dismiss();
+                    }
+                });
+                snackBar.show();
             }
             }
         });
@@ -86,8 +92,14 @@ public class MainActivity extends AppCompatActivity {
                     Intent intent = new Intent(context, TrainActivity.class);
                     startActivity(intent);
                 } else {
-                    Snackbar.make(view, "No hay una cara cargada", Snackbar.LENGTH_LONG)
-                            .setAction("Action", null).show();
+                    final Snackbar snackBar= Snackbar.make(view, "No hay una cara cargada", Snackbar.LENGTH_INDEFINITE);
+                    snackBar.setAction("OK", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            snackBar.dismiss();
+                        }
+                    });
+                    snackBar.show();
                 }
             }
         });

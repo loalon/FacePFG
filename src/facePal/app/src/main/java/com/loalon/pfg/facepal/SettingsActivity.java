@@ -179,6 +179,7 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
             // guidelines.
             bindPreferenceSummaryToValue(findPreference("sKey_text"));
             bindPreferenceSummaryToValue(findPreference("groupName_text"));
+            bindPreferenceSummaryToValue(findPreference("sServer_text"));
             bindPreferenceSummaryToValue(findPreference("example_list"));
         }
 
