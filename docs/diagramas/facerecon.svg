@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/PR-SVG-20010719/DTD/svg10.dtd">
+<svg width="32cm" height="18cm" viewBox="144 96 640 345" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <g>
+    <rect style="fill: #ffffff" x="426" y="277" width="117.8" height="28"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" x="426" y="277" width="117.8" height="28"/>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="484.9" y="297">FaceRecon</text>
+    <rect style="fill: #ffffff" x="426" y="305" width="117.8" height="100"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" x="426" y="305" width="117.8" height="100"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="428.5" y="318.2">+URL</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="428.5" y="334.2">+clave</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="428.5" y="350.2">+servicio</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="428.5" y="366.2">+camara</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="428.5" y="382.2">+grupo</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="428.5" y="398.2">+fuente</text>
+    <rect style="fill: #ffffff" x="426" y="405" width="117.8" height="36"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" x="426" y="405" width="117.8" height="36"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="428.5" y="418.2">+identificar()</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="428.5" y="434.2">+pintar()</text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="144" y="148" width="202.5" height="28"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" x="144" y="148" width="202.5" height="28"/>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="245.25" y="168">Face</text>
+    <rect style="fill: #ffffff" x="144" y="176" width="202.5" height="68"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" x="144" y="176" width="202.5" height="68"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="146.5" y="189.2">+esquinaSuperiorIzquierda</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="146.5" y="205.2">+esquinaInferiorDerecha</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="146.5" y="221.2">+nombre</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="146.5" y="237.2">+fichero</text>
+    <rect style="fill: #ffffff" x="144" y="244" width="202.5" height="8"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" x="144" y="244" width="202.5" height="8"/>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="418.4" y="96.1" width="133.2" height="28"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" x="418.4" y="96.1" width="133.2" height="28"/>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="485" y="116.1">FCTrain</text>
+    <rect style="fill: #ffffff" x="418.4" y="124.1" width="133.2" height="8"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" x="418.4" y="124.1" width="133.2" height="8"/>
+    <rect style="fill: #ffffff" x="418.4" y="132.1" width="133.2" height="20"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" x="418.4" y="132.1" width="133.2" height="20"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="420.9" y="145.3">+obtenerNombre()</text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="642.8" y="154.2" width="140.9" height="28"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" x="642.8" y="154.2" width="140.9" height="28"/>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="713.25" y="174.2">FaceCrop</text>
+    <rect style="fill: #ffffff" x="642.8" y="182.2" width="140.9" height="8"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" x="642.8" y="182.2" width="140.9" height="8"/>
+    <rect style="fill: #ffffff" x="642.8" y="190.2" width="140.9" height="52"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" x="642.8" y="190.2" width="140.9" height="52"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="645.3" y="203.4">+recortarCara()</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="645.3" y="219.4">+detectarCara()</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="645.3" y="235.4">+capturarImagen()</text>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="400.828,363 378,363 378,200 346.506,200 "/>
+    <polygon style="fill: #ffffff" points="426,363 412,367.8 398,363 412,358.2 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="426,363 412,367.8 398,363 412,358.2 "/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="380" y="277.5">usa</text>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:end;font-family:monospace;font-style:normal;font-weight:normal" x="394" y="359">1</text>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="350.506" y="196">*</text>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="484.9,251.823 484.9,207.551 485,207.551 485,152.107 "/>
+    <polygon style="fill: #ffffff" points="484.9,276.995 480.1,262.995 484.9,248.995 489.7,262.995 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="484.9,276.995 480.1,262.995 484.9,248.995 489.7,262.995 "/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:middle;font-family:monospace;font-style:normal;font-weight:normal" x="484.95" y="203.551">usa</text>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="495.9" y="272.995">1</text>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="489" y="164.107">1</text>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="568.972,363 603,363 603,200.2 642.8,200.2 "/>
+    <polygon style="fill: #ffffff" points="543.8,363 557.8,358.2 571.8,363 557.8,367.8 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="543.8,363 557.8,358.2 571.8,363 557.8,367.8 "/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="605" y="277.6">usa</text>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="575.8" y="359">1</text>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:end;font-family:monospace;font-style:normal;font-weight:normal" x="638.8" y="196.2">1</text>
+  </g>
+</svg>

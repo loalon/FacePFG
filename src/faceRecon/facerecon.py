@@ -23,6 +23,7 @@ camera=PiCamera()
 camera.resolution = (1920,1088)
 font=cv2.FONT_HERSHEY_SIMPLEX
 groupName="conocidos"
+waitTime=20
 
 
 
@@ -69,7 +70,7 @@ try:
             paintImage(cv2, font, img, face)
             print("Sujeto "+face.name)
         cv2.imwrite('imagen.jpg', img)
-        time.sleep(20)
+        time.sleep(waitTime)
 except KeyboardInterrupt:
     camera.close()
     pass

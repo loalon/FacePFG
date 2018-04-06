@@ -10,11 +10,14 @@ import android.content.Intent;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.Matrix;
 import android.graphics.PointF;
 import android.graphics.Rect;
 import android.hardware.Camera;
 //import android.media.FaceDetector;
+import android.media.ExifInterface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.StrictMode;
@@ -24,6 +27,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.util.SparseArray;
 import android.view.View;
 import android.view.Menu;
@@ -102,6 +106,8 @@ import cz.msebera.android.httpclient.entity.StringEntity;
 import cz.msebera.android.httpclient.impl.client.HttpClients;
 import cz.msebera.android.httpclient.util.EntityUtils;
 
+import static com.loalon.pfg.facepal.GlobalClass.context;
+
 /**
  * Created by OAA on 29/03/2018.
  */
@@ -134,7 +140,7 @@ public class Util {
 
     //Person[] hola = faceServiceClient.list
     public static String getBaseURL() {
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(GlobalClass.context);
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         final String serverName = prefs.getString("sServer_text", "northeurope");
 
         StringBuilder stringBuilder = new StringBuilder("https://")
@@ -147,7 +153,7 @@ public class Util {
     public static Bitmap detectFace(Bitmap bitmap) {
         Bitmap newBitmap;
         FaceDetector faceDetector = new
-                FaceDetector.Builder(GlobalClass.context).setTrackingEnabled(false) .build();
+                FaceDetector.Builder(context).setTrackingEnabled(false) .build();
 
         Frame frame = new Frame.Builder().setBitmap(bitmap).build();
         SparseArray<Face> faces = faceDetector.detect(frame);
@@ -182,7 +188,7 @@ public class Util {
             System.out.println("h " + h);
             newBitmap=Bitmap.createBitmap(bitmap, x, y, w, h);
 
-            ContextWrapper cw = new ContextWrapper(GlobalClass.context);
+            ContextWrapper cw = new ContextWrapper(context);
             File directory = cw.getDir("imageDir", Context.MODE_PRIVATE);
             File mypath = new File(directory,"tempFace.jpg");
 
@@ -543,5 +549,90 @@ public class Util {
         }
 
         //return "null";
+    }
+
+    public int getOrientation(Uri selectedImage) {
+        int orientation = 0;
+        final String[] projection = new String[]{MediaStore.Images.Media.ORIENTATION};
+        final Cursor cursor = context.getContentResolver().query(selectedImage, projection, null, null, null);
+        if(cursor != null) {
+            final int orientationColumnIndex = cursor.getColumnIndex(MediaStore.Images.Media.ORIENTATION);
+            if(cursor.moveToFirst()) {
+                orientation = cursor.isNull(orientationColumnIndex) ? 0 : cursor.getInt(orientationColumnIndex);
+            }
+            cursor.close();
+        }
+        return orientation;
+    }
+
+    public static Bitmap rotateImageIfRequired(Bitmap img, Context context, Uri selectedImage) throws IOException {
+
+        if (selectedImage.getScheme().equals("content")) {
+            String[] projection = { MediaStore.Images.ImageColumns.ORIENTATION };
+            Cursor c = context.getContentResolver().query(selectedImage, projection, null, null, null);
+            if (c.moveToFirst()) {
+                final int rotation = c.getInt(0);
+                c.close();
+                return rotateImage(img, rotation);
+            }
+            return img;
+        } else {
+            ExifInterface ei = new ExifInterface(selectedImage.getPath());
+            int orientation = ei.getAttributeInt(ExifInterface.TAG_ORIENTATION, ExifInterface.ORIENTATION_NORMAL);
+            //Log.d("orientation: %s", orientation);
+
+            switch (orientation) {
+                case ExifInterface.ORIENTATION_ROTATE_90:
+                    return rotateImage(img, 90);
+                case ExifInterface.ORIENTATION_ROTATE_180:
+                    return rotateImage(img, 180);
+                case ExifInterface.ORIENTATION_ROTATE_270:
+                    return rotateImage(img, 270);
+                default:
+                    return img;
+            }
+        }
+    }
+
+
+    public static Bitmap rotateImage(Bitmap img, int degree) {
+        Matrix matrix = new Matrix();
+        matrix.postRotate(degree);
+        Bitmap rotatedImg = Bitmap.createBitmap(img, 0, 0, img.getWidth(), img.getHeight(), matrix, true);
+        return rotatedImg;
+    }
+
+
+
+
+    public static int getCameraPhotoOrientation(Context context, Uri imageUri,
+                                         String imagePath) {
+        int rotate = 0;
+        try {
+            context.getContentResolver().notifyChange(imageUri, null);
+            File imageFile = new File(imagePath);
+            ExifInterface exif = new ExifInterface(imageFile.getAbsolutePath());
+            int orientation = exif.getAttributeInt(
+                    ExifInterface.TAG_ORIENTATION,
+                    ExifInterface.ORIENTATION_NORMAL);
+
+            switch (orientation) {
+                case ExifInterface.ORIENTATION_ROTATE_270:
+                    rotate = 270;
+                    break;
+                case ExifInterface.ORIENTATION_ROTATE_180:
+                    rotate = 180;
+                    break;
+                case ExifInterface.ORIENTATION_ROTATE_90:
+                    rotate = 90;
+                    break;
+            }
+
+            Log.i("RotateImage", "Exif orientation: " + orientation);
+            Log.i("RotateImage", "Rotate value: " + rotate);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return rotate;
     }
 }

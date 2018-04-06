@@ -4,12 +4,14 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.media.ExifInterface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -18,6 +20,8 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import java.io.File;
 import java.io.IOException;
 
 
@@ -137,10 +141,17 @@ public class MainActivity extends AppCompatActivity {
             Uri uri = data.getData();
             try {
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
+                //int rotation = Util.getCameraPhotoOrientation(this, uri,
+                  //      uri.getPath());
+                //Bitmap bitmapTemp = Util.rotateImage(bitmap,rotation);
+                //Bitmap bitmapTemp= Util.rotateImageIfRequired(bitmap,context,uri);
+
                 bitmap2 = Util.detectFace(bitmap);
                 ImageView imageView = (ImageView) findViewById(R.id.imageView1);
                 if (bitmap2 == null) {
-                    imageView.setImageResource(R.drawable.nondetected);
+                    //imageView.setImageResource(R.drawable.nondetected);
+                    imageView.setImageBitmap(bitmap);
+
                     faceLoaded = false;
                 } else {
                     imageView.setImageBitmap(bitmap2);
@@ -151,4 +162,6 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
+
+
 }
