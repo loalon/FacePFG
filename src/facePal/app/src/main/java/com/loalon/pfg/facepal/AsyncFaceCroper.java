@@ -19,74 +19,53 @@ public class AsyncFaceCroper extends AsyncTask<Context, Integer, String> {
     public interface AsyncResponse {
         void processFinish(Boolean output, Bitmap outBM);
     }
+
     public AsyncResponse delegate = null;
 
     Bitmap bitmap;
     Bitmap newBitmap;
     Context context;
-    View view;
-    Snackbar snackbar;
     ImageView imageView;
-    ProgressBar progressBar;
     Boolean faceLoaded=false;
 
-    //ProgressDialog dialog;
 
-    AlertDialog alertDialog;
 
     public AsyncFaceCroper(Context context, Bitmap bitmap, ImageView imageView, AsyncResponse delegate) {
         super();
         this.bitmap=bitmap;
         this.context=context;
-        this.progressBar=progressBar;
-
         this.imageView= (ImageView) imageView;
         this.delegate = delegate;
-        //this.dialog=dialog;
-        //dialog= new ProgressDialog(context);
-
-        //alertDialog = new AlertDialog(this.context);
     }
 
     @Override
     protected void onPreExecute() {
-        System.out.println("PRE");
-        //new MiniSnack(view, "Prejecucion: ");
-        Toast.makeText(context, "Ejecutando reconocimiento ahora", Toast.LENGTH_LONG).show();
-        //super.onPreExecute();
-        //dialog.show();
-        //snackbar.make(view, "cargando cara", Snackbar.LENGTH_LONG)
-        //      .setAction("Action", null).show();
-        //super.onPreExecute();
+        Toast.makeText(context, "Ejecutando detección facial. Espere por favor", Toast.LENGTH_LONG).show();
     }
 
     @Override
     protected String doInBackground(Context... params) {
-        System.out.println("DURANTE");
         newBitmap = Util.detectFace(bitmap);
-        faceLoaded=true;
-        //String personaID = Util.identiFace("conocidos", bitmap);
-        //String texto = Util.getName("conocidos", personaID);
-        return "PRONTO";
-        //return "WHAAAA";
+        if (!(newBitmap==null)) {
+            faceLoaded=true;
+            return "OK";
+        } else {
+            faceLoaded=false;
+            newBitmap=bitmap;
+            return "NO_FACE";
+        }
     }
 
     @Override
     protected void onPostExecute(String result) {
-        //new MiniSnack(view, "Identificación: " + result);
-        Toast.makeText(context, "Ejecutando deteccion ahora", Toast.LENGTH_SHORT).show();
-        imageView.setImageBitmap(newBitmap);
-        System.out.println("POS");
+        if(faceLoaded){
+            imageView.setImageBitmap(newBitmap);
+        } else {
+            imageView.setImageBitmap(bitmap);
+            Toast.makeText(context, "Cara no detectada, compruebe en la imagen cargada" +
+                            " si existe una sola cara y que la orientación sea correcta."
+                    , Toast.LENGTH_LONG).show();
+        }
         delegate.processFinish(faceLoaded, newBitmap);
-        //if (this.dialog.isShowing()) {
-       //     this.dialog.dismiss();
-      //  }
-      //  diag.
-        //snackbar.dismiss();
-        //super.onPostExecute(result);
-        //Log.i("makemachine", "onPostExecute(): " + result);
-        //_percentField.setText(result);
-        //_percentField.setTextColor(0xFF69adea);
-        //_cancelButton.setVisibility(View.INVISIBLE);
     }
 }

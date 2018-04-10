@@ -292,10 +292,9 @@ public class Util {
     }
 
     /**
-     *
-     * @param groupName
-     * @param bitmap
-     * @return
+     * Identifica una persona mediante una cara recortada
+     * @param bitmap imagen de cara recortada
+     * @return identificador del mejor candidato
      */
     public static String identiFace (Bitmap bitmap){
         HttpClient httpclient = HttpClients.createDefault();
