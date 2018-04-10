@@ -49,12 +49,12 @@ public class TrainActivity extends AppCompatActivity {
 
         /* Cargar el nombre de la persona en el textView*/
         final EditText textView = (EditText) findViewById(R.id.editText);
-        String faceId=Util.identiFace(groupName, trainBitmap);
+        String faceId=Util.identiFace(trainBitmap);
         if (faceId.equals("NO_CANDIDATE")){
             textView.setText("Escriba un nombre");
 
         } else {
-            faceName = Util.getName(groupName, faceId);
+            faceName = Util.getName(faceId);
             textView.setText(faceName);
             textView.setEnabled(false);
             textView.setFocusable(false);

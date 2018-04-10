@@ -87,8 +87,8 @@ import java.io.IOException;
 import java.net.URI;
 import java.util.ArrayList;
 
-import com.microsoft.projectoxford.face.*;
-import com.microsoft.projectoxford.face.contract.*;
+//import com.microsoft.projectoxford.face.*;
+//import com.microsoft.projectoxford.face.contract.*;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -117,13 +117,14 @@ public class Util {
     private static String BASE_URL = "https://northeurope.api.cognitive.microsoft.com/face/v1.0/";
     private static String BASE_KEY = "6ff97ccedba642f78dc07a821122fc4d";
     private static String BASE_KEY_ALT ="3d1818c14a1a41faa2283c84a09cc2ea";
+    private static final int MAX_FACE = 10;
 
-
-    public static String getBaseKey(){
-        return BASE_KEY;
-    }
-
-    // convert image to base 64 so that we can send the image to Emotion API
+    /**
+     * Convierte un bitmap a byte array base64
+     * Requisito de Azure
+     * @param bm bitmap a enviar
+     * @return array de bytes en base64
+     */
     public static byte[] toBase64(Bitmap bm) {
     //public static byte[] toBase64(ImageView imgPreview) {
         //Bitmap bm = ((BitmapDrawable) imgPreview.getDrawable()).getBitmap();
@@ -132,13 +133,10 @@ public class Util {
         return baos.toByteArray();
     }
 
-
-    //private FaceServiceClient faceServiceClient =
-            //new FaceServiceRestClient(BASE_URL, BASE_KEY);
-    //HttpClient httpclient = new DefaultHttpClient();
-    private static final int MAX_FACE = 10;
-
-    //Person[] hola = faceServiceClient.list
+    /**
+     *
+     * @return Devuelve URL base
+     */
     public static String getBaseURL() {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         final String serverName = prefs.getString("sServer_text", "northeurope");
@@ -149,11 +147,41 @@ public class Util {
         return stringBuilder.toString();
     }
 
+    /**
+     *
+     * @return clave de suscripcion
+     */
+    public static String getKey() {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        final String key = prefs.getString("sKey_text", "xxxxxx");
+        return key;
+    }
 
+    /**
+     *
+     * @return nombre de grupo de personas
+     */
+    public static String getGroupName() {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        final String groupName = prefs.getString("groupName_text", "conocidos");
+        return groupName;
+    }
+
+    /**
+     * Deteccion de caras
+     * @param bitmap imagen para detectar si existe una cara
+     * @return imagen recortada solo con rostro o null si existen 0 o mas de 1 cara
+     */
     public static Bitmap detectFace(Bitmap bitmap) {
+        System.out.println("Comienzo de detectFace");
         Bitmap newBitmap;
-        FaceDetector faceDetector = new
-                FaceDetector.Builder(context).setTrackingEnabled(false) .build();
+        FaceDetector faceDetector = new FaceDetector.Builder(context)
+                .setTrackingEnabled(false)
+                //.setClassificationType(FaceDetector.FAST_MODE)
+                .setMode(FaceDetector.FAST_MODE)
+                .setClassificationType(FaceDetector.NO_CLASSIFICATIONS)
+                .setLandmarkType(FaceDetector.NO_LANDMARKS)
+                .build();
 
         Frame frame = new Frame.Builder().setBitmap(bitmap).build();
         SparseArray<Face> faces = faceDetector.detect(frame);
@@ -207,45 +235,50 @@ public class Util {
             }
 
             System.out.println(directory.getAbsolutePath());
-            faceDetector.release();
+            faceDetector.release(); //libera recursos, sino no se puede llamar de nuevo
             return newBitmap;
         }
     }
 
-    public static String getName(String groupName, String personID ) {
+    /**
+     * Recupera el nombre real de una persona mediante su ID
+     * @param personID id de la persona
+     * @return nombre de la persona
+     */
+    public static String getName(String personID ) {
         HttpClient httpclient = HttpClients.createDefault();
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
 
         try { //conexion
             StringBuilder stringBuilder = new StringBuilder(Util.getBaseURL()).append("persongroups/")
-                    .append(groupName).append("/persons");
-            //System.out.println(stringBuilder.toString());
+                    .append(getGroupName()).append("/persons");
+
 
             URIBuilder builder = new URIBuilder(stringBuilder.toString());
             URI uri = builder.build();
             HttpGet request = new HttpGet(uri);
-            request.setHeader("Ocp-Apim-Subscription-Key", BASE_KEY);
+            request.setHeader("Ocp-Apim-Subscription-Key", getKey());
 
             HttpResponse response = httpclient.execute(request);
             HttpEntity entity = response.getEntity();
             String res = EntityUtils.toString(entity);
             //System.out.println("resultado ");
             //System.out.println(res);
+            String checkRes = catchJSONerror(res);
+            if (!checkRes.equals("NO_ERROR")) {
+                System.out.println("salida checkRes " + checkRes);
+                return checkRes;
+            }
             JSONArray jsonArray = new JSONArray(res);
             try { //parseo de JSON
                 for(int i = 0; i<jsonArray.length(); i++) {
                     JSONObject jsonObject = new JSONObject(jsonArray.get(i).toString());
-                    //System.out.println(jsonObject.toString());
                     String id = jsonObject.getString("personId");
                     String name = jsonObject.getString("name");
-                    //System.out.println("persona " +id + " " +name);
-                    //System.out.println("id " +id);
-                    //System.out.println("personID " +personID);
+
                     if (id.equals(personID)) {
-                        //System.out.println("id " +id);
-                        //System.out.println("personID " +personID);
-                        return name; //persona identificada, devuelve nombre
+                        return "Identificacion: " + name; //persona identificada, devuelve nombre
                     }
                 }
             } catch (JSONException e) {
@@ -254,23 +287,23 @@ public class Util {
 
             return "Sujeto desconocido";
         } catch (Exception e){
-            return "Conexion fallida, vuelva a intentarlo";
+            return "Conexion fallida, vuelva a intentarlo más tarde";
         }
-
     }
-    public static String identiFace (String groupName, Bitmap bitmap){
-        //ProgressDialog mProgress;
-        //mProgress = new ProgressDialog(context);
-        //mProgress.setMessage("Downloading nPlease wait...");
-       // mProgress.show();
 
+    /**
+     *
+     * @param groupName
+     * @param bitmap
+     * @return
+     */
+    public static String identiFace (Bitmap bitmap){
         HttpClient httpclient = HttpClients.createDefault();
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
 
         try {
             StringBuilder stringBuilder = new StringBuilder(Util.getBaseURL()).append("detect/");
-            //.append(groupName).append("/train");
             System.out.println(stringBuilder.toString());
 
             URIBuilder builder = new URIBuilder(stringBuilder.toString());
@@ -282,16 +315,19 @@ public class Util {
             request.setHeader("Content-Type", "application/octet-stream");
             //request.setHeader("Content-Type", "application/json");
             // enter you subscription key here
-            request.setHeader("Ocp-Apim-Subscription-Key", "3d1818c14a1a41faa2283c84a09cc2ea");
+            request.setHeader("Ocp-Apim-Subscription-Key", getKey());
 
-            request.setEntity(new ByteArrayEntity(Util.toBase64(bitmap)));
-            // Request body.The parameter of setEntity converts the image to base64
-            //request.setEntity(new ByteArrayEntity(Util.toBase64(img)));
-            //request.se
-            // getting a response and assigning it to the string res
+            request.setEntity(new ByteArrayEntity(Util.toBase64(bitmap))); //imagen en base64
+
             HttpResponse response = httpclient.execute(request);
             HttpEntity entity = response.getEntity();
             String res = EntityUtils.toString(entity);
+            String checkRes = catchJSONerror(res);
+            if (!checkRes.equals("NO_ERROR")) {
+                System.out.println("salida checkRes " + checkRes);
+                return checkRes;
+            }
+
             System.out.println("resultado ");
             System.out.println(res);
             JSONArray jsonArray = null;
@@ -315,15 +351,15 @@ public class Util {
             HttpPost request2 = new HttpPost(uri2);
 
             request2.setHeader("Content-Type", "application/json");
-            request2.setHeader("Ocp-Apim-Subscription-Key", "3d1818c14a1a41faa2283c84a09cc2ea");
-            StringBuilder stringBuilder3 = new StringBuilder("{ \"personGroupId\": \"").append(groupName).append("\",");
+            request2.setHeader("Ocp-Apim-Subscription-Key", getKey());
+            StringBuilder stringBuilder3 = new StringBuilder("{ \"personGroupId\": \"").append(getGroupName()).append("\",");
 
             //stringBuilder3.append("\"faceIds\":[\"").append(faceid).append("\"]}");
             stringBuilder3.append("}");
             System.out.println("json "+stringBuilder3);
 
             JSONObject bodyJson = new JSONObject();
-            bodyJson.put("personGroupId", groupName);
+            bodyJson.put("personGroupId", getGroupName());
             //bodyJson.put("largePersonGroupId", "");
             JSONArray jsonfaceArray = new JSONArray();
             jsonfaceArray.put(faceid);
@@ -395,6 +431,11 @@ public class Util {
         return "null";
     }
 
+    /**
+     *
+     * @param groupName nombre del grupo de personas a entrenar
+     * @return resultado de la operacion, null si ha tenido exito
+     */
     public static String trainGroup(String groupName){
         HttpClient httpclient = HttpClients.createDefault();
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
@@ -408,8 +449,7 @@ public class Util {
             URI uri = builder.build();
             HttpPost request = new HttpPost(uri);
             request.setHeader("Content-Type", "application/octet-stream");
-            request.setHeader("Ocp-Apim-Subscription-Key", BASE_KEY);
-            //request.setEntity(new ByteArrayEntity(Util.toBase64(bitmap)));
+            request.setHeader("Ocp-Apim-Subscription-Key", getKey());
 
             HttpResponse response = httpclient.execute(request);
             HttpEntity entity = response.getEntity();
@@ -551,6 +591,51 @@ public class Util {
         //return "null";
     }
 
+
+
+    public static String catchJSONerror(String jsonString) {
+        System.out.println("JSON recibido en errorCheck " + jsonString);
+        String result = "NO_ERROR";
+
+        try {
+            JSONObject jsonObject = new JSONObject(jsonString);
+
+            if(!jsonObject.has("error")) { //si no tiene error, es correcto
+                return result;
+            }
+            JSONObject jsonError = new JSONObject(jsonObject.getString("error"));
+
+            switch (jsonError.getString("code")){
+                case "BadArgument":
+                    return "ERROR: Error en imagen. Verifique tamaño y formato";
+                case "Unspecified":
+                    return "ERROR: Error en la clave de suscripción. Verifique que es correcta";
+                case "QuotaExceeded":
+                    return "ERROR: Se ha superado el numero de consultas para esta suscripción.";
+                case "PersonGroupNotFound":
+                    return "ERROR: Grupo no encontrado, verifique nombre de grupo";
+                case "OperationTimeOut":
+                    return "ERROR: Tiempo de espera excedido, intentelo más adelante";
+                case "PersonGroupTrainingNotFinished":
+                    return "ERROR: Grupo en proceso de entrenamiento. Intentelo mas adelante.";
+                default:
+                    return "Error desconocido";
+            }
+        } catch (JSONException e) { //Si no tiene "error" se asume JSON correcto
+            return result;
+        }
+    }
+
+
+
+
+
+    public static Bitmap rotateImage(Bitmap img, int degree) {
+        Matrix matrix = new Matrix();
+        matrix.postRotate(degree);
+        Bitmap rotatedImg = Bitmap.createBitmap(img, 0, 0, img.getWidth(), img.getHeight(), matrix, true);
+        return rotatedImg;
+    }
     public int getOrientation(Uri selectedImage) {
         int orientation = 0;
         final String[] projection = new String[]{MediaStore.Images.Media.ORIENTATION};
@@ -593,17 +678,6 @@ public class Util {
             }
         }
     }
-
-
-    public static Bitmap rotateImage(Bitmap img, int degree) {
-        Matrix matrix = new Matrix();
-        matrix.postRotate(degree);
-        Bitmap rotatedImg = Bitmap.createBitmap(img, 0, 0, img.getWidth(), img.getHeight(), matrix, true);
-        return rotatedImg;
-    }
-
-
-
 
     public static int getCameraPhotoOrientation(Context context, Uri imageUri,
                                          String imagePath) {

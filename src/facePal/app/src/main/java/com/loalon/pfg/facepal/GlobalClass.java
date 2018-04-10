@@ -5,7 +5,7 @@ import android.content.Context;
 
 /**
  * Created by OAA on 05/04/2018.
- * Solo para acceder siempre al context
+ * Solo para acceder de forma "global" al context de la aplicacion
  */
 
 public class GlobalClass extends Application {

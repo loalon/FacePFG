@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.loalon.pfg.facepal.AboutActivity">
+
+    <TextView
+        android:id="@+id/versionText"
+        android:layout_width="385dp"
+        android:layout_height="105dp"
+        android:gravity="center|center"
+        android:text="\nVersion 1.0\n Autor: Alonso Serrano\n"
+        android:textIsSelectable="false"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+
+    <ImageView
+        android:id="@+id/imageview_train"
+        android:layout_width="282dp"
+        android:layout_height="289dp"
+        android:layout_above="@+id/button_image"
+        android:layout_gravity="center|center"
+        app:srcCompat="@drawable/facepal"
+        tools:layout_editor_absoluteX="-10dp"
+        tools:layout_editor_absoluteY="47dp" />
+
+<TextView
+    android:id="@+id/webText"
+    android:layout_width="385dp"
+    android:layout_height="83dp"
+    android:layout_gravity="bottom|center"
+    android:gravity="center|center"
+    android:fontFamily="serif"
+    android:text="loalon.com\n Proyecto fin de grado 2017/2018\nIngenieria informatica UNED\n"
+    android:textIsSelectable="false"
+    android:textSize="18sp"
+    android:textStyle="bold"
+    tools:layout_editor_absoluteY="428dp" />
+
+</android.support.design.widget.CoordinatorLayout>
