@@ -67,9 +67,12 @@ public class TrainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(!personExists) {
-                    Snackbar.make(view, "No puede añadirse porque la persona no esta en el sistema", Snackbar.LENGTH_LONG)
-                            .setAction("Action", null).show();
+                    //Snackbar.make(view, "No puede añadirse porque la persona no esta en el sistema", Snackbar.LENGTH_LONG)
+                   //         .setAction("Action", null).show();
+                    new MiniSnack(view, "No puede añadirse porque la persona no esta en el sistema");
                 } else {
+                    new AsyncAddFace(getBaseContext(), view, groupName, faceName, trainBitmap).execute();
+/*
                     Snackbar.make(view, "Añadiendo cara", Snackbar.LENGTH_LONG)
                             .setAction("Action", null).show();
                     String result=Util.addFace(groupName, faceName, trainBitmap);
@@ -80,6 +83,7 @@ public class TrainActivity extends AppCompatActivity {
                         Snackbar.make(view, "Cara añadida con exito", Snackbar.LENGTH_LONG)
                                 .setAction("Action", null).show();
                     }
+                    */
                 }
             }
         });
@@ -90,15 +94,18 @@ public class TrainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(personExists) {
-                    Snackbar.make(view, "Persona existe, no puede volver a crearse", Snackbar.LENGTH_LONG)
-                            .setAction("Action", null).show();
+                    new MiniSnack(view, "La persona existe, no puede volver a crearse");
+                    //Snackbar.make(view, "Persona existe, no puede volver a crearse", Snackbar.LENGTH_LONG)
+                            //.setAction("Action", null).show();
                 } else {
-                    Snackbar.make(view, "Añadiendo persona", Snackbar.LENGTH_LONG)
-                            .setAction("Action", null).show();
+                    new AsyncAddPerson(getBaseContext(), view, groupName, textView.getText().toString(), trainBitmap).execute();
+                    //Snackbar.make(view, "Añadiendo persona", Snackbar.LENGTH_LONG)
+                      //      .setAction("Action", null).show();
+
                     // comprobar la existencia de ese nombre
                     //basicamente si devuelve un ID es que ya existe
                     // mensaje que ya existe
-
+/*
                     String theName = Util.getPersonID(groupName, textView.getText().toString());
                     //si devuelve NO_ID es que no existe
                     if (!theName.equals("NO_ID")) {
@@ -119,40 +126,8 @@ public class TrainActivity extends AppCompatActivity {
                             }
                         }
 
-/*
-                        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(TrainActivity.this, R.style.dialogTheme);
-                        alertDialogBuilder.setMessage("Va a añadirse " + textView.getText() + " al sistema. ¿Esta seguro?");
-                        // set prompts.xml to alertdialog builder
-                        //alertDialogBuilder.setView(promptsView);
-                        alertDialogBuilder.setPositiveButton("SI", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface arg0, int arg1) {
-                                //Toast.makeText(context,"pulsaste yes",Toast.LENGTH_LONG).show();
-                                //finish();
-                            String addedPerson=Util.addPerson(groupName, textView.getText().toString()));
-                            if (!addedPerson.equals("ERROR")) {
-                                String result=Util.addFace(groupName, faceName, trainBitmap);
-                                if (result.equals("ERROR")){
-                                    Snackbar.make(view, "Error añadiendo cara, intentelo más tarde", Snackbar.LENGTH_LONG)
-                                            .setAction("Action", null).show();
-                                } else {
-                                    Snackbar.make(view, "Cara añadida con exito", Snackbar.LENGTH_LONG)
-                                            .setAction("Action", null).show();
-                                }
-                            }
-                            }
-                        });
-                        alertDialogBuilder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                finish();
-                            }
-                        });
-
-                        AlertDialog alertDialog = alertDialogBuilder.create();
-                        alertDialog.show();
-                        */
                     }
+                    */
                 }
             }
         });

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/PR-SVG-20010719/DTD/svg10.dtd">
-<svg width="38cm" height="45cm" viewBox="217 246 744 889" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg width="38cm" height="45cm" viewBox="217 246 743 889" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
   <g>
     <polygon style="fill: #bfbfbf" points="470.835,324.874 544.639,396.816 470.835,468.757 397.032,396.816 "/>
     <polygon style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" points="470.835,324.874 544.639,396.816 470.835,468.757 397.032,396.816 "/>
@@ -159,26 +159,26 @@
     </text>
   </g>
   <g>
-    <polyline style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" points="567.836,582.8 654.175,582.8 654.175,505.65 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" points="556.251,706.754 556.251,705.5 654.175,705.5 654.175,505.65 "/>
     <polygon style="fill: #000000" points="659.175,505.65 654.175,495.65 649.175,505.65 "/>
     <polygon style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" points="659.175,505.65 654.175,495.65 649.175,505.65 "/>
   </g>
   <g>
-    <polyline style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" points="654.175,456.35 654,456.35 654,260 568.062,260 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" points="654.176,456.35 654,456.35 654,260 568.062,260 "/>
     <polygon style="fill: #000000" points="568.062,255 558.062,260 568.062,265 "/>
     <polygon style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" points="568.062,255 558.062,260 568.062,265 "/>
   </g>
   <g>
-    <line style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" x1="720.75" y1="475.75" x2="760.5" y2="476.225"/>
-    <polygon style="fill: #000000" points="760.44,481.224 770.499,476.344 760.56,471.225 "/>
-    <polygon style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" points="760.44,481.224 770.499,476.344 760.56,471.225 "/>
+    <line style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" x1="720.75" y1="475.75" x2="759.5" y2="475.435"/>
+    <polygon style="fill: #000000" points="759.54,480.435 769.499,475.354 759.459,470.435 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" points="759.54,480.435 769.499,475.354 759.459,470.435 "/>
   </g>
   <g>
-    <polygon style="fill: #bfbfbf" points="780.099,451.35 960.372,451.35 942.174,501.35 761.9,501.35 "/>
-    <polygon style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" points="780.099,451.35 960.372,451.35 942.174,501.35 761.9,501.35 "/>
-    <text font-size="11.2889" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="861.136" y="473.539">
-      <tspan x="861.136" y="473.539">Devolver imagen</tspan>
-      <tspan x="861.136" y="487.65">con identificación</tspan>
+    <polygon style="fill: #bfbfbf" points="779.099,450.35 959.372,450.35 941.174,500.35 760.9,500.35 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" points="779.099,450.35 959.372,450.35 941.174,500.35 760.9,500.35 "/>
+    <text font-size="11.2889" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="860.136" y="472.539">
+      <tspan x="860.136" y="472.539">Devolver imagen</tspan>
+      <tspan x="860.136" y="486.65">con identificación</tspan>
     </text>
   </g>
 </svg>

@@ -4,7 +4,7 @@ import android.support.design.widget.Snackbar;
 import android.view.View;
 
 /**
- * Created by OAA on 09/04/2018.
+ * Created by Alonso on 09/04/2018.
  */
 
 public class MiniSnack {
