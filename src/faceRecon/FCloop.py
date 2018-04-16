@@ -1,15 +1,18 @@
 import numpy as np
-import cv2 as cv2
-import time
 
+import time
+from datetime import datetime
 from picamera.array import PiRGBArray
 from picamera import PiCamera
-from face.face import Face
-from datetime import datetime
-import faceCrop.faceCrop as fc
-import FCTrain.FCTrain as FCT
 
 import cognitive_face as CF
+
+import cv2 as cv2
+import faceRecon.faceCrop as fc
+import faceRecon.FCTools as FCT
+from faceRecon.face import Face
+
+
 
 KEY = '6ff97ccedba642f78dc07a821122fc4d'  # Clave de subscripción.
 CF.Key.set(KEY)
@@ -25,38 +28,16 @@ font=cv2.FONT_HERSHEY_SIMPLEX
 groupName="conocidos"
 waitTime=20
 
-
-
-def identifyFace(service, groupName, face):
-    res=service.face.detect(face.file)
-    #print(res)
-    if not res:
-        print("No es una cara")
-        face.name="Objeto"
-        return
-    faceId=[res[0]['faceId']]
-    res=service.face.identify(faceId, groupName)
-    if len(res[0]['candidates']) == 0:
-        print("No existe un candidato que concuerde")
-        face.name="Desconocido"
-        return
-    id=res[0]['candidates'][0]['personId']
-    face.conf=res[0]['candidates'][0]['confidence']
-    face.name=FCT.getNameByID(service, groupName, id)
-
-def paintImage(cv, font, img, face):
-    x1,y1=face.ulCorner
-    x2,y2=face.lrCorner
-    cv2.rectangle(img,face.ulCorner,face.lrCorner,(0,255,0),0)
-    cv2.putText(img,face.name, (x1,y1-20), font, 0.8, (0,255,0),2,cv2.LINE_AA)
-
     
 try:
     while True:
+        now=datetime.now()
+        nowStr='_'+str(now.year)+str(now.month)+str(now.day)+'_'+str(now.hour)+str(now.minute)+str(now.second)
         img=fc.captureImage(camera)
         faceList=fc.faceDetect(faceDetector, img, cv2)
         finalImage=None
         files=[]
+        personDetected=False
         if len(faceList)==0:
             print('No face detected!!!')
             continue
@@ -65,12 +46,15 @@ try:
             fc.faceCrop(img, cv2, font, faceList)
         
         for face in faceList:
-            identifyFace(CF, groupName, face)
+            isPerson=FCT.identifyFace(CF, groupName, face)
             #imprimir
-            paintImage(cv2, font, img, face)
-            print("Sujeto "+face.name)
-        cv2.imwrite('imagen.jpg', img)
-        time.sleep(waitTime)
+            if isPerson is True:
+                personDetected = True
+                FCT.paintImage(cv2, font, img, face)
+                print("Sujeto "+face.name)
+        if personDetected is True:
+            cv2.imwrite('img/image'+nowStr+'.jpg', img)
+            time.sleep(waitTime)
 except KeyboardInterrupt:
     camera.close()
     pass
