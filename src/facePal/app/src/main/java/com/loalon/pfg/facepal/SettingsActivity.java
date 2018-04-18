@@ -22,6 +22,16 @@ import android.view.MenuItem;
 import java.util.List;
 
 /**
+ * Creada por Android Studio para implementar el menu de configuración
+ * Esta clse contiene mas codigo del necesario, pero se mantiene para añadir mas opciones de
+ * configuracion en el futuro
+ *
+ * Created by Alonso on 28/03/2018.
+ * @author Alonso Serrano
+ * @version 180331
+ *
+ */
+/**
  * A {@link PreferenceActivity} that presents a set of application settings. On
  * handset devices, settings are presented as a single list. On tablets,
  * settings are split by category, with category headers shown to the left of

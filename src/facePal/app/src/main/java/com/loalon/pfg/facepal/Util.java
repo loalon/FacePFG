@@ -1,94 +1,23 @@
 package com.loalon.pfg.facepal;
 
-import android.content.BroadcastReceiver;
-
 import android.content.Context;
-
 import android.content.ContextWrapper;
-import android.content.Intent;
-
-import android.app.AlertDialog;
-import android.app.ProgressDialog;
-import android.content.Intent;
-import android.database.Cursor;
 import android.graphics.Bitmap;
-import android.graphics.Matrix;
-import android.graphics.PointF;
-import android.graphics.Rect;
-import android.hardware.Camera;
-//import android.media.FaceDetector;
-import android.media.ExifInterface;
-import android.net.Uri;
-import android.os.Bundle;
 import android.os.StrictMode;
-import android.provider.MediaStore;
-import android.support.annotation.Nullable;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.util.SparseArray;
-import android.view.View;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.widget.Button;
-import android.graphics.Bitmap;
-import android.util.SparseArray;
-import android.app.Activity;
-import com.google.android.gms.vision.Frame;
-import com.google.android.gms.vision.face.Face;
-import com.google.android.gms.vision.face.FaceDetector;
-
-import android.app.AlertDialog;
-import android.app.ProgressDialog;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.PointF;
-import android.graphics.Rect;
-import android.hardware.Camera;
-//import android.media.FaceDetector;
-import android.net.Uri;
-import android.os.Bundle;
-import android.provider.MediaStore;
-import android.support.annotation.Nullable;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.util.SparseArray;
-import android.view.View;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.widget.Button;
 
 import com.google.android.gms.vision.Frame;
 import com.google.android.gms.vision.face.Face;
 import com.google.android.gms.vision.face.FaceDetector;
 
-import android.preference.ListPreference;
-import android.preference.Preference;
-import android.preference.PreferenceActivity;
-import android.support.v7.app.ActionBar;
-import android.preference.PreferenceFragment;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
-import android.widget.TextView;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URI;
-import java.util.ArrayList;
-
-//import com.microsoft.projectoxford.face.*;
-//import com.microsoft.projectoxford.face.contract.*;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -108,34 +37,40 @@ import cz.msebera.android.httpclient.util.EntityUtils;
 
 import static com.loalon.pfg.facepal.GlobalClass.context;
 
-/**
- * Created by OAA on 29/03/2018.
- */
 
+/**
+ * Clase que contiene metodos estaticos independientes del GUI
+ * Sirve como la clase "engine" para poder portarla a otras aplicaciones
+ *
+ * Created by Alonso on 29/03/2018.
+ * @author Alonso Serrano
+ * @version 180413
+ *
+ */
 public class Util {
 
-    private static String BASE_URL = "https://northeurope.api.cognitive.microsoft.com/face/v1.0/";
-    private static String BASE_KEY = "6ff97ccedba642f78dc07a821122fc4d";
-    private static String BASE_KEY_ALT ="3d1818c14a1a41faa2283c84a09cc2ea";
-    private static final int MAX_FACE = 10;
+    //private static String BASE_URL = "https://northeurope.api.cognitive.microsoft.com/face/v1.0/";
+    //private static String BASE_KEY = "6ff97ccedba642f78dc07a821122fc4d";
+   // private static String BASE_KEY_ALT ="3d1818c14a1a41faa2283c84a09cc2ea";
+    //private static final int MAX_FACE = 10;
 
     /**
      * Convierte un bitmap a byte array base64
      * Requisito de Azure
-     * @param bm bitmap a enviar
+     * @param bitmap imagen a enviar
      * @return array de bytes en base64
      */
-    public static byte[] toBase64(Bitmap bm) {
+    public static byte[] toBase64(Bitmap bitmap) {
     //public static byte[] toBase64(ImageView imgPreview) {
         //Bitmap bm = ((BitmapDrawable) imgPreview.getDrawable()).getBitmap();
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        bm.compress(Bitmap.CompressFormat.JPEG, 100, baos); //bm is the bitmap object
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos); //bm is the bitmap object
         return baos.toByteArray();
     }
 
     /**
-     *
-     * @return Devuelve URL base
+     * Devuelve URL base
+     * @return URL base
      */
     public static String getBaseURL() {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
@@ -148,7 +83,7 @@ public class Util {
     }
 
     /**
-     *
+     * Devuelve clave de suscripcion
      * @return clave de suscripcion
      */
     public static String getKey() {
@@ -158,7 +93,7 @@ public class Util {
     }
 
     /**
-     *
+     * Devuelve nombre de grupo de personas
      * @return nombre de grupo de personas
      */
     public static String getGroupName() {
@@ -170,10 +105,10 @@ public class Util {
     /**
      * Deteccion de caras
      * @param bitmap imagen para detectar si existe una cara
-     * @return imagen recortada solo con rostro o null si existen 0 o mas de 1 cara
+     * @return imagen recortada solo con un rostro o null si existen 0 o mas de 1 cara
      */
     public static Bitmap detectFace(Bitmap bitmap) {
-        System.out.println("Comienzo de detectFace");
+        //System.out.println("Comienzo de detectFace");
         Bitmap newBitmap;
         FaceDetector faceDetector = new FaceDetector.Builder(context)
                 .setTrackingEnabled(false)
@@ -185,14 +120,14 @@ public class Util {
 
         Frame frame = new Frame.Builder().setBitmap(bitmap).build();
         SparseArray<Face> faces = faceDetector.detect(frame);
-        System.out.println("w " + bitmap.getWidth());
-        System.out.println("h " + bitmap.getHeight());
-        System.out.println("max " + MAX_FACE);
+        //System.out.println("w " + bitmap.getWidth());
+        //System.out.println("h " + bitmap.getHeight());
+        //System.out.println("max " + MAX_FACE);
         int x; //pos x
         int y; //pos y
-        int w; //
-        int h;
-        System.out.println("numero de caras " + faces.size());
+        int w; //ancho
+        int h; //alto
+        //System.out.println("numero de caras " + faces.size());
 
         if(faces.size() != 1) {
             faceDetector.release();
@@ -210,16 +145,16 @@ public class Util {
 
             w= (int) face.getWidth();
             h= (int) face.getHeight();
-            System.out.println("x " + x);
-            System.out.println("y " + y);
-            System.out.println("w " + w);
-            System.out.println("h " + h);
+            //System.out.println("x " + x);
+            //System.out.println("y " + y);
+            //System.out.println("w " + w);
+            //System.out.println("h " + h);
             newBitmap=Bitmap.createBitmap(bitmap, x, y, w, h);
 
+            // Almacena la imagen temporalmente para una carga más rapida en el imageView
             ContextWrapper cw = new ContextWrapper(context);
             File directory = cw.getDir("imageDir", Context.MODE_PRIVATE);
             File mypath = new File(directory,"tempFace.jpg");
-
             FileOutputStream fos = null;
             try {
                 fos = new FileOutputStream(mypath);
@@ -234,7 +169,7 @@ public class Util {
                 }
             }
 
-            System.out.println(directory.getAbsolutePath());
+            //System.out.println(directory.getAbsolutePath());
             faceDetector.release(); //libera recursos, sino no se puede llamar de nuevo
             return newBitmap;
         }
@@ -245,15 +180,15 @@ public class Util {
      * @param personID id de la persona
      * @return nombre de la persona
      */
-    public static String getName(String personID ) {
+    public static String getName(String personID) {
         HttpClient httpclient = HttpClients.createDefault();
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
 
         try { //conexion
-            StringBuilder stringBuilder = new StringBuilder(Util.getBaseURL()).append("persongroups/")
+            StringBuilder stringBuilder = new StringBuilder(Util.getBaseURL())
+                    .append("persongroups/")
                     .append(getGroupName()).append("/persons");
-
 
             URIBuilder builder = new URIBuilder(stringBuilder.toString());
             URI uri = builder.build();
@@ -302,6 +237,7 @@ public class Util {
         StrictMode.setThreadPolicy(policy);
 
         try {
+            /* SECCION DETECCION */
             StringBuilder stringBuilder = new StringBuilder(Util.getBaseURL()).append("detect/");
             System.out.println(stringBuilder.toString());
 
@@ -326,9 +262,13 @@ public class Util {
                 System.out.println("salida checkRes " + checkRes);
                 return checkRes;
             }
+            if (res.equals("[]")) {
+                return "NO_FACE_IMAGE";
+            }
 
             System.out.println("resultado ");
             System.out.println(res);
+
             JSONArray jsonArray = null;
             String faceid;
             try {
@@ -373,6 +313,11 @@ public class Util {
             HttpResponse response2 = httpclient.execute(request2);
             HttpEntity entity2 = response2.getEntity();
             String res2 = EntityUtils.toString(entity2);
+            String checkRes2 = catchJSONerror(res2);
+            if (!checkRes2.equals("NO_ERROR")) {
+                System.out.println("salida checkRes " + checkRes2);
+                return checkRes2;
+            }
             System.out.println("resultado final " + res2);
             //textView.setText("hola");
             //mProgress.dismiss();
@@ -417,7 +362,7 @@ public class Util {
             return "null";
         }
     }
-
+/*
     public static String trainFace(String groupName, String personName, Bitmap bitmap) {
         HttpClient httpclient = HttpClients.createDefault();
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
@@ -429,9 +374,9 @@ public class Util {
 
         return "null";
     }
-
+*/
     /**
-     *
+     * Indica a Azure que debe entrenar el grupo
      * @param groupName nombre del grupo de personas a entrenar
      * @return resultado de la operacion, null si ha tenido exito
      */
@@ -452,9 +397,13 @@ public class Util {
 
             HttpResponse response = httpclient.execute(request);
             HttpEntity entity = response.getEntity();
-            String res2 = EntityUtils.toString(entity);
-
-            System.out.println("salida train " + res2);
+            String res = EntityUtils.toString(entity);
+            String checkRes = catchJSONerror(res);
+            if (!checkRes.equals("NO_ERROR")) {
+                //System.out.println("salida checkRes " + checkRes);
+                return checkRes;
+            }
+            //System.out.println("salida train " + res);
 
 
         } catch (Exception e){
@@ -480,7 +429,7 @@ public class Util {
             URI uri = builder.build();
             HttpPost request = new HttpPost(uri);
             request.setHeader("Content-Type", "application/octet-stream");
-            request.setHeader("Ocp-Apim-Subscription-Key", BASE_KEY);
+            request.setHeader("Ocp-Apim-Subscription-Key", getKey());
             request.setEntity(new ByteArrayEntity(Util.toBase64(bitmap)));
 
             HttpResponse response = httpclient.execute(request);
@@ -488,7 +437,7 @@ public class Util {
             String res2 = EntityUtils.toString(entity);
 
             String res3 = trainGroup(groupName);
-
+            //if (res3.equals(""))
             System.out.println("salida addFace " + res2);
             System.out.println("salida addFace+train " + res3);
             return res2;
@@ -510,11 +459,16 @@ public class Util {
             URIBuilder builder = new URIBuilder(stringBuilder.toString());
             URI uri = builder.build();
             HttpGet request = new HttpGet(uri);
-            request.setHeader("Ocp-Apim-Subscription-Key", BASE_KEY);
+            request.setHeader("Ocp-Apim-Subscription-Key", getKey());
 
             HttpResponse response = httpclient.execute(request);
             HttpEntity entity = response.getEntity();
             String res = EntityUtils.toString(entity);
+            String checkRes = catchJSONerror(res);
+            if (!checkRes.equals("NO_ERROR")) {
+                System.out.println("salida checkRes " + checkRes);
+                return checkRes;
+            }
             JSONArray jsonArray = new JSONArray(res);
             try { //parseo de JSON
                 for(int i = 0; i<jsonArray.length(); i++) {
@@ -556,7 +510,7 @@ public class Util {
             URI uri = builder.build();
             HttpPost request = new HttpPost(uri);
             request.setHeader("Content-Type", "application/json");
-            request.setHeader("Ocp-Apim-Subscription-Key", BASE_KEY);
+            request.setHeader("Ocp-Apim-Subscription-Key", getKey());
             JSONObject bodyJson = new JSONObject();
                 try {
 
@@ -571,7 +525,11 @@ public class Util {
             HttpResponse response = httpclient.execute(request);
             HttpEntity entity = response.getEntity();
             String res = EntityUtils.toString(entity);
-
+            String checkRes = catchJSONerror(res);
+            if (!checkRes.equals("NO_ERROR")) {
+                System.out.println("salida checkRes " + checkRes);
+                return checkRes;
+            }
             String personFromJSON;
 
             try { //parseo de JSON
@@ -590,7 +548,13 @@ public class Util {
         //return "null";
     }
 
-
+    /**
+     * Verifica el contenido del JSON recibido desde Azure, si contiene error lo interpreta
+     * y devuelve un mensaje claro sobre el error
+     *
+     * @param jsonString JSON recibido
+     * @return mensaje de error o si no hay error el contenido del archivo JSON
+     */
 
     public static String catchJSONerror(String jsonString) {
         System.out.println("JSON recibido en errorCheck " + jsonString);
@@ -627,7 +591,7 @@ public class Util {
 
 
 
-
+/*
 
     public static Bitmap rotateImage(Bitmap img, int degree) {
         Matrix matrix = new Matrix();
@@ -708,4 +672,5 @@ public class Util {
         }
         return rotate;
     }
+    */
 }

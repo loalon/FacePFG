@@ -22,7 +22,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.File;
-
+/**
+ * Crea la actividad de entrenamiento de FacePal
+ *
+ * Created by Alonso on 02/04/2018.
+ * @author Alonso Serrano
+ * @version 180418
+ *
+ */
 public class TrainActivity extends AppCompatActivity {
 
     SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(GlobalClass.context);
@@ -30,17 +37,16 @@ public class TrainActivity extends AppCompatActivity {
     boolean personExists = false;
     final Context context = GlobalClass.context;
     String faceName;
+    Boolean faceIdentified=false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_train);
-
         Intent intent = getIntent();
 
         /* Cargar la imagen del recorte en el imageView */
         ContextWrapper cw = new ContextWrapper(getApplicationContext());
-        ///data/user/0/com.loalon.pfg.facepal/app_imageDir
         File directory = cw.getDir("imageDir", Context.MODE_PRIVATE);
         File imgFile=new File(directory,"tempFace.jpg");
         final Bitmap trainBitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
@@ -50,15 +56,19 @@ public class TrainActivity extends AppCompatActivity {
         /* Cargar el nombre de la persona en el textView*/
         final EditText textView = (EditText) findViewById(R.id.editText);
         String faceId=Util.identiFace(trainBitmap);
-        if (faceId.equals("NO_CANDIDATE")){
+        if (faceId.equals("NO_FACE_IMAGE")){ //si no contiene cara
+            new MiniSnack(findViewById(android.R.id.content),
+                    "Azure no reconoce la cara de la imagen, compruebe la resolucion.");
+        } else if (faceId.equals("NO_CANDIDATE")){ //si no se reconoce permite añadir
             textView.setText("Escriba un nombre");
-
-        } else {
+            faceIdentified=true;
+        } else { //persona reconocida, permite añadir cara
             faceName = Util.getName(faceId);
             textView.setText(faceName);
             textView.setEnabled(false);
             textView.setFocusable(false);
             personExists=true;
+            faceIdentified=true;
         }
         /*BOTON AÑADIR CARA*/
         Button buttonAddFace = findViewById(R.id.button_addFace);
@@ -67,27 +77,16 @@ public class TrainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(!personExists) {
-                    //Snackbar.make(view, "No puede añadirse porque la persona no esta en el sistema", Snackbar.LENGTH_LONG)
-                   //         .setAction("Action", null).show();
                     new MiniSnack(view, "No puede añadirse porque la persona no esta en el sistema");
                 } else {
-                    new AsyncAddFace(getBaseContext(), view, groupName, faceName, trainBitmap).execute();
-/*
-                    Snackbar.make(view, "Añadiendo cara", Snackbar.LENGTH_LONG)
-                            .setAction("Action", null).show();
-                    String result=Util.addFace(groupName, faceName, trainBitmap);
-                    if (result.equals("ERROR")){
-                        Snackbar.make(view, "Error añadiendo cara, intentelo más tarde", Snackbar.LENGTH_LONG)
-                                .setAction("Action", null).show();
-                    } else {
-                        Snackbar.make(view, "Cara añadida con exito", Snackbar.LENGTH_LONG)
-                                .setAction("Action", null).show();
-                    }
-                    */
+                    new AsyncAddFace(getBaseContext(), view, groupName, faceName, trainBitmap)
+                            .execute();
+
                 }
             }
         });
 
+        /*BOTON AÑADIR PERSONA*/
         Button buttonAddPerson = findViewById(R.id.button_addPerson);
         buttonAddPerson.setOnClickListener(new View.OnClickListener() {
 
@@ -95,42 +94,16 @@ public class TrainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if(personExists) {
                     new MiniSnack(view, "La persona existe, no puede volver a crearse");
-                    //Snackbar.make(view, "Persona existe, no puede volver a crearse", Snackbar.LENGTH_LONG)
-                            //.setAction("Action", null).show();
                 } else {
-                    new AsyncAddPerson(getBaseContext(), view, groupName, textView.getText().toString(), trainBitmap).execute();
-                    //Snackbar.make(view, "Añadiendo persona", Snackbar.LENGTH_LONG)
-                      //      .setAction("Action", null).show();
-
-                    // comprobar la existencia de ese nombre
-                    //basicamente si devuelve un ID es que ya existe
-                    // mensaje que ya existe
-/*
-                    String theName = Util.getPersonID(groupName, textView.getText().toString());
-                    //si devuelve NO_ID es que no existe
-                    if (!theName.equals("NO_ID")) {
-                        Snackbar.make(view, "Persona ya en el sistema. Compruebe nombre", Snackbar.LENGTH_LONG)
-                                .setAction("Action", null).show();
+                    if (faceIdentified) {
+                        new AsyncAddPerson(getBaseContext(), view, groupName,
+                                textView.getText().toString(), trainBitmap).execute();
                     } else {
-                        //si no cuadro de dialogo y añadir
-                        String addedPerson=Util.addPerson(groupName, textView.getText().toString());
-                        System.out.println("en actividadTrain " + addedPerson);
-                        if (!addedPerson.equals("ERROR")) {
-                            String result=Util.addFace(groupName, textView.getText().toString(), trainBitmap);
-                            if (result.equals("ERROR")){
-                                Snackbar.make(view, "Error añadiendo cara, intentelo más tarde", Snackbar.LENGTH_LONG)
-                                        .setAction("Action", null).show();
-                            } else {
-                                Snackbar.make(view, "Cara añadida con exito", Snackbar.LENGTH_LONG)
-                                        .setAction("Action", null).show();
-                            }
-                        }
-
+                        new MiniSnack(findViewById(android.R.id.content),
+                                "Azure no reconoce la cara de la imagen, compruebe la resolucion.");
                     }
-                    */
                 }
             }
         });
-
     }
 }

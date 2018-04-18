@@ -4,10 +4,13 @@ import android.app.Application;
 import android.content.Context;
 
 /**
- * Created by OAA on 05/04/2018.
- * Solo para acceder de forma "global" al context de la aplicacion
+ * Permite acceder de forma "global" al context de la aplicacion
+ *
+ * Created by Alonso on 05/04/2018.
+ * @author Alonso Serrano
+ * @version 180405
+ *
  */
-
 public class GlobalClass extends Application {
 
     public static Context context;

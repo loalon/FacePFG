@@ -1,5 +1,10 @@
 package com.loalon.pfg.facepal;
 
+/**
+ * Created by OAA on 18/04/2018.
+ */
+
+
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
@@ -11,6 +16,15 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+/**
+ * Creada por Android Studio para implementar el menu de configuración
+ *
+ * Created by Alonso on 28/03/2018.
+ * @author Alonso Serrano
+ * @version 180328
+ *
+ */
 
 /**
  * A {@link android.preference.PreferenceActivity} which implements and proxies the necessary calls

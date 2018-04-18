@@ -17,10 +17,19 @@ import android.widget.Button;
 import android.widget.ImageView;
 import java.io.IOException;
 
+/**
+ * Crea la actividad principal de FacePal
+ *
+ * Created by Alonso on 28/03/2018.
+ * @author Alonso Serrano
+ * @version 180418
+ *
+ */
+
 public class MainActivity extends AppCompatActivity {
 
     private final int PICK_IMAGE = 1;
-    private static final int MAX_FACE = 10;
+    //private static final int MAX_FACE = 10;
     private boolean faceLoaded = false;
     private Bitmap bitmap2;
     final Context context = this;

@@ -5,6 +5,11 @@ credenciales/
 otros/
 zzz/
 
+src.old/
+
+/docs/diagramas
+/docs/imagenes
+/docs/otros
 /src/facePal/*.iml
 /src/facePal/.gradle
 /src/facePal/local.properties
