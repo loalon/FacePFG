@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.Toast;
 
 /**
- * Tarea asincrona de añadir cara
+ * Tarea asincrona de añadir persona
  *
  * Created by Alonso on 09/04/2018.
  * @author Alonso Serrano
@@ -49,10 +49,6 @@ public class AsyncAddPerson extends AsyncTask<Context, Integer, String> {
 
     @Override
     protected String doInBackground(Context... params) {
-        //String personaID = Util.identiFace(bitmap);
-        //String result=Util.addFace(groupName, faceName, bitmap);
-        //return result;
-
         String theName = Util.getPersonID(groupName, faceName);
 
         if (theName.startsWith("ERROR:")){ //gestion de error
@@ -60,19 +56,13 @@ public class AsyncAddPerson extends AsyncTask<Context, Integer, String> {
         }
         if (!theName.equals("NO_ID")) { //si devuelve NO_ID es que no existe
             return "ERROR: Persona ya en el sistema. Compruebe nombre";
-            //Snackbar.make(view, "Persona ya en el sistema. Compruebe nombre", Snackbar.LENGTH_LONG)
-            //      .setAction("Action", null).show();
-            //si no cuadro de dialogo y añadir
         }
         String addedPerson = Util.addPerson(groupName, faceName);
         if (addedPerson.startsWith("ERROR:")){ //gestion de error
             return addedPerson;
         }
-            //System.out.println("en actividadTrain " + addedPerson);
-            //if (!addedPerson.equals("ERROR")) {
         String result = Util.addFace(groupName, faceName, bitmap);
         return result;
-            //}
     }
 
     @Override

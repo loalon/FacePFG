@@ -11,7 +11,12 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 /**
- * Created by OAA on 09/04/2018.
+ * Tarea asincrona de recortar cara
+ *
+ * Created by Alonso on 09/04/2018.
+ * @author Alonso Serrano
+ * @version 180415
+ *
  */
 
 public class AsyncFaceCroper extends AsyncTask<Context, Integer, String> {

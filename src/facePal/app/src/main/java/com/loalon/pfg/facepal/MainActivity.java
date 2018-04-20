@@ -29,7 +29,6 @@ import java.io.IOException;
 public class MainActivity extends AppCompatActivity {
 
     private final int PICK_IMAGE = 1;
-    //private static final int MAX_FACE = 10;
     private boolean faceLoaded = false;
     private Bitmap bitmap2;
     final Context context = this;

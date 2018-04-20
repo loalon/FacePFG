@@ -5,30 +5,26 @@ import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.view.View;
 import android.widget.Toast;
-
 /**
+ * Tarea asincrona de DETECTAR cara
+ *
  * Created by Alonso on 09/04/2018.
+ * @author Alonso Serrano
+ * @version 180415
+ *
  */
 
 public class AsyncFaceDetector extends AsyncTask<Context, Integer, String> {
 
-    //public interface AsyncResponse {
-    //    void processFinish(Boolean output);
-   // }
-
-  //  public AsyncResponse delegate = null;
-
     Bitmap bitmap;
     Context context;
     View view;
-    //Boolean faceIdentified;
 
     public AsyncFaceDetector(Context context, View view, Bitmap bitmap) {
         super();
         this.bitmap=bitmap;
         this.context=context;
         this.view=view;
-        //Boolean faceIdentified=false;
     }
 
     @Override
@@ -55,9 +51,7 @@ public class AsyncFaceDetector extends AsyncTask<Context, Integer, String> {
             new MiniSnack(view, "Azure no reconoce la cara de la imagen," +
                     " compruebe la resolucion.");
         } else {
-            //faceIdentified = true;
             new MiniSnack(view, result);
         }
-        //delegate.processFinish(faceIdentified);
     }
 }
