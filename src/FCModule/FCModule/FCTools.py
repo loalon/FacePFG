@@ -149,13 +149,13 @@ def identifyFace(service, personGroup, face):
         face.name="Objeto"
         return False #no es una cara
     faceId=[res[0]['faceId']]
-    res=service.face.identify(faceId, groupName)
+    res=service.face.identify(faceId, personGroup)
     if len(res[0]['candidates']) == 0:
         face.name="Desconocido"
         return True #desconocido pero persona
     id=res[0]['candidates'][0]['personId']
     face.conf=res[0]['candidates'][0]['confidence']
-    face.name=getNameByID(service, groupName, id)
+    face.name=getNameByID(service, personGroup, id)
     return True #conocido
 
 
