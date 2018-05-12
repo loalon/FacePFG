@@ -1,11 +1,4 @@
-# exclude everything 
-
-Burocracia/
-credenciales/
-otros/
-zzz/
-
-src.old/
+# exclude 
 
 /docs/diagramas
 /docs/imagenes
@@ -19,3 +12,7 @@ src.old/
 /src/facePal/build
 /src/facePal/captures
 /src/facePal/.externalNativeBuild
+/src/FCModule/build
+/src/FCModule/dist
+/src/FCModule/FCModule.egg-info
+/src/FCModule/FCModule/__pycache__

@@ -5,7 +5,7 @@ File: FCTools.py
 Description: Metodos para la conexión a Azure
 Author: Alonso Serrano
 Created: 180228
-Version: 180415
+Version: 180512
 """
 
 

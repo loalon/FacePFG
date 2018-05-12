@@ -5,7 +5,7 @@ File: faceCrop.py
 Description: Metodos de deteccion y recorte de caras
 Author: Alonso Serrano
 Created: 180228
-Version: 180416
+Version: 180512
 """
 
 import time
