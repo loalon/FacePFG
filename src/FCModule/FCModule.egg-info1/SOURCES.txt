@@ -1,0 +1,10 @@
+setup.py
+FCModule/FCTools.py
+FCModule/__init__.py
+FCModule/face.py
+FCModule/faceCrop.py
+FCModule.egg-info/PKG-INFO
+FCModule.egg-info/SOURCES.txt
+FCModule.egg-info/dependency_links.txt
+FCModule.egg-info/requires.txt
+FCModule.egg-info/top_level.txt

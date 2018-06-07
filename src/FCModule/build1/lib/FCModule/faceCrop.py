@@ -5,7 +5,7 @@ File: faceCrop.py
 Description: Metodos de deteccion y recorte de caras
 Author: Alonso Serrano
 Created: 180228
-Version: 180512
+Version: 180416
 """
 
 import time
@@ -48,6 +48,7 @@ def faceDetect(faceDetector, image, cv2):
 
     """
     faceCascade = cv2.CascadeClassifier(faceDetector)
+    image=cv2.imread(image) #quitar
     gray=cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     faces = faceCascade.detectMultiScale(gray, 1.1, 4)
     faceList=[]

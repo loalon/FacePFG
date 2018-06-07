@@ -154,8 +154,22 @@ def identifyFace(service, personGroup, face):
         face.name="Desconocido"
         return True #desconocido pero persona
     id=res[0]['candidates'][0]['personId']
-    face.conf=res[0]['candidates'][0]['confidence']
+    #print("candidatos")
+    #print(res[0]['candidates'])
+    face.confidence=res[0]['candidates'][0]['confidence']
     face.name=getNameByID(service, personGroup, id)
+    face.personID=id
+    if len(res[0]['candidates']) > 1:
+        for cand in res[0]['candidates']:
+            #print (cand['confidence'])
+            #print (cand['personId'])
+            name=getNameByID(service, personGroup, id)
+            #print (name)
+            face.candidates.append([id, name, cand['confidence']])
+    else:
+        face.candidates.append([id, face.name, face.confidence])
+    #print('vector candidatos')
+    #print(face.candidates)
     return True #conocido
 
 
