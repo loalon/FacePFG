@@ -188,7 +188,21 @@ def paintImage(cv, font, img, face):
     cv.rectangle(img,face.ulCorner,face.lrCorner,(0,255,0),0)
     cv.putText(img,face.name, (x1,y1-20), font, 0.8, (0,255,0),2,cv.LINE_AA)
 
+def paintAllFaces(cv, font, img, faceList):
+    """Pinta un rectangulo sobre todas las caras y su nombre
+
+    Args:
+        cv: objeto que contiene el servicio OpenCV
+        font: fuente tipografica
+        img: imagen capturada
+        faceList: lista de objetos Face
+
+    """
+    for face in faceList:
+        FCT.paintImage(cv2, font, img, face)
     
+    return img
+
 def listPersons(service, personGroup):
     """Devuelve un listado de personas de un grupo
 
