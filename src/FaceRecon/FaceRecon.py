@@ -19,6 +19,8 @@ import cv2 as cv2
 import FCModule.faceCrop as fc
 import FCModule.FCTools as FCT
 from FCModule.face import Face
+import configparser
+
 
 ###CONFIGURACION
 
@@ -27,11 +29,14 @@ camera.resolution = (1920,1088) #resolucion
 
 font=cv2.FONT_HERSHEY_SIMPLEX #tipo de fuente
 
-faceDetector ='utils/haarcascade_frontalface_alt2.xml' #filtro Haar
-
-sKey = '6ff97ccedba642f78dc07a821122fc4d'  # Clave de subscripción.
-server = 'northeurope' #servidor
-groupName="conocidos" #grupo de personas
+config=configparser.ConfigParser()
+config.read("FaceRecon.ini")
+cfg=config['CONFIG']
+fn=cfg['facedetector']
+faceDetector = os.path.join(os.path.dirname(__file__), fn)
+sKey=cfg['skey']
+server=cfg['server']
+groupName=cfg['groupname']
 
 waitTime=20 #segundos entre detecciones
 
