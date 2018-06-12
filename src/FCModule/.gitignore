@@ -1,0 +1,4 @@
+# exclude 
+
+!/FCModule
+!setup.py

@@ -7,20 +7,18 @@ Author: Alonso Serrano
 Created: 180228
 Version: 180601
 """
+## @package Face
+#  Documentation for this module.
+#
+#  More details.
 
+
+## Clase Face
+#
+# Clase para contener datos de los objetos Face
 class Face():
-    """ Clase para contener datos de los objetos Face
 
-    Atributes:
-        ulCorner: esquina superior izquierda (tuple)
-        lrcorner: esquina inferior derecha (tuple)
-        name: nombre del candidato mas probable
-        file: archivo que contiene el recorte
-        confidence: probabilidad del candidato mas probable
-        candidates: lista de todos los candidatos posibles
-        personId: identificador de Azure del mejor candidato
-    """
-
+    ##Constructor
     def __init__(self, ulCorner, lrCorner):
         self.ulCorner = ulCorner
         self.lrCorner = lrCorner
@@ -29,3 +27,19 @@ class Face():
         self.confidence=0
         self.candidates=[]
         self.personID=""
+
+    ## @var self.ulCorner
+    # esquina superior izquierda (tuple)
+    ## @var lrCorner
+    # esquina inferior derecha (tuple)
+    ## @var name
+    # nombre del candidato mas probable
+    ## @var file
+    # archivo que contiene el recorte
+    ## @var confidence
+    # probabilidad del candidato mas probable
+    ## @var candidates
+    # lista de todos los candidatos posibles
+    ## @var personID
+    # identificador de Azure del mejor candidato
+    

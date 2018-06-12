@@ -6,19 +6,18 @@ import time
 import json
 import re
 import sys
-
-import time
 from datetime import datetime
+
 from picamera.array import PiRGBArray
 from picamera import PiCamera
-import os
+
 import cognitive_face as CF
 
 import cv2 as cv2
+
 import FCModule.faceCrop as fc
 import FCModule.FCTools as FCT
 from FCModule.face import Face
-import configparser
 
 camera= PiCamera()
 
@@ -58,38 +57,8 @@ class FaceBT:
     def sendSerial(self, text):
         self.port.write(bytes(text +" \n", 'UTF-8'))
         
-    #def printSerial(self, text):
-       #self.port.write(text)
-    """
-    def readExecuteSend(self, shell, ble_comm, ble_line):
 
-        json_object = json.loads(ble_line)
-        ip_address = ble_comm.wifi_connect(json_object['SSID'], json_object['PWD'])
-        if ip_address == "<Not Set>":
-            print("Fail to connect to Internet")
-            #send back fail to configure wifi
-            callback_message = {'result': "FAIL", 'IP': ip_address}
-            callback_json = json.dumps(callback_message)
-            ble_comm.send_serial(callback_json)
-            return False
-        
-        else:
-            #isConnected = True
-            print("connect to Internet! your ip_address: " + ip_address)
-            #send back configure wifi succesfully
-            callback_message = {'result': "SUCCESS", 'IP': ip_address}
-            callback_json = json.dumps(callback_message)
-            ble_comm.send_serial(callback_json)
-
-            return True
-    """      
     def identify(self, mode):
-        
-        #if (mode == "text"):
-
-        #elif (mode == "json"):
-
-        #elif (mode == "image"):
         
         self.sendSerial("Iniciando identificacion, espere por favor ")
 
