@@ -1,6 +1,8 @@
 var searchData=
 [
-  ['persondetected',['personDetected',['../namespace_face_recon.html#ac4b8075620307b113830af1893363bbe',1,'FaceRecon']]],
-  ['personid',['personID',['../class_f_c_module_1_1face_1_1_face.html#a9eb1f17f0ed52af706762346be0f9a52',1,'FCModule::face::Face']]],
-  ['port',['port',['../class_face_b_t_1_1_face_b_t.html#a7cdbf80ff5f32f8e8d0b36bfbc262e57',1,'FaceBT::FaceBT']]]
+  ['main',['main',['../namespace_face_b_t.html#ae0478ade43b4da93ebb363e389220087',1,'FaceBT']]],
+  ['mainactivity',['MainActivity',['../classcom_1_1loalon_1_1pfg_1_1facepal_1_1_main_activity.html',1,'com::loalon::pfg::facepal']]],
+  ['mainactivity_2ejava',['MainActivity.java',['../_main_activity_8java.html',1,'']]],
+  ['minisnack',['MiniSnack',['../classcom_1_1loalon_1_1pfg_1_1facepal_1_1_mini_snack.html',1,'com.loalon.pfg.facepal.MiniSnack'],['../classcom_1_1loalon_1_1pfg_1_1facepal_1_1_mini_snack.html#a728b4a87e5b75c567711b17ac9da7192',1,'com.loalon.pfg.facepal.MiniSnack.MiniSnack()']]],
+  ['minisnack_2ejava',['MiniSnack.java',['../_mini_snack_8java.html',1,'']]]
 ];

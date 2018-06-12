@@ -1,0 +1,257 @@
+\hypertarget{classcom_1_1loalon_1_1pfg_1_1facepal_1_1_util}{}\section{Referencia de la Clase com.\+loalon.\+pfg.\+facepal.\+Util}
+\label{classcom_1_1loalon_1_1pfg_1_1facepal_1_1_util}\index{com.\+loalon.\+pfg.\+facepal.\+Util@{com.\+loalon.\+pfg.\+facepal.\+Util}}
+
+
+Clase que contiene metodos estaticos independientes del G\+UI Sirve como la clase \char`\"{}engine\char`\"{} para poder portarla a otras aplicaciones.  
+
+
+\subsection*{Métodos públicos estáticos}
+\begin{DoxyCompactItemize}
+\item 
+static byte \mbox{[}$\,$\mbox{]} \mbox{\hyperlink{classcom_1_1loalon_1_1pfg_1_1facepal_1_1_util_a363e942720417034c6c52fe4dd21df31}{to\+Base64}} (Bitmap bitmap)
+\begin{DoxyCompactList}\small\item\em Convierte un bitmap a byte array base64 Requisito de Azure. \end{DoxyCompactList}\item 
+static String \mbox{\hyperlink{classcom_1_1loalon_1_1pfg_1_1facepal_1_1_util_aa2f3ea68628c684b86868bf5d3a1cd5f}{get\+Base\+U\+RL}} ()
+\begin{DoxyCompactList}\small\item\em Devuelve U\+RL base. \end{DoxyCompactList}\item 
+static String \mbox{\hyperlink{classcom_1_1loalon_1_1pfg_1_1facepal_1_1_util_a537cee01d79a860eb281c942e97636eb}{get\+Key}} ()
+\begin{DoxyCompactList}\small\item\em Devuelve clave de suscripcion. \end{DoxyCompactList}\item 
+static String \mbox{\hyperlink{classcom_1_1loalon_1_1pfg_1_1facepal_1_1_util_a78dd2a2f40d6f82d71b7674ce40b46aa}{get\+Group\+Name}} ()
+\begin{DoxyCompactList}\small\item\em Devuelve nombre de grupo de personas. \end{DoxyCompactList}\item 
+static Bitmap \mbox{\hyperlink{classcom_1_1loalon_1_1pfg_1_1facepal_1_1_util_a57c1890189bffa4c69c51e286a2f6dbf}{detect\+Face}} (Bitmap bitmap)
+\begin{DoxyCompactList}\small\item\em Deteccion de caras. \end{DoxyCompactList}\item 
+static String \mbox{\hyperlink{classcom_1_1loalon_1_1pfg_1_1facepal_1_1_util_ac1062b1f3ee41b64274d734556cac898}{get\+Name}} (String person\+ID)
+\begin{DoxyCompactList}\small\item\em Recupera el nombre real de una persona mediante su ID. \end{DoxyCompactList}\item 
+static String \mbox{\hyperlink{classcom_1_1loalon_1_1pfg_1_1facepal_1_1_util_acedba139e29bc531032abf79980128d2}{identi\+Face}} (Bitmap bitmap)
+\begin{DoxyCompactList}\small\item\em Identifica una persona mediante una cara recortada. \end{DoxyCompactList}\item 
+static String \mbox{\hyperlink{classcom_1_1loalon_1_1pfg_1_1facepal_1_1_util_a59c6bb634708c5835281c91ead1b80bf}{train\+Group}} (String group\+Name)
+\begin{DoxyCompactList}\small\item\em Indica a Azure que debe entrenar el grupo. \end{DoxyCompactList}\item 
+static String \mbox{\hyperlink{classcom_1_1loalon_1_1pfg_1_1facepal_1_1_util_a94d73c1994c5e91f40cdf579e0aa7418}{add\+Face}} (String group\+Name, String person\+Name, Bitmap bitmap)
+\begin{DoxyCompactList}\small\item\em Indica a Azure que debe entrenar el grupo. \end{DoxyCompactList}\item 
+static String \mbox{\hyperlink{classcom_1_1loalon_1_1pfg_1_1facepal_1_1_util_ab74c33dc6a4bab04e396bce32b5dd62e}{get\+Person\+ID}} (String group\+Name, String name)
+\begin{DoxyCompactList}\small\item\em Recupera el ID de una persona. \end{DoxyCompactList}\item 
+static String \mbox{\hyperlink{classcom_1_1loalon_1_1pfg_1_1facepal_1_1_util_ac5f20400dac2f1de327eebbc22a26550}{add\+Person}} (String group\+Name, String name)
+\begin{DoxyCompactList}\small\item\em Añade una persona al sistema. \end{DoxyCompactList}\item 
+static String \mbox{\hyperlink{classcom_1_1loalon_1_1pfg_1_1facepal_1_1_util_aa4018f950fbd192cfd731e7ec401ea9e}{catch\+J\+S\+O\+Nerror}} (String json\+String)
+\begin{DoxyCompactList}\small\item\em Verifica el contenido del J\+S\+ON recibido desde Azure, si contiene error lo interpreta y devuelve un mensaje claro sobre el error. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Descripción detallada}
+Clase que contiene metodos estaticos independientes del G\+UI Sirve como la clase \char`\"{}engine\char`\"{} para poder portarla a otras aplicaciones. 
+
+Created by Alonso on 29/03/2018. \begin{DoxyAuthor}{Autor}
+Alonso Serrano 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Versión}
+180413 
+\end{DoxyVersion}
+
+
+\subsection{Documentación de las funciones miembro}
+\mbox{\Hypertarget{classcom_1_1loalon_1_1pfg_1_1facepal_1_1_util_a94d73c1994c5e91f40cdf579e0aa7418}\label{classcom_1_1loalon_1_1pfg_1_1facepal_1_1_util_a94d73c1994c5e91f40cdf579e0aa7418}} 
+\index{com\+::loalon\+::pfg\+::facepal\+::\+Util@{com\+::loalon\+::pfg\+::facepal\+::\+Util}!add\+Face@{add\+Face}}
+\index{add\+Face@{add\+Face}!com\+::loalon\+::pfg\+::facepal\+::\+Util@{com\+::loalon\+::pfg\+::facepal\+::\+Util}}
+\subsubsection{\texorpdfstring{add\+Face()}{addFace()}}
+{\footnotesize\ttfamily static String com.\+loalon.\+pfg.\+facepal.\+Util.\+add\+Face (\begin{DoxyParamCaption}\item[{String}]{group\+Name,  }\item[{String}]{person\+Name,  }\item[{Bitmap}]{bitmap }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Indica a Azure que debe entrenar el grupo. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em group\+Name} & nombre del grupo de personas a entrenar \\
+\hline
+{\em bitmap} & imagen para añadir \\
+\hline
+{\em person\+Name} & nombre de la persona a añadir \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+resultado de la operacion 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classcom_1_1loalon_1_1pfg_1_1facepal_1_1_util_ac5f20400dac2f1de327eebbc22a26550}\label{classcom_1_1loalon_1_1pfg_1_1facepal_1_1_util_ac5f20400dac2f1de327eebbc22a26550}} 
+\index{com\+::loalon\+::pfg\+::facepal\+::\+Util@{com\+::loalon\+::pfg\+::facepal\+::\+Util}!add\+Person@{add\+Person}}
+\index{add\+Person@{add\+Person}!com\+::loalon\+::pfg\+::facepal\+::\+Util@{com\+::loalon\+::pfg\+::facepal\+::\+Util}}
+\subsubsection{\texorpdfstring{add\+Person()}{addPerson()}}
+{\footnotesize\ttfamily static String com.\+loalon.\+pfg.\+facepal.\+Util.\+add\+Person (\begin{DoxyParamCaption}\item[{String}]{group\+Name,  }\item[{String}]{name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Añade una persona al sistema. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em group\+Name} & nombre del grupo de personas a entrenar \\
+\hline
+{\em name} & nombre de la persona a añadir \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+resultado de la operacion, null si ha tenido exito 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classcom_1_1loalon_1_1pfg_1_1facepal_1_1_util_aa4018f950fbd192cfd731e7ec401ea9e}\label{classcom_1_1loalon_1_1pfg_1_1facepal_1_1_util_aa4018f950fbd192cfd731e7ec401ea9e}} 
+\index{com\+::loalon\+::pfg\+::facepal\+::\+Util@{com\+::loalon\+::pfg\+::facepal\+::\+Util}!catch\+J\+S\+O\+Nerror@{catch\+J\+S\+O\+Nerror}}
+\index{catch\+J\+S\+O\+Nerror@{catch\+J\+S\+O\+Nerror}!com\+::loalon\+::pfg\+::facepal\+::\+Util@{com\+::loalon\+::pfg\+::facepal\+::\+Util}}
+\subsubsection{\texorpdfstring{catch\+J\+S\+O\+Nerror()}{catchJSONerror()}}
+{\footnotesize\ttfamily static String com.\+loalon.\+pfg.\+facepal.\+Util.\+catch\+J\+S\+O\+Nerror (\begin{DoxyParamCaption}\item[{String}]{json\+String }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Verifica el contenido del J\+S\+ON recibido desde Azure, si contiene error lo interpreta y devuelve un mensaje claro sobre el error. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em json\+String} & J\+S\+ON recibido \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+mensaje de error o si no hay error el contenido del archivo J\+S\+ON 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classcom_1_1loalon_1_1pfg_1_1facepal_1_1_util_a57c1890189bffa4c69c51e286a2f6dbf}\label{classcom_1_1loalon_1_1pfg_1_1facepal_1_1_util_a57c1890189bffa4c69c51e286a2f6dbf}} 
+\index{com\+::loalon\+::pfg\+::facepal\+::\+Util@{com\+::loalon\+::pfg\+::facepal\+::\+Util}!detect\+Face@{detect\+Face}}
+\index{detect\+Face@{detect\+Face}!com\+::loalon\+::pfg\+::facepal\+::\+Util@{com\+::loalon\+::pfg\+::facepal\+::\+Util}}
+\subsubsection{\texorpdfstring{detect\+Face()}{detectFace()}}
+{\footnotesize\ttfamily static Bitmap com.\+loalon.\+pfg.\+facepal.\+Util.\+detect\+Face (\begin{DoxyParamCaption}\item[{Bitmap}]{bitmap }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Deteccion de caras. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em bitmap} & imagen para detectar si existe una cara \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+imagen recortada solo con un rostro o null si existen 0 o mas de 1 cara 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classcom_1_1loalon_1_1pfg_1_1facepal_1_1_util_aa2f3ea68628c684b86868bf5d3a1cd5f}\label{classcom_1_1loalon_1_1pfg_1_1facepal_1_1_util_aa2f3ea68628c684b86868bf5d3a1cd5f}} 
+\index{com\+::loalon\+::pfg\+::facepal\+::\+Util@{com\+::loalon\+::pfg\+::facepal\+::\+Util}!get\+Base\+U\+RL@{get\+Base\+U\+RL}}
+\index{get\+Base\+U\+RL@{get\+Base\+U\+RL}!com\+::loalon\+::pfg\+::facepal\+::\+Util@{com\+::loalon\+::pfg\+::facepal\+::\+Util}}
+\subsubsection{\texorpdfstring{get\+Base\+U\+R\+L()}{getBaseURL()}}
+{\footnotesize\ttfamily static String com.\+loalon.\+pfg.\+facepal.\+Util.\+get\+Base\+U\+RL (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Devuelve U\+RL base. 
+
+\begin{DoxyReturn}{Devuelve}
+U\+RL base 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classcom_1_1loalon_1_1pfg_1_1facepal_1_1_util_a78dd2a2f40d6f82d71b7674ce40b46aa}\label{classcom_1_1loalon_1_1pfg_1_1facepal_1_1_util_a78dd2a2f40d6f82d71b7674ce40b46aa}} 
+\index{com\+::loalon\+::pfg\+::facepal\+::\+Util@{com\+::loalon\+::pfg\+::facepal\+::\+Util}!get\+Group\+Name@{get\+Group\+Name}}
+\index{get\+Group\+Name@{get\+Group\+Name}!com\+::loalon\+::pfg\+::facepal\+::\+Util@{com\+::loalon\+::pfg\+::facepal\+::\+Util}}
+\subsubsection{\texorpdfstring{get\+Group\+Name()}{getGroupName()}}
+{\footnotesize\ttfamily static String com.\+loalon.\+pfg.\+facepal.\+Util.\+get\+Group\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Devuelve nombre de grupo de personas. 
+
+\begin{DoxyReturn}{Devuelve}
+nombre de grupo de personas 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classcom_1_1loalon_1_1pfg_1_1facepal_1_1_util_a537cee01d79a860eb281c942e97636eb}\label{classcom_1_1loalon_1_1pfg_1_1facepal_1_1_util_a537cee01d79a860eb281c942e97636eb}} 
+\index{com\+::loalon\+::pfg\+::facepal\+::\+Util@{com\+::loalon\+::pfg\+::facepal\+::\+Util}!get\+Key@{get\+Key}}
+\index{get\+Key@{get\+Key}!com\+::loalon\+::pfg\+::facepal\+::\+Util@{com\+::loalon\+::pfg\+::facepal\+::\+Util}}
+\subsubsection{\texorpdfstring{get\+Key()}{getKey()}}
+{\footnotesize\ttfamily static String com.\+loalon.\+pfg.\+facepal.\+Util.\+get\+Key (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Devuelve clave de suscripcion. 
+
+\begin{DoxyReturn}{Devuelve}
+clave de suscripcion 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classcom_1_1loalon_1_1pfg_1_1facepal_1_1_util_ac1062b1f3ee41b64274d734556cac898}\label{classcom_1_1loalon_1_1pfg_1_1facepal_1_1_util_ac1062b1f3ee41b64274d734556cac898}} 
+\index{com\+::loalon\+::pfg\+::facepal\+::\+Util@{com\+::loalon\+::pfg\+::facepal\+::\+Util}!get\+Name@{get\+Name}}
+\index{get\+Name@{get\+Name}!com\+::loalon\+::pfg\+::facepal\+::\+Util@{com\+::loalon\+::pfg\+::facepal\+::\+Util}}
+\subsubsection{\texorpdfstring{get\+Name()}{getName()}}
+{\footnotesize\ttfamily static String com.\+loalon.\+pfg.\+facepal.\+Util.\+get\+Name (\begin{DoxyParamCaption}\item[{String}]{person\+ID }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Recupera el nombre real de una persona mediante su ID. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em person\+ID} & id de la persona \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+nombre de la persona 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classcom_1_1loalon_1_1pfg_1_1facepal_1_1_util_ab74c33dc6a4bab04e396bce32b5dd62e}\label{classcom_1_1loalon_1_1pfg_1_1facepal_1_1_util_ab74c33dc6a4bab04e396bce32b5dd62e}} 
+\index{com\+::loalon\+::pfg\+::facepal\+::\+Util@{com\+::loalon\+::pfg\+::facepal\+::\+Util}!get\+Person\+ID@{get\+Person\+ID}}
+\index{get\+Person\+ID@{get\+Person\+ID}!com\+::loalon\+::pfg\+::facepal\+::\+Util@{com\+::loalon\+::pfg\+::facepal\+::\+Util}}
+\subsubsection{\texorpdfstring{get\+Person\+I\+D()}{getPersonID()}}
+{\footnotesize\ttfamily static String com.\+loalon.\+pfg.\+facepal.\+Util.\+get\+Person\+ID (\begin{DoxyParamCaption}\item[{String}]{group\+Name,  }\item[{String}]{name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Recupera el ID de una persona. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em group\+Name} & nombre del grupo de personas \\
+\hline
+{\em name} & nombre de la persona \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Id de la persona 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classcom_1_1loalon_1_1pfg_1_1facepal_1_1_util_acedba139e29bc531032abf79980128d2}\label{classcom_1_1loalon_1_1pfg_1_1facepal_1_1_util_acedba139e29bc531032abf79980128d2}} 
+\index{com\+::loalon\+::pfg\+::facepal\+::\+Util@{com\+::loalon\+::pfg\+::facepal\+::\+Util}!identi\+Face@{identi\+Face}}
+\index{identi\+Face@{identi\+Face}!com\+::loalon\+::pfg\+::facepal\+::\+Util@{com\+::loalon\+::pfg\+::facepal\+::\+Util}}
+\subsubsection{\texorpdfstring{identi\+Face()}{identiFace()}}
+{\footnotesize\ttfamily static String com.\+loalon.\+pfg.\+facepal.\+Util.\+identi\+Face (\begin{DoxyParamCaption}\item[{Bitmap}]{bitmap }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Identifica una persona mediante una cara recortada. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em bitmap} & imagen de cara recortada \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+identificador del mejor candidato 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classcom_1_1loalon_1_1pfg_1_1facepal_1_1_util_a363e942720417034c6c52fe4dd21df31}\label{classcom_1_1loalon_1_1pfg_1_1facepal_1_1_util_a363e942720417034c6c52fe4dd21df31}} 
+\index{com\+::loalon\+::pfg\+::facepal\+::\+Util@{com\+::loalon\+::pfg\+::facepal\+::\+Util}!to\+Base64@{to\+Base64}}
+\index{to\+Base64@{to\+Base64}!com\+::loalon\+::pfg\+::facepal\+::\+Util@{com\+::loalon\+::pfg\+::facepal\+::\+Util}}
+\subsubsection{\texorpdfstring{to\+Base64()}{toBase64()}}
+{\footnotesize\ttfamily static byte \mbox{[}$\,$\mbox{]} com.\+loalon.\+pfg.\+facepal.\+Util.\+to\+Base64 (\begin{DoxyParamCaption}\item[{Bitmap}]{bitmap }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Convierte un bitmap a byte array base64 Requisito de Azure. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em bitmap} & imagen a enviar \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+array de bytes en base64 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classcom_1_1loalon_1_1pfg_1_1facepal_1_1_util_a59c6bb634708c5835281c91ead1b80bf}\label{classcom_1_1loalon_1_1pfg_1_1facepal_1_1_util_a59c6bb634708c5835281c91ead1b80bf}} 
+\index{com\+::loalon\+::pfg\+::facepal\+::\+Util@{com\+::loalon\+::pfg\+::facepal\+::\+Util}!train\+Group@{train\+Group}}
+\index{train\+Group@{train\+Group}!com\+::loalon\+::pfg\+::facepal\+::\+Util@{com\+::loalon\+::pfg\+::facepal\+::\+Util}}
+\subsubsection{\texorpdfstring{train\+Group()}{trainGroup()}}
+{\footnotesize\ttfamily static String com.\+loalon.\+pfg.\+facepal.\+Util.\+train\+Group (\begin{DoxyParamCaption}\item[{String}]{group\+Name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Indica a Azure que debe entrenar el grupo. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em group\+Name} & nombre del grupo de personas a entrenar \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+resultado de la operacion, null si ha tenido exito 
+\end{DoxyReturn}

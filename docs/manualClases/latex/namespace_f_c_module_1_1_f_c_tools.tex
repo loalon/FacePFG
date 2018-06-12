@@ -1,0 +1,288 @@
+\hypertarget{namespace_f_c_module_1_1_f_c_tools}{}\section{Referencia del Namespace F\+C\+Module.\+F\+C\+Tools}
+\label{namespace_f_c_module_1_1_f_c_tools}\index{F\+C\+Module.\+F\+C\+Tools@{F\+C\+Module.\+F\+C\+Tools}}
+\subsection*{Funciones}
+\begin{DoxyCompactItemize}
+\item 
+def \mbox{\hyperlink{namespace_f_c_module_1_1_f_c_tools_a97937928e5d262ee170874d1a84cf612}{test\+Azure}} (service)
+\begin{DoxyCompactList}\small\item\em Realiza un test de funcionamiento, imprime los resultados por pantalla. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{namespace_f_c_module_1_1_f_c_tools_a67657f08b02e1202300530334a92de19}{get\+Person\+ID}} (service, person\+Group, person\+Name)
+\begin{DoxyCompactList}\small\item\em Realiza un test de funcionamiento, imprime los resultados por pantalla. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{namespace_f_c_module_1_1_f_c_tools_af728b8917192873f11795aef2dd201ce}{get\+Name\+By\+ID}} (service, person\+Group, person\+ID)
+\begin{DoxyCompactList}\small\item\em Recupera el nombre a partir de un person\+ID. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{namespace_f_c_module_1_1_f_c_tools_a2f1857b9750405992109bb659d4a2cfa}{create\+Person\+Group}} (service, person\+Group)
+\begin{DoxyCompactList}\small\item\em Crea un grupo de entrenamiento. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{namespace_f_c_module_1_1_f_c_tools_a890f0f5e33c8b92c05c00876daeb756a}{create\+Person}} (service, person\+Group, person\+Name)
+\begin{DoxyCompactList}\small\item\em Crea a una persona. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{namespace_f_c_module_1_1_f_c_tools_adeeadfac92a0113ba74f1b140c09b14f}{add\+Face}} (service, person\+Group, person\+Name, image)
+\begin{DoxyCompactList}\small\item\em Agrega a una persona. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{namespace_f_c_module_1_1_f_c_tools_aedafa1474c8976ae1f9c1a859cc26984}{delete\+Person}} (service, person\+Group, person\+Name)
+\begin{DoxyCompactList}\small\item\em Borra a una persona. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{namespace_f_c_module_1_1_f_c_tools_a780cf43ca7953c654750759dc80a0f48}{delete\+Person\+Group}} (service, person\+Group)
+\begin{DoxyCompactList}\small\item\em Borra a un grupo. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{namespace_f_c_module_1_1_f_c_tools_ab3df8ddd7530893bcd38b5e5321f9576}{identify\+Face}} (service, person\+Group, face)
+\begin{DoxyCompactList}\small\item\em Esta función conecta con Azure, identifica la cara y pasa el nombre identificado al objeto Face correspondiente. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{namespace_f_c_module_1_1_f_c_tools_a476cbac52df88ddaae5b43da6465013e}{paint\+Image}} (cv, font, img, face)
+\begin{DoxyCompactList}\small\item\em Esta función toma las coordenadas de un objeto Face y dibuja un rectángulo que enmarca la cara, además de escribir el nombre correspondiente a la cara. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{namespace_f_c_module_1_1_f_c_tools_a10adfb32d85cc6173537e97ee7afea11}{paint\+All\+Faces}} (cv, font, img, face\+List)
+\begin{DoxyCompactList}\small\item\em Pinta un rectangulo sobre todas las caras y su nombre. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{namespace_f_c_module_1_1_f_c_tools_a84b5fde279bce289df81e5c2f9ffe09d}{list\+Persons}} (service, person\+Group)
+\begin{DoxyCompactList}\small\item\em Devuelve un listado de personas de un grupo. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{namespace_f_c_module_1_1_f_c_tools_a638f52cb88b6812ebd83e2967bd95b51}{detect\+Person}} (service, person\+Group, file)
+\begin{DoxyCompactList}\small\item\em Detecta a una persona en un archivo. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Documentación de las funciones}
+\mbox{\Hypertarget{namespace_f_c_module_1_1_f_c_tools_adeeadfac92a0113ba74f1b140c09b14f}\label{namespace_f_c_module_1_1_f_c_tools_adeeadfac92a0113ba74f1b140c09b14f}} 
+\index{F\+C\+Module\+::\+F\+C\+Tools@{F\+C\+Module\+::\+F\+C\+Tools}!add\+Face@{add\+Face}}
+\index{add\+Face@{add\+Face}!F\+C\+Module\+::\+F\+C\+Tools@{F\+C\+Module\+::\+F\+C\+Tools}}
+\subsubsection{\texorpdfstring{add\+Face()}{addFace()}}
+{\footnotesize\ttfamily def F\+C\+Module.\+F\+C\+Tools.\+add\+Face (\begin{DoxyParamCaption}\item[{}]{service,  }\item[{}]{person\+Group,  }\item[{}]{person\+Name,  }\item[{}]{image }\end{DoxyParamCaption})}
+
+
+
+Agrega a una persona. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em service} & Objeto que contiene el servicio de reconocimiento \\
+\hline
+{\em person\+Group} & Grupo de entrenamiento \\
+\hline
+{\em person\+Name} & Nombre real de la persona \\
+\hline
+{\em image} & Imagen con la cara de la persona \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespace_f_c_module_1_1_f_c_tools_a890f0f5e33c8b92c05c00876daeb756a}\label{namespace_f_c_module_1_1_f_c_tools_a890f0f5e33c8b92c05c00876daeb756a}} 
+\index{F\+C\+Module\+::\+F\+C\+Tools@{F\+C\+Module\+::\+F\+C\+Tools}!create\+Person@{create\+Person}}
+\index{create\+Person@{create\+Person}!F\+C\+Module\+::\+F\+C\+Tools@{F\+C\+Module\+::\+F\+C\+Tools}}
+\subsubsection{\texorpdfstring{create\+Person()}{createPerson()}}
+{\footnotesize\ttfamily def F\+C\+Module.\+F\+C\+Tools.\+create\+Person (\begin{DoxyParamCaption}\item[{}]{service,  }\item[{}]{person\+Group,  }\item[{}]{person\+Name }\end{DoxyParamCaption})}
+
+
+
+Crea a una persona. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em service} & Objeto que contiene el servicio de reconocimiento \\
+\hline
+{\em person\+Group} & Grupo de entrenamiento \\
+\hline
+{\em person\+Name} & Nombre real de la persona \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespace_f_c_module_1_1_f_c_tools_a2f1857b9750405992109bb659d4a2cfa}\label{namespace_f_c_module_1_1_f_c_tools_a2f1857b9750405992109bb659d4a2cfa}} 
+\index{F\+C\+Module\+::\+F\+C\+Tools@{F\+C\+Module\+::\+F\+C\+Tools}!create\+Person\+Group@{create\+Person\+Group}}
+\index{create\+Person\+Group@{create\+Person\+Group}!F\+C\+Module\+::\+F\+C\+Tools@{F\+C\+Module\+::\+F\+C\+Tools}}
+\subsubsection{\texorpdfstring{create\+Person\+Group()}{createPersonGroup()}}
+{\footnotesize\ttfamily def F\+C\+Module.\+F\+C\+Tools.\+create\+Person\+Group (\begin{DoxyParamCaption}\item[{}]{service,  }\item[{}]{person\+Group }\end{DoxyParamCaption})}
+
+
+
+Crea un grupo de entrenamiento. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em service} & Objeto que contiene el servicio de reconocimiento \\
+\hline
+{\em person\+Group} & Grupo de entrenamiento \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespace_f_c_module_1_1_f_c_tools_aedafa1474c8976ae1f9c1a859cc26984}\label{namespace_f_c_module_1_1_f_c_tools_aedafa1474c8976ae1f9c1a859cc26984}} 
+\index{F\+C\+Module\+::\+F\+C\+Tools@{F\+C\+Module\+::\+F\+C\+Tools}!delete\+Person@{delete\+Person}}
+\index{delete\+Person@{delete\+Person}!F\+C\+Module\+::\+F\+C\+Tools@{F\+C\+Module\+::\+F\+C\+Tools}}
+\subsubsection{\texorpdfstring{delete\+Person()}{deletePerson()}}
+{\footnotesize\ttfamily def F\+C\+Module.\+F\+C\+Tools.\+delete\+Person (\begin{DoxyParamCaption}\item[{}]{service,  }\item[{}]{person\+Group,  }\item[{}]{person\+Name }\end{DoxyParamCaption})}
+
+
+
+Borra a una persona. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em service} & Objeto que contiene el servicio de reconocimiento \\
+\hline
+{\em person\+Group} & Grupo de entrenamiento \\
+\hline
+{\em person\+Name} & Nombre real de la persona \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespace_f_c_module_1_1_f_c_tools_a780cf43ca7953c654750759dc80a0f48}\label{namespace_f_c_module_1_1_f_c_tools_a780cf43ca7953c654750759dc80a0f48}} 
+\index{F\+C\+Module\+::\+F\+C\+Tools@{F\+C\+Module\+::\+F\+C\+Tools}!delete\+Person\+Group@{delete\+Person\+Group}}
+\index{delete\+Person\+Group@{delete\+Person\+Group}!F\+C\+Module\+::\+F\+C\+Tools@{F\+C\+Module\+::\+F\+C\+Tools}}
+\subsubsection{\texorpdfstring{delete\+Person\+Group()}{deletePersonGroup()}}
+{\footnotesize\ttfamily def F\+C\+Module.\+F\+C\+Tools.\+delete\+Person\+Group (\begin{DoxyParamCaption}\item[{}]{service,  }\item[{}]{person\+Group }\end{DoxyParamCaption})}
+
+
+
+Borra a un grupo. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em service} & Objeto que contiene el servicio de reconocimiento \\
+\hline
+{\em person\+Group} & Grupo de entrenamiento \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespace_f_c_module_1_1_f_c_tools_a638f52cb88b6812ebd83e2967bd95b51}\label{namespace_f_c_module_1_1_f_c_tools_a638f52cb88b6812ebd83e2967bd95b51}} 
+\index{F\+C\+Module\+::\+F\+C\+Tools@{F\+C\+Module\+::\+F\+C\+Tools}!detect\+Person@{detect\+Person}}
+\index{detect\+Person@{detect\+Person}!F\+C\+Module\+::\+F\+C\+Tools@{F\+C\+Module\+::\+F\+C\+Tools}}
+\subsubsection{\texorpdfstring{detect\+Person()}{detectPerson()}}
+{\footnotesize\ttfamily def F\+C\+Module.\+F\+C\+Tools.\+detect\+Person (\begin{DoxyParamCaption}\item[{}]{service,  }\item[{}]{person\+Group,  }\item[{}]{file }\end{DoxyParamCaption})}
+
+
+
+Detecta a una persona en un archivo. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em service} & Objeto que contiene el servicio de reconocimiento \\
+\hline
+{\em person\+Group} & Grupo de entrenamiento \\
+\hline
+{\em file} & archivo con imagen de persona \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespace_f_c_module_1_1_f_c_tools_af728b8917192873f11795aef2dd201ce}\label{namespace_f_c_module_1_1_f_c_tools_af728b8917192873f11795aef2dd201ce}} 
+\index{F\+C\+Module\+::\+F\+C\+Tools@{F\+C\+Module\+::\+F\+C\+Tools}!get\+Name\+By\+ID@{get\+Name\+By\+ID}}
+\index{get\+Name\+By\+ID@{get\+Name\+By\+ID}!F\+C\+Module\+::\+F\+C\+Tools@{F\+C\+Module\+::\+F\+C\+Tools}}
+\subsubsection{\texorpdfstring{get\+Name\+By\+I\+D()}{getNameByID()}}
+{\footnotesize\ttfamily def F\+C\+Module.\+F\+C\+Tools.\+get\+Name\+By\+ID (\begin{DoxyParamCaption}\item[{}]{service,  }\item[{}]{person\+Group,  }\item[{}]{person\+ID }\end{DoxyParamCaption})}
+
+
+
+Recupera el nombre a partir de un person\+ID. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em service} & Objeto que contiene el servicio de reconocimiento \\
+\hline
+{\em person\+Group} & Grupo de entrenamiento \\
+\hline
+{\em person\+ID} & Id de la persona \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+El nombre correspondiente o N\+O\+T\+F\+O\+U\+ND si no se encuentra la persona 
+\end{DoxyReturn}
+\mbox{\Hypertarget{namespace_f_c_module_1_1_f_c_tools_a67657f08b02e1202300530334a92de19}\label{namespace_f_c_module_1_1_f_c_tools_a67657f08b02e1202300530334a92de19}} 
+\index{F\+C\+Module\+::\+F\+C\+Tools@{F\+C\+Module\+::\+F\+C\+Tools}!get\+Person\+ID@{get\+Person\+ID}}
+\index{get\+Person\+ID@{get\+Person\+ID}!F\+C\+Module\+::\+F\+C\+Tools@{F\+C\+Module\+::\+F\+C\+Tools}}
+\subsubsection{\texorpdfstring{get\+Person\+I\+D()}{getPersonID()}}
+{\footnotesize\ttfamily def F\+C\+Module.\+F\+C\+Tools.\+get\+Person\+ID (\begin{DoxyParamCaption}\item[{}]{service,  }\item[{}]{person\+Group,  }\item[{}]{person\+Name }\end{DoxyParamCaption})}
+
+
+
+Realiza un test de funcionamiento, imprime los resultados por pantalla. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em service} & Objeto que contiene el servicio de reconocimiento \\
+\hline
+{\em person\+Group} & Grupo de entrenamiento \\
+\hline
+{\em person\+Name} & Nombre real de la persona \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+ID correspondiente o N\+O\+T\+F\+O\+U\+ND si no se encuentra la persona 
+\end{DoxyReturn}
+\mbox{\Hypertarget{namespace_f_c_module_1_1_f_c_tools_ab3df8ddd7530893bcd38b5e5321f9576}\label{namespace_f_c_module_1_1_f_c_tools_ab3df8ddd7530893bcd38b5e5321f9576}} 
+\index{F\+C\+Module\+::\+F\+C\+Tools@{F\+C\+Module\+::\+F\+C\+Tools}!identify\+Face@{identify\+Face}}
+\index{identify\+Face@{identify\+Face}!F\+C\+Module\+::\+F\+C\+Tools@{F\+C\+Module\+::\+F\+C\+Tools}}
+\subsubsection{\texorpdfstring{identify\+Face()}{identifyFace()}}
+{\footnotesize\ttfamily def F\+C\+Module.\+F\+C\+Tools.\+identify\+Face (\begin{DoxyParamCaption}\item[{}]{service,  }\item[{}]{person\+Group,  }\item[{}]{face }\end{DoxyParamCaption})}
+
+
+
+Esta función conecta con Azure, identifica la cara y pasa el nombre identificado al objeto Face correspondiente. 
+
+No devuelve ningún tipo de dato, solo modifica sobre la marcha cada objeto Face que esté contenido en el array de caras.
+
+
+\begin{DoxyParams}{Parámetros}
+{\em service} & Objeto que contiene el servicio de reconocimiento \\
+\hline
+{\em person\+Group} & Grupo de entrenamiento \\
+\hline
+{\em face} & objeto Face de la persona \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+True si se ha detectado a una persona, False en otro caso 
+\end{DoxyReturn}
+\mbox{\Hypertarget{namespace_f_c_module_1_1_f_c_tools_a84b5fde279bce289df81e5c2f9ffe09d}\label{namespace_f_c_module_1_1_f_c_tools_a84b5fde279bce289df81e5c2f9ffe09d}} 
+\index{F\+C\+Module\+::\+F\+C\+Tools@{F\+C\+Module\+::\+F\+C\+Tools}!list\+Persons@{list\+Persons}}
+\index{list\+Persons@{list\+Persons}!F\+C\+Module\+::\+F\+C\+Tools@{F\+C\+Module\+::\+F\+C\+Tools}}
+\subsubsection{\texorpdfstring{list\+Persons()}{listPersons()}}
+{\footnotesize\ttfamily def F\+C\+Module.\+F\+C\+Tools.\+list\+Persons (\begin{DoxyParamCaption}\item[{}]{service,  }\item[{}]{person\+Group }\end{DoxyParamCaption})}
+
+
+
+Devuelve un listado de personas de un grupo. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em service} & Objeto que contiene el servicio de reconocimiento \\
+\hline
+{\em person\+Group} & Grupo de entrenamiento \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespace_f_c_module_1_1_f_c_tools_a10adfb32d85cc6173537e97ee7afea11}\label{namespace_f_c_module_1_1_f_c_tools_a10adfb32d85cc6173537e97ee7afea11}} 
+\index{F\+C\+Module\+::\+F\+C\+Tools@{F\+C\+Module\+::\+F\+C\+Tools}!paint\+All\+Faces@{paint\+All\+Faces}}
+\index{paint\+All\+Faces@{paint\+All\+Faces}!F\+C\+Module\+::\+F\+C\+Tools@{F\+C\+Module\+::\+F\+C\+Tools}}
+\subsubsection{\texorpdfstring{paint\+All\+Faces()}{paintAllFaces()}}
+{\footnotesize\ttfamily def F\+C\+Module.\+F\+C\+Tools.\+paint\+All\+Faces (\begin{DoxyParamCaption}\item[{}]{cv,  }\item[{}]{font,  }\item[{}]{img,  }\item[{}]{face\+List }\end{DoxyParamCaption})}
+
+
+
+Pinta un rectangulo sobre todas las caras y su nombre. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em cv} & Objeto que contiene el servicio Open\+CV \\
+\hline
+{\em font} & fuente tipografica \\
+\hline
+{\em img} & imagen capturada \\
+\hline
+{\em face\+List} & lista de objetos Face \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespace_f_c_module_1_1_f_c_tools_a476cbac52df88ddaae5b43da6465013e}\label{namespace_f_c_module_1_1_f_c_tools_a476cbac52df88ddaae5b43da6465013e}} 
+\index{F\+C\+Module\+::\+F\+C\+Tools@{F\+C\+Module\+::\+F\+C\+Tools}!paint\+Image@{paint\+Image}}
+\index{paint\+Image@{paint\+Image}!F\+C\+Module\+::\+F\+C\+Tools@{F\+C\+Module\+::\+F\+C\+Tools}}
+\subsubsection{\texorpdfstring{paint\+Image()}{paintImage()}}
+{\footnotesize\ttfamily def F\+C\+Module.\+F\+C\+Tools.\+paint\+Image (\begin{DoxyParamCaption}\item[{}]{cv,  }\item[{}]{font,  }\item[{}]{img,  }\item[{}]{face }\end{DoxyParamCaption})}
+
+
+
+Esta función toma las coordenadas de un objeto Face y dibuja un rectángulo que enmarca la cara, además de escribir el nombre correspondiente a la cara. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em cv} & Objeto que contiene el servicio Open\+CV \\
+\hline
+{\em font} & fuente tipografica \\
+\hline
+{\em img} & imagen capturada \\
+\hline
+{\em face} & objeto Face de la persona \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespace_f_c_module_1_1_f_c_tools_a97937928e5d262ee170874d1a84cf612}\label{namespace_f_c_module_1_1_f_c_tools_a97937928e5d262ee170874d1a84cf612}} 
+\index{F\+C\+Module\+::\+F\+C\+Tools@{F\+C\+Module\+::\+F\+C\+Tools}!test\+Azure@{test\+Azure}}
+\index{test\+Azure@{test\+Azure}!F\+C\+Module\+::\+F\+C\+Tools@{F\+C\+Module\+::\+F\+C\+Tools}}
+\subsubsection{\texorpdfstring{test\+Azure()}{testAzure()}}
+{\footnotesize\ttfamily def F\+C\+Module.\+F\+C\+Tools.\+test\+Azure (\begin{DoxyParamCaption}\item[{}]{service }\end{DoxyParamCaption})}
+
+
+
+Realiza un test de funcionamiento, imprime los resultados por pantalla. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em service} & objeto que contiene el servicio de reconocimiento \\
+\hline
+\end{DoxyParams}

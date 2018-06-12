@@ -23,7 +23,7 @@ for the JavaScript code in this file
 */
 var NAVTREE =
 [
-  [ "PFG", "index.html", [
+  [ "PFG Alonso Serrano", "index.html", [
     [ "Funciones del 'package'", "namespacemembers.html", [
       [ "Todo", "namespacemembers.html", null ],
       [ "Funciones", "namespacemembers_func.html", null ],
@@ -32,6 +32,7 @@ var NAVTREE =
     [ "Clases", "annotated.html", [
       [ "Lista de clases", "annotated.html", "annotated_dup" ],
       [ "Índice de clases", "classes.html", null ],
+      [ "Jerarquía de la clase", "hierarchy.html", "hierarchy" ],
       [ "Miembros de las clases", "functions.html", [
         [ "Todo", "functions.html", null ],
         [ "Funciones", "functions_func.html", null ],
@@ -46,7 +47,7 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"_face_b_t_8py.html"
+"_about_activity_8java.html"
 ];
 
 var SYNCONMSG = 'click en deshabilitar sincronización';

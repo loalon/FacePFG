@@ -1,0 +1,70 @@
+\hypertarget{namespace_f_c_module_1_1face_crop}{}\section{Referencia del Namespace F\+C\+Module.\+face\+Crop}
+\label{namespace_f_c_module_1_1face_crop}\index{F\+C\+Module.\+face\+Crop@{F\+C\+Module.\+face\+Crop}}
+\subsection*{Funciones}
+\begin{DoxyCompactItemize}
+\item 
+def \mbox{\hyperlink{namespace_f_c_module_1_1face_crop_a9bf6ee5d5b014b164481d2b04e342176}{capture\+Image}} (camera)
+\begin{DoxyCompactList}\small\item\em Captura una imagen desde la camara de Raspberry Pi. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{namespace_f_c_module_1_1face_crop_a8ea1491e88b53ba928c36fea4fab8f50}{face\+Detect}} (face\+Detector, image, cv2)
+\begin{DoxyCompactList}\small\item\em Detecta caras, genera objetos Face con las coordenadas de cada cara y devuelve un lista con los objetos Face. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{namespace_f_c_module_1_1face_crop_a228a8265b22b6f5b14306893fb8df335}{face\+Crop}} (image, cv2, face\+List)
+\begin{DoxyCompactList}\small\item\em Genera archivos conlos recortes y modifica la lista de caras indicando los archivos asociados. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Documentación de las funciones}
+\mbox{\Hypertarget{namespace_f_c_module_1_1face_crop_a9bf6ee5d5b014b164481d2b04e342176}\label{namespace_f_c_module_1_1face_crop_a9bf6ee5d5b014b164481d2b04e342176}} 
+\index{F\+C\+Module\+::face\+Crop@{F\+C\+Module\+::face\+Crop}!capture\+Image@{capture\+Image}}
+\index{capture\+Image@{capture\+Image}!F\+C\+Module\+::face\+Crop@{F\+C\+Module\+::face\+Crop}}
+\subsubsection{\texorpdfstring{capture\+Image()}{captureImage()}}
+{\footnotesize\ttfamily def F\+C\+Module.\+face\+Crop.\+capture\+Image (\begin{DoxyParamCaption}\item[{}]{camera }\end{DoxyParamCaption})}
+
+
+
+Captura una imagen desde la camara de Raspberry Pi. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em camera} & Objeto que contiene la cámara de la Raspberry Pi \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+img Array 3D R\+GB que contiene la imagen capturada 
+\end{DoxyReturn}
+\mbox{\Hypertarget{namespace_f_c_module_1_1face_crop_a228a8265b22b6f5b14306893fb8df335}\label{namespace_f_c_module_1_1face_crop_a228a8265b22b6f5b14306893fb8df335}} 
+\index{F\+C\+Module\+::face\+Crop@{F\+C\+Module\+::face\+Crop}!face\+Crop@{face\+Crop}}
+\index{face\+Crop@{face\+Crop}!F\+C\+Module\+::face\+Crop@{F\+C\+Module\+::face\+Crop}}
+\subsubsection{\texorpdfstring{face\+Crop()}{faceCrop()}}
+{\footnotesize\ttfamily def F\+C\+Module.\+face\+Crop.\+face\+Crop (\begin{DoxyParamCaption}\item[{}]{image,  }\item[{}]{cv2,  }\item[{}]{face\+List }\end{DoxyParamCaption})}
+
+
+
+Genera archivos conlos recortes y modifica la lista de caras indicando los archivos asociados. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em image} & objeto Pi\+R\+G\+B\+Array que contiene la imagen. \\
+\hline
+{\em cv2} & objeto con las funciones de Open\+CV. \\
+\hline
+{\em face\+List} & un array de objetos Face detectados en la imagen. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{namespace_f_c_module_1_1face_crop_a8ea1491e88b53ba928c36fea4fab8f50}\label{namespace_f_c_module_1_1face_crop_a8ea1491e88b53ba928c36fea4fab8f50}} 
+\index{F\+C\+Module\+::face\+Crop@{F\+C\+Module\+::face\+Crop}!face\+Detect@{face\+Detect}}
+\index{face\+Detect@{face\+Detect}!F\+C\+Module\+::face\+Crop@{F\+C\+Module\+::face\+Crop}}
+\subsubsection{\texorpdfstring{face\+Detect()}{faceDetect()}}
+{\footnotesize\ttfamily def F\+C\+Module.\+face\+Crop.\+face\+Detect (\begin{DoxyParamCaption}\item[{}]{face\+Detector,  }\item[{}]{image,  }\item[{}]{cv2 }\end{DoxyParamCaption})}
+
+
+
+Detecta caras, genera objetos Face con las coordenadas de cada cara y devuelve un lista con los objetos Face. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em face\+Detector} & X\+ML que contiene la información sobre el filtro de Haar. \\
+\hline
+{\em image} & objeto Pi\+R\+G\+B\+Array que contiene la imagen. \\
+\hline
+{\em cv2} & objeto con las funciones de Open\+CV. \\
+\hline
+\end{DoxyParams}

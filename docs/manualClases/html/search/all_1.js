@@ -1,8 +1,19 @@
 var searchData=
 [
-  ['camera',['camera',['../class_face_b_t_1_1_face_b_t.html#a8a32158fd07c69e41e9236481a6d4c83',1,'FaceBT.FaceBT.camera()'],['../namespace_face_b_t.html#a96f57377873e3c5cae0ad546f0a65bb7',1,'FaceBT.camera()'],['../namespace_face_recon.html#ac6ec5c173cf48f7c65fc970e1e079ca9',1,'FaceRecon.camera()']]],
-  ['candidates',['candidates',['../class_f_c_module_1_1face_1_1_face.html#a6b34b10a30cab4dcf7a6117061080c59',1,'FCModule::face::Face']]],
-  ['cfg',['cfg',['../class_face_b_t_1_1_face_b_t.html#a4456736625bb4b08b76951dbbf7b7eaa',1,'FaceBT.FaceBT.cfg()'],['../namespace_face_recon.html#a6a0cb127a374ad0eb5705d0f49a40040',1,'FaceRecon.cfg()']]],
-  ['confidence',['confidence',['../class_f_c_module_1_1face_1_1_face.html#af180bf0699bdb16fba163a1123ecb057',1,'FCModule::face::Face']]],
-  ['config',['config',['../class_face_b_t_1_1_face_b_t.html#afde401ea3aeb8b1c6098a6525083a4f2',1,'FaceBT.FaceBT.config()'],['../namespace_face_recon.html#a020b74724169b8fc02c88453680fa3cc',1,'FaceRecon.config()']]]
+  ['aboutactivity',['AboutActivity',['../classcom_1_1loalon_1_1pfg_1_1facepal_1_1_about_activity.html',1,'com::loalon::pfg::facepal']]],
+  ['aboutactivity_2ejava',['AboutActivity.java',['../_about_activity_8java.html',1,'']]],
+  ['addcontentview',['addContentView',['../classcom_1_1loalon_1_1pfg_1_1facepal_1_1_app_compat_preference_activity.html#ac0e4a7ebdb9b70dfc44bf734abcf5039',1,'com::loalon::pfg::facepal::AppCompatPreferenceActivity']]],
+  ['addface',['addFace',['../classcom_1_1loalon_1_1pfg_1_1facepal_1_1_util.html#a94d73c1994c5e91f40cdf579e0aa7418',1,'com.loalon.pfg.facepal.Util.addFace()'],['../namespace_f_c_module_1_1_f_c_tools.html#adeeadfac92a0113ba74f1b140c09b14f',1,'FCModule.FCTools.addFace()']]],
+  ['addperson',['addPerson',['../classcom_1_1loalon_1_1pfg_1_1facepal_1_1_util.html#ac5f20400dac2f1de327eebbc22a26550',1,'com::loalon::pfg::facepal::Util']]],
+  ['appcompatpreferenceactivity',['AppCompatPreferenceActivity',['../classcom_1_1loalon_1_1pfg_1_1facepal_1_1_app_compat_preference_activity.html',1,'com::loalon::pfg::facepal']]],
+  ['appcompatpreferenceactivity_2ejava',['AppCompatPreferenceActivity.java',['../_app_compat_preference_activity_8java.html',1,'']]],
+  ['asyncaddface',['AsyncAddFace',['../classcom_1_1loalon_1_1pfg_1_1facepal_1_1_async_add_face.html',1,'com.loalon.pfg.facepal.AsyncAddFace'],['../classcom_1_1loalon_1_1pfg_1_1facepal_1_1_async_add_face.html#a06192a655442f59a2e6e59f8467e7023',1,'com.loalon.pfg.facepal.AsyncAddFace.AsyncAddFace()']]],
+  ['asyncaddface_2ejava',['AsyncAddFace.java',['../_async_add_face_8java.html',1,'']]],
+  ['asyncaddperson',['AsyncAddPerson',['../classcom_1_1loalon_1_1pfg_1_1facepal_1_1_async_add_person.html',1,'com.loalon.pfg.facepal.AsyncAddPerson'],['../classcom_1_1loalon_1_1pfg_1_1facepal_1_1_async_add_person.html#aa88098f2f6ee436d7b26b7d9d5432a58',1,'com.loalon.pfg.facepal.AsyncAddPerson.AsyncAddPerson()']]],
+  ['asyncaddperson_2ejava',['AsyncAddPerson.java',['../_async_add_person_8java.html',1,'']]],
+  ['asyncfacecroper',['AsyncFaceCroper',['../classcom_1_1loalon_1_1pfg_1_1facepal_1_1_async_face_croper.html',1,'com.loalon.pfg.facepal.AsyncFaceCroper'],['../classcom_1_1loalon_1_1pfg_1_1facepal_1_1_async_face_croper.html#a3edb3637aee55bd3d224ff23dc9652d8',1,'com.loalon.pfg.facepal.AsyncFaceCroper.AsyncFaceCroper()']]],
+  ['asyncfacecroper_2ejava',['AsyncFaceCroper.java',['../_async_face_croper_8java.html',1,'']]],
+  ['asyncfacedetector',['AsyncFaceDetector',['../classcom_1_1loalon_1_1pfg_1_1facepal_1_1_async_face_detector.html',1,'com.loalon.pfg.facepal.AsyncFaceDetector'],['../classcom_1_1loalon_1_1pfg_1_1facepal_1_1_async_face_detector.html#a80b8c1b69a8f4a0b3855d9e289626079',1,'com.loalon.pfg.facepal.AsyncFaceDetector.AsyncFaceDetector()']]],
+  ['asyncfacedetector_2ejava',['AsyncFaceDetector.java',['../_async_face_detector_8java.html',1,'']]],
+  ['asyncresponse',['AsyncResponse',['../interfacecom_1_1loalon_1_1pfg_1_1facepal_1_1_async_face_croper_1_1_async_response.html',1,'com::loalon::pfg::facepal::AsyncFaceCroper']]]
 ];
