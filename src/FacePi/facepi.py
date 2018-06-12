@@ -145,7 +145,8 @@ class App(QDialog):
     def readConfig(self, iniFile):
         self.config.read(iniFile)
         cfg=self.config['CONFIG']
-        self.faceDetector=cfg['facedetector']
+        fn=cfg['facedetector']
+        self.faceDetector = os.path.join(os.path.dirname(__file__), fn)
         self.sKey=cfg['skey']
         self.server=cfg['server']
         self.groupName=cfg['groupname']
@@ -228,7 +229,7 @@ class App(QDialog):
         self.pixmap=self.pixmap.scaled(1024,720,Qt.KeepAspectRatio)
         self.label.setPixmap(self.pixmap)
 
-        self.botonAuto.setEnabled(True)
+        self.reconBtn.setEnabled(True)
 
     def identify(self):
         faceList=fc.faceDetect(self.faceDetector, self.img, cv2) #detecta
@@ -303,7 +304,7 @@ class App(QDialog):
             self.pixmap=QPixmap(path)
             self.pixmap=self.pixmap.scaled(1024,720,Qt.KeepAspectRatio)
             self.label.setPixmap(self.pixmap)
-            self.botonAuto.setEnabled(True)
+            self.reconBtn.setEnabled(True)
             
         except Exception as e:
             self.alertDialog(str(e))
