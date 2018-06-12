@@ -3,7 +3,7 @@
 /docs/diagramas
 /docs/imagenes
 /docs/otros
-/temp
+test/
 /docs/mantemp
 /src/facePal/*.iml
 /src/facePal/.gradle
