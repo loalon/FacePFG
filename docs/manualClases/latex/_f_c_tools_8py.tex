@@ -1,0 +1,38 @@
+\hypertarget{_f_c_tools_8py}{}\section{Referencia del Archivo E\+:/\+One\+Drive.personal/\+One\+Drive/0.P\+F\+G/src/\+F\+C\+Module/\+F\+C\+Module/\+F\+C\+Tools.py}
+\label{_f_c_tools_8py}\index{E\+:/\+One\+Drive.\+personal/\+One\+Drive/0.\+P\+F\+G/src/\+F\+C\+Module/\+F\+C\+Module/\+F\+C\+Tools.\+py@{E\+:/\+One\+Drive.\+personal/\+One\+Drive/0.\+P\+F\+G/src/\+F\+C\+Module/\+F\+C\+Module/\+F\+C\+Tools.\+py}}
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+ \mbox{\hyperlink{namespace_f_c_module_1_1_f_c_tools}{F\+C\+Module.\+F\+C\+Tools}}
+\item 
+ \mbox{\hyperlink{namespace_f_c_tools}{F\+C\+Tools}}
+\begin{DoxyCompactList}\small\item\em Contiene funciones para la puesta en marcha, el entrenamiento del sistema y funciones necesarias para el reconocimiento facial. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Funciones}
+\begin{DoxyCompactItemize}
+\item 
+def \mbox{\hyperlink{namespace_f_c_module_1_1_f_c_tools_a97937928e5d262ee170874d1a84cf612}{F\+C\+Module.\+F\+C\+Tools.\+test\+Azure}} (service)
+\begin{DoxyCompactList}\small\item\em Realiza un test de funcionamiento, imprime los resultados por pantalla. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{namespace_f_c_module_1_1_f_c_tools_a67657f08b02e1202300530334a92de19}{F\+C\+Module.\+F\+C\+Tools.\+get\+Person\+ID}} (service, person\+Group, person\+Name)
+\begin{DoxyCompactList}\small\item\em Realiza un test de funcionamiento, imprime los resultados por pantalla. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{namespace_f_c_module_1_1_f_c_tools_af728b8917192873f11795aef2dd201ce}{F\+C\+Module.\+F\+C\+Tools.\+get\+Name\+By\+ID}} (service, person\+Group, person\+ID)
+\begin{DoxyCompactList}\small\item\em Recupera el nombre a partir de un person\+ID. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{namespace_f_c_module_1_1_f_c_tools_a2f1857b9750405992109bb659d4a2cfa}{F\+C\+Module.\+F\+C\+Tools.\+create\+Person\+Group}} (service, person\+Group)
+\begin{DoxyCompactList}\small\item\em Crea un grupo de entrenamiento. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{namespace_f_c_module_1_1_f_c_tools_a890f0f5e33c8b92c05c00876daeb756a}{F\+C\+Module.\+F\+C\+Tools.\+create\+Person}} (service, person\+Group, person\+Name)
+\begin{DoxyCompactList}\small\item\em Crea a una persona. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{namespace_f_c_module_1_1_f_c_tools_adeeadfac92a0113ba74f1b140c09b14f}{F\+C\+Module.\+F\+C\+Tools.\+add\+Face}} (service, person\+Group, person\+Name, image)
+\begin{DoxyCompactList}\small\item\em Agrega a una persona. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{namespace_f_c_module_1_1_f_c_tools_aedafa1474c8976ae1f9c1a859cc26984}{F\+C\+Module.\+F\+C\+Tools.\+delete\+Person}} (service, person\+Group, person\+Name)
+\begin{DoxyCompactList}\small\item\em Borra a una persona. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{namespace_f_c_module_1_1_f_c_tools_a780cf43ca7953c654750759dc80a0f48}{F\+C\+Module.\+F\+C\+Tools.\+delete\+Person\+Group}} (service, person\+Group)
+\begin{DoxyCompactList}\small\item\em Borra a un grupo. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{namespace_f_c_module_1_1_f_c_tools_ab3df8ddd7530893bcd38b5e5321f9576}{F\+C\+Module.\+F\+C\+Tools.\+identify\+Face}} (service, person\+Group, face)
+\begin{DoxyCompactList}\small\item\em Esta función conecta con Azure, identifica la cara y pasa el nombre identificado al objeto Face correspondiente. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{namespace_f_c_module_1_1_f_c_tools_a476cbac52df88ddaae5b43da6465013e}{F\+C\+Module.\+F\+C\+Tools.\+paint\+Image}} (cv, font, img, face)
+\begin{DoxyCompactList}\small\item\em Esta función toma las coordenadas de un objeto Face y dibuja un rectángulo que enmarca la cara, además de escribir el nombre correspondiente a la cara. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{namespace_f_c_module_1_1_f_c_tools_a10adfb32d85cc6173537e97ee7afea11}{F\+C\+Module.\+F\+C\+Tools.\+paint\+All\+Faces}} (cv, font, img, face\+List)
+\begin{DoxyCompactList}\small\item\em Pinta un rectangulo sobre todas las caras y su nombre. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{namespace_f_c_module_1_1_f_c_tools_a84b5fde279bce289df81e5c2f9ffe09d}{F\+C\+Module.\+F\+C\+Tools.\+list\+Persons}} (service, person\+Group)
+\begin{DoxyCompactList}\small\item\em Devuelve un listado de personas de un grupo. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{namespace_f_c_module_1_1_f_c_tools_a638f52cb88b6812ebd83e2967bd95b51}{F\+C\+Module.\+F\+C\+Tools.\+detect\+Person}} (service, person\+Group, file)
+\begin{DoxyCompactList}\small\item\em Detecta a una persona en un archivo. \end{DoxyCompactList}\end{DoxyCompactItemize}
