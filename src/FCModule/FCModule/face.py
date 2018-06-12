@@ -7,11 +7,6 @@ Author: Alonso Serrano
 Created: 180228
 Version: 180601
 """
-## @package Face
-#  Documentation for this module.
-#
-#  More details.
-
 
 ## Clase Face
 #

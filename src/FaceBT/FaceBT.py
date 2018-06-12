@@ -21,7 +21,13 @@ from FCModule.face import Face
 
 camera= PiCamera()
 
+## Clase principal de FaceBT
+#
+# Contiene atributos y funciones para la gestion de la comunicacion con
+# un terminal de serie mediante Bluetooth
+
 class FaceBT:
+    ## Contructor
     def __init__(self):
 
         if not os.path.exists('temp'):
@@ -40,24 +46,51 @@ class FaceBT:
         self.sKey=self.cfg['skey']
         self.server=self.cfg['server']
         self.groupName=self.cfg['groupname']
-
+        ## @var port
+        # Puerto serie
+        ## @var camera
+        # Objeto de PiCamera
+        ## @var font
+        # Fuente para el rotulado de caras
+        ## @var config
+        # Objeto que contiene parametros de configuracion
+        ## @var cfg
+        # Objeto de configuracion especifica CONFIG
+        ## @var fn
+        # Ubicacion del filtro Haar
+        ## @var faceDetector
+        # Ruta absoluta del filtro Haar
+        ## @var sKey
+        # Clave de suscripcion de Azure
+        ## @var server
+        # Servidor de Azure
+        ## @var groupName
+        # Grupo de personas de Azure
+        
         CF.Key.set(self.sKey)
         CF.BaseUrl.set('https://'+self.server+'.api.cognitive.microsoft.com/face/v1.0/')
- 
+    
+    ## Lee el puerto de serie Bluetooth.
+    #  @return Texto leido del puerto de serie. 
     def readSerial(self):
         res = self.port.read(50).decode("utf-8")
         if len(res):
             return res.splitlines()
         else:
             return []
- 
-    #def send_serial(self, text):
-        #self.port.write(bytes(text, 'UTF-8'))
-
+            
+    ## Envia un string mediante puerto de serie.
+    # @param text Texto a enviar.
+    
     def sendSerial(self, text):
         self.port.write(bytes(text +" \n", 'UTF-8'))
         
-
+    ## Ejecuta la identificacion facial.
+    # Soporta tres modos de envio:\n
+    # - Texto con la información sobre las personas identificadas\n
+    # - Imagen capturada con las personas señaladas\n
+    # - Archivo JSON con la informacion de las persona identificadas\n
+    # @param mode Modo de ejecucion de la identificacion.
     def identify(self, mode):
         
         self.sendSerial("Iniciando identificacion, espere por favor ")
@@ -111,7 +144,7 @@ class FaceBT:
                 else:
                     self.sendSerial('No se han identificado caras')
                 return
-            
+    ## Apaga la Raspberry Pi
     def turnOff(self):
 
         folder = './temp'
@@ -125,7 +158,7 @@ class FaceBT:
 
         os.system("sudo shutdown -h now")
 
-         
+## Funcion principal
 def main():
     FBT = None
     isConnected = False

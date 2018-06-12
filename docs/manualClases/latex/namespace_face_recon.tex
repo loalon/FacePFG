@@ -1,0 +1,152 @@
+\hypertarget{namespace_face_recon}{}\section{Referencia del Namespace Face\+Recon}
+\label{namespace_face_recon}\index{Face\+Recon@{Face\+Recon}}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespace_face_recon_ac6ec5c173cf48f7c65fc970e1e079ca9}{camera}} = Pi\+Camera()
+\begin{DoxyCompactList}\small\item\em C\+O\+N\+F\+I\+G\+U\+R\+A\+C\+I\+ON. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespace_face_recon_a6401bc73862ba52d12acc4e195359b84}{resolution}}
+\item 
+\mbox{\hyperlink{namespace_face_recon_aa83a22879c0d6299597d46b065e09c4c}{font}} = cv2.\+F\+O\+N\+T\+\_\+\+H\+E\+R\+S\+H\+E\+Y\+\_\+\+S\+I\+M\+P\+L\+EX
+\item 
+\mbox{\hyperlink{namespace_face_recon_a020b74724169b8fc02c88453680fa3cc}{config}} = configparser.\+Config\+Parser()
+\item 
+\mbox{\hyperlink{namespace_face_recon_a6a0cb127a374ad0eb5705d0f49a40040}{cfg}} = \mbox{\hyperlink{namespace_face_recon_a020b74724169b8fc02c88453680fa3cc}{config}}\mbox{[}\textquotesingle{}C\+O\+N\+F\+IG\textquotesingle{}\mbox{]}
+\item 
+\mbox{\hyperlink{namespace_face_recon_aaadefd1ee1352d2f1b2fdf3ea4db8390}{fn}} = \mbox{\hyperlink{namespace_face_recon_a6a0cb127a374ad0eb5705d0f49a40040}{cfg}}\mbox{[}\textquotesingle{}facedetector\textquotesingle{}\mbox{]}
+\item 
+\mbox{\hyperlink{namespace_face_recon_a52d7b32070be8a278850cdb6afd2d301}{face\+Detector}} = os.\+path.\+join(os.\+path.\+dirname(\+\_\+\+\_\+file\+\_\+\+\_\+), \mbox{\hyperlink{namespace_face_recon_aaadefd1ee1352d2f1b2fdf3ea4db8390}{fn}})
+\item 
+\mbox{\hyperlink{namespace_face_recon_a5c8b2fa43564cbbd3abf3d1cacef7e8c}{s\+Key}} = \mbox{\hyperlink{namespace_face_recon_a6a0cb127a374ad0eb5705d0f49a40040}{cfg}}\mbox{[}\textquotesingle{}skey\textquotesingle{}\mbox{]}
+\item 
+\mbox{\hyperlink{namespace_face_recon_a78159752a247e46ae64caea5570a6889}{server}} = \mbox{\hyperlink{namespace_face_recon_a6a0cb127a374ad0eb5705d0f49a40040}{cfg}}\mbox{[}\textquotesingle{}server\textquotesingle{}\mbox{]}
+\item 
+\mbox{\hyperlink{namespace_face_recon_ae44f8e751a650fcfa6bc7d2a61242cc1}{group\+Name}} = \mbox{\hyperlink{namespace_face_recon_a6a0cb127a374ad0eb5705d0f49a40040}{cfg}}\mbox{[}\textquotesingle{}groupname\textquotesingle{}\mbox{]}
+\item 
+int \mbox{\hyperlink{namespace_face_recon_a1cec4fb530e8a7a1b10ac48890f36e7b}{wait\+Time}} = 20
+\item 
+\mbox{\hyperlink{namespace_face_recon_ac1dfb5855321e10d5338ad161bfa8151}{now}} = datetime.\+now()
+\begin{DoxyCompactList}\small\item\em C\+O\+M\+P\+R\+O\+B\+A\+C\+I\+ON D\+I\+R\+E\+C\+T\+O\+R\+I\+OS. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{namespace_face_recon_af54252e1ad4d24d516c64eaaa88905ce}{now\+Str}} = \textquotesingle{}\+\_\+\textquotesingle{}+str(now.\+year)+str(now.\+month)+str(now.\+day)+\textquotesingle{}\+\_\+\textquotesingle{}+str(now.\+hour)+str(now.\+minute)+str(now.\+second)
+\item 
+\mbox{\hyperlink{namespace_face_recon_a65dbfeade36a516a4fbd5cd1c44c5682}{img}} = fc.\+capture\+Image(\mbox{\hyperlink{namespace_face_recon_ac6ec5c173cf48f7c65fc970e1e079ca9}{camera}})
+\item 
+\mbox{\hyperlink{namespace_face_recon_aaf2856e061dd5456e2ff875905fcc51b}{face\+List}} = fc.\+face\+Detect(\mbox{\hyperlink{namespace_face_recon_a52d7b32070be8a278850cdb6afd2d301}{face\+Detector}}, \mbox{\hyperlink{namespace_face_recon_a65dbfeade36a516a4fbd5cd1c44c5682}{img}}, cv2)
+\item 
+bool \mbox{\hyperlink{namespace_face_recon_ac4b8075620307b113830af1893363bbe}{person\+Detected}} = False
+\item 
+\mbox{\hyperlink{namespace_face_recon_ad661554f5aa9213b00b4d791a65a29eb}{is\+Person}} = F\+C\+T.\+identify\+Face(CF, \mbox{\hyperlink{namespace_face_recon_ae44f8e751a650fcfa6bc7d2a61242cc1}{group\+Name}}, face)
+\end{DoxyCompactItemize}
+
+
+\subsection{Documentación de las variables}
+\mbox{\Hypertarget{namespace_face_recon_ac6ec5c173cf48f7c65fc970e1e079ca9}\label{namespace_face_recon_ac6ec5c173cf48f7c65fc970e1e079ca9}} 
+\index{Face\+Recon@{Face\+Recon}!camera@{camera}}
+\index{camera@{camera}!Face\+Recon@{Face\+Recon}}
+\subsubsection{\texorpdfstring{camera}{camera}}
+{\footnotesize\ttfamily Face\+Recon.\+camera = Pi\+Camera()}
+
+
+
+C\+O\+N\+F\+I\+G\+U\+R\+A\+C\+I\+ON. 
+
+\mbox{\Hypertarget{namespace_face_recon_a6a0cb127a374ad0eb5705d0f49a40040}\label{namespace_face_recon_a6a0cb127a374ad0eb5705d0f49a40040}} 
+\index{Face\+Recon@{Face\+Recon}!cfg@{cfg}}
+\index{cfg@{cfg}!Face\+Recon@{Face\+Recon}}
+\subsubsection{\texorpdfstring{cfg}{cfg}}
+{\footnotesize\ttfamily Face\+Recon.\+cfg = \mbox{\hyperlink{namespace_face_recon_a020b74724169b8fc02c88453680fa3cc}{config}}\mbox{[}\textquotesingle{}C\+O\+N\+F\+IG\textquotesingle{}\mbox{]}}
+
+\mbox{\Hypertarget{namespace_face_recon_a020b74724169b8fc02c88453680fa3cc}\label{namespace_face_recon_a020b74724169b8fc02c88453680fa3cc}} 
+\index{Face\+Recon@{Face\+Recon}!config@{config}}
+\index{config@{config}!Face\+Recon@{Face\+Recon}}
+\subsubsection{\texorpdfstring{config}{config}}
+{\footnotesize\ttfamily Face\+Recon.\+config = configparser.\+Config\+Parser()}
+
+\mbox{\Hypertarget{namespace_face_recon_a52d7b32070be8a278850cdb6afd2d301}\label{namespace_face_recon_a52d7b32070be8a278850cdb6afd2d301}} 
+\index{Face\+Recon@{Face\+Recon}!face\+Detector@{face\+Detector}}
+\index{face\+Detector@{face\+Detector}!Face\+Recon@{Face\+Recon}}
+\subsubsection{\texorpdfstring{face\+Detector}{faceDetector}}
+{\footnotesize\ttfamily Face\+Recon.\+face\+Detector = os.\+path.\+join(os.\+path.\+dirname(\+\_\+\+\_\+file\+\_\+\+\_\+), \mbox{\hyperlink{namespace_face_recon_aaadefd1ee1352d2f1b2fdf3ea4db8390}{fn}})}
+
+\mbox{\Hypertarget{namespace_face_recon_aaf2856e061dd5456e2ff875905fcc51b}\label{namespace_face_recon_aaf2856e061dd5456e2ff875905fcc51b}} 
+\index{Face\+Recon@{Face\+Recon}!face\+List@{face\+List}}
+\index{face\+List@{face\+List}!Face\+Recon@{Face\+Recon}}
+\subsubsection{\texorpdfstring{face\+List}{faceList}}
+{\footnotesize\ttfamily Face\+Recon.\+face\+List = fc.\+face\+Detect(\mbox{\hyperlink{namespace_face_recon_a52d7b32070be8a278850cdb6afd2d301}{face\+Detector}}, \mbox{\hyperlink{namespace_face_recon_a65dbfeade36a516a4fbd5cd1c44c5682}{img}}, cv2)}
+
+\mbox{\Hypertarget{namespace_face_recon_aaadefd1ee1352d2f1b2fdf3ea4db8390}\label{namespace_face_recon_aaadefd1ee1352d2f1b2fdf3ea4db8390}} 
+\index{Face\+Recon@{Face\+Recon}!fn@{fn}}
+\index{fn@{fn}!Face\+Recon@{Face\+Recon}}
+\subsubsection{\texorpdfstring{fn}{fn}}
+{\footnotesize\ttfamily Face\+Recon.\+fn = \mbox{\hyperlink{namespace_face_recon_a6a0cb127a374ad0eb5705d0f49a40040}{cfg}}\mbox{[}\textquotesingle{}facedetector\textquotesingle{}\mbox{]}}
+
+\mbox{\Hypertarget{namespace_face_recon_aa83a22879c0d6299597d46b065e09c4c}\label{namespace_face_recon_aa83a22879c0d6299597d46b065e09c4c}} 
+\index{Face\+Recon@{Face\+Recon}!font@{font}}
+\index{font@{font}!Face\+Recon@{Face\+Recon}}
+\subsubsection{\texorpdfstring{font}{font}}
+{\footnotesize\ttfamily Face\+Recon.\+font = cv2.\+F\+O\+N\+T\+\_\+\+H\+E\+R\+S\+H\+E\+Y\+\_\+\+S\+I\+M\+P\+L\+EX}
+
+\mbox{\Hypertarget{namespace_face_recon_ae44f8e751a650fcfa6bc7d2a61242cc1}\label{namespace_face_recon_ae44f8e751a650fcfa6bc7d2a61242cc1}} 
+\index{Face\+Recon@{Face\+Recon}!group\+Name@{group\+Name}}
+\index{group\+Name@{group\+Name}!Face\+Recon@{Face\+Recon}}
+\subsubsection{\texorpdfstring{group\+Name}{groupName}}
+{\footnotesize\ttfamily Face\+Recon.\+group\+Name = \mbox{\hyperlink{namespace_face_recon_a6a0cb127a374ad0eb5705d0f49a40040}{cfg}}\mbox{[}\textquotesingle{}groupname\textquotesingle{}\mbox{]}}
+
+\mbox{\Hypertarget{namespace_face_recon_a65dbfeade36a516a4fbd5cd1c44c5682}\label{namespace_face_recon_a65dbfeade36a516a4fbd5cd1c44c5682}} 
+\index{Face\+Recon@{Face\+Recon}!img@{img}}
+\index{img@{img}!Face\+Recon@{Face\+Recon}}
+\subsubsection{\texorpdfstring{img}{img}}
+{\footnotesize\ttfamily Face\+Recon.\+img = fc.\+capture\+Image(\mbox{\hyperlink{namespace_face_recon_ac6ec5c173cf48f7c65fc970e1e079ca9}{camera}})}
+
+\mbox{\Hypertarget{namespace_face_recon_ad661554f5aa9213b00b4d791a65a29eb}\label{namespace_face_recon_ad661554f5aa9213b00b4d791a65a29eb}} 
+\index{Face\+Recon@{Face\+Recon}!is\+Person@{is\+Person}}
+\index{is\+Person@{is\+Person}!Face\+Recon@{Face\+Recon}}
+\subsubsection{\texorpdfstring{is\+Person}{isPerson}}
+{\footnotesize\ttfamily Face\+Recon.\+is\+Person = F\+C\+T.\+identify\+Face(CF, \mbox{\hyperlink{namespace_face_recon_ae44f8e751a650fcfa6bc7d2a61242cc1}{group\+Name}}, face)}
+
+\mbox{\Hypertarget{namespace_face_recon_ac1dfb5855321e10d5338ad161bfa8151}\label{namespace_face_recon_ac1dfb5855321e10d5338ad161bfa8151}} 
+\index{Face\+Recon@{Face\+Recon}!now@{now}}
+\index{now@{now}!Face\+Recon@{Face\+Recon}}
+\subsubsection{\texorpdfstring{now}{now}}
+{\footnotesize\ttfamily Face\+Recon.\+now = datetime.\+now()}
+
+
+
+C\+O\+M\+P\+R\+O\+B\+A\+C\+I\+ON D\+I\+R\+E\+C\+T\+O\+R\+I\+OS. 
+
+B\+U\+C\+LE P\+R\+I\+N\+C\+I\+P\+AL \mbox{\Hypertarget{namespace_face_recon_af54252e1ad4d24d516c64eaaa88905ce}\label{namespace_face_recon_af54252e1ad4d24d516c64eaaa88905ce}} 
+\index{Face\+Recon@{Face\+Recon}!now\+Str@{now\+Str}}
+\index{now\+Str@{now\+Str}!Face\+Recon@{Face\+Recon}}
+\subsubsection{\texorpdfstring{now\+Str}{nowStr}}
+{\footnotesize\ttfamily string Face\+Recon.\+now\+Str = \textquotesingle{}\+\_\+\textquotesingle{}+str(now.\+year)+str(now.\+month)+str(now.\+day)+\textquotesingle{}\+\_\+\textquotesingle{}+str(now.\+hour)+str(now.\+minute)+str(now.\+second)}
+
+\mbox{\Hypertarget{namespace_face_recon_ac4b8075620307b113830af1893363bbe}\label{namespace_face_recon_ac4b8075620307b113830af1893363bbe}} 
+\index{Face\+Recon@{Face\+Recon}!person\+Detected@{person\+Detected}}
+\index{person\+Detected@{person\+Detected}!Face\+Recon@{Face\+Recon}}
+\subsubsection{\texorpdfstring{person\+Detected}{personDetected}}
+{\footnotesize\ttfamily bool Face\+Recon.\+person\+Detected = False}
+
+\mbox{\Hypertarget{namespace_face_recon_a6401bc73862ba52d12acc4e195359b84}\label{namespace_face_recon_a6401bc73862ba52d12acc4e195359b84}} 
+\index{Face\+Recon@{Face\+Recon}!resolution@{resolution}}
+\index{resolution@{resolution}!Face\+Recon@{Face\+Recon}}
+\subsubsection{\texorpdfstring{resolution}{resolution}}
+{\footnotesize\ttfamily Face\+Recon.\+resolution}
+
+\mbox{\Hypertarget{namespace_face_recon_a78159752a247e46ae64caea5570a6889}\label{namespace_face_recon_a78159752a247e46ae64caea5570a6889}} 
+\index{Face\+Recon@{Face\+Recon}!server@{server}}
+\index{server@{server}!Face\+Recon@{Face\+Recon}}
+\subsubsection{\texorpdfstring{server}{server}}
+{\footnotesize\ttfamily Face\+Recon.\+server = \mbox{\hyperlink{namespace_face_recon_a6a0cb127a374ad0eb5705d0f49a40040}{cfg}}\mbox{[}\textquotesingle{}server\textquotesingle{}\mbox{]}}
+
+\mbox{\Hypertarget{namespace_face_recon_a5c8b2fa43564cbbd3abf3d1cacef7e8c}\label{namespace_face_recon_a5c8b2fa43564cbbd3abf3d1cacef7e8c}} 
+\index{Face\+Recon@{Face\+Recon}!s\+Key@{s\+Key}}
+\index{s\+Key@{s\+Key}!Face\+Recon@{Face\+Recon}}
+\subsubsection{\texorpdfstring{s\+Key}{sKey}}
+{\footnotesize\ttfamily Face\+Recon.\+s\+Key = \mbox{\hyperlink{namespace_face_recon_a6a0cb127a374ad0eb5705d0f49a40040}{cfg}}\mbox{[}\textquotesingle{}skey\textquotesingle{}\mbox{]}}
+
+\mbox{\Hypertarget{namespace_face_recon_a1cec4fb530e8a7a1b10ac48890f36e7b}\label{namespace_face_recon_a1cec4fb530e8a7a1b10ac48890f36e7b}} 
+\index{Face\+Recon@{Face\+Recon}!wait\+Time@{wait\+Time}}
+\index{wait\+Time@{wait\+Time}!Face\+Recon@{Face\+Recon}}
+\subsubsection{\texorpdfstring{wait\+Time}{waitTime}}
+{\footnotesize\ttfamily int Face\+Recon.\+wait\+Time = 20}
+
