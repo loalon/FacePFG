@@ -13,7 +13,7 @@
 /src/facePal/build
 /src/facePal/captures
 /src/facePal/.externalNativeBuild
-/src/FCModule/build
-/src/FCModule/dist
-/src/FCModule/FCModule.egg-info
-/src/FCModule/FCModule/__pycache__
+/src/FCModule/build/
+/src/FCModule/dist/
+/src/FCModule/FCModule.egg-info/
+/src/FCModule/FCModule/__pycache__/
