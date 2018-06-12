@@ -143,8 +143,20 @@ class FaceBT:
                     self.sendSerial('No se han identificado caras')
                 return
             
+    def turnOff(self):
 
- 
+        folder = './temp'
+        for file in os.listdir(folder):
+            path = os.path.join(folder, file)
+            try:
+                if os.path.isfile(path):
+                    os.unlink(path)
+            except Exception as e:
+                self.alertDialog(str(e))
+
+        os.system("sudo shutdown -h now")
+
+         
 def main():
     FBT = None
     isConnected = False
@@ -168,6 +180,10 @@ def main():
                     FBT.sendSerial("Modo envio: imagen")
                     FBT.identify("image")
                     time.sleep(2)
+                elif line == "apagar":
+                    FBT.sendSerial("Apagando FaceBT. Espere por favor")
+                    FBT.turnOff()
+                    
                 else: 
                     FBT.sendSerial("Comando no valido")
                 FBT.sendSerial("Esperando comando")

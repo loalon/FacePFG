@@ -26,7 +26,6 @@ import configparser
 
 camera=PiCamera() #inicia camara
 camera.resolution = (1920,1088) #resolucion
-
 font=cv2.FONT_HERSHEY_SIMPLEX #tipo de fuente
 
 config=configparser.ConfigParser()
