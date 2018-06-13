@@ -6,6 +6,7 @@ import time
 import json
 import re
 import sys
+import configparser
 from datetime import datetime
 
 from picamera.array import PiRGBArray
