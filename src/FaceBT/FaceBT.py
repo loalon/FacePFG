@@ -25,7 +25,6 @@ camera= PiCamera()
 #
 # Contiene atributos y funciones para la gestion de la comunicacion con
 # un terminal de serie mediante Bluetooth
-
 class FaceBT:
     ## Contructor
     def __init__(self):
@@ -81,7 +80,6 @@ class FaceBT:
             
     ## Envia un string mediante puerto de serie.
     # @param text Texto a enviar.
-    
     def sendSerial(self, text):
         self.port.write(bytes(text +" \n", 'UTF-8'))
         

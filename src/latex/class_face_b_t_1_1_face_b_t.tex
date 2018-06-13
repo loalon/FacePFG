@@ -1,0 +1,229 @@
+\hypertarget{class_face_b_t_1_1_face_b_t}{}\section{Referencia de la Clase Face\+B\+T.\+Face\+BT}
+\label{class_face_b_t_1_1_face_b_t}\index{Face\+B\+T.\+Face\+BT@{Face\+B\+T.\+Face\+BT}}
+
+
+Clase principal de \mbox{\hyperlink{class_face_b_t_1_1_face_b_t}{Face\+BT}}.  
+
+
+\subsection*{Métodos públicos}
+\begin{DoxyCompactItemize}
+\item 
+def \mbox{\hyperlink{class_face_b_t_1_1_face_b_t_a577945ffe52fd053fabb2cf47b55dad2}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self)
+\begin{DoxyCompactList}\small\item\em Contructor. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{class_face_b_t_1_1_face_b_t_af35d86c0311c080589128342dcb414a0}{read\+Serial}} (self)
+\begin{DoxyCompactList}\small\item\em Lee el puerto de serie Bluetooth. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{class_face_b_t_1_1_face_b_t_a6f362adf4c828653782877a661b4714d}{send\+Serial}} (self, text)
+\begin{DoxyCompactList}\small\item\em Envia un string mediante puerto de serie. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{class_face_b_t_1_1_face_b_t_a52e80d7d39f01c59794927eba5ff833d}{identify}} (self, mode)
+\begin{DoxyCompactList}\small\item\em Ejecuta la identificacion facial. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{class_face_b_t_1_1_face_b_t_a4ca8c746966a8a3716113db50b0ce01d}{turn\+Off}} (self)
+\begin{DoxyCompactList}\small\item\em Apaga la Raspberry Pi. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Atributos públicos}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_face_b_t_1_1_face_b_t_a7cdbf80ff5f32f8e8d0b36bfbc262e57}{port}}
+\begin{DoxyCompactList}\small\item\em Puerto serie. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_face_b_t_1_1_face_b_t_a8a32158fd07c69e41e9236481a6d4c83}{camera}}
+\begin{DoxyCompactList}\small\item\em Objeto de Pi\+Camera. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_face_b_t_1_1_face_b_t_aa3042288058c758f0bc83a01161d1c93}{font}}
+\begin{DoxyCompactList}\small\item\em Fuente para el rotulado de caras. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_face_b_t_1_1_face_b_t_afde401ea3aeb8b1c6098a6525083a4f2}{config}}
+\begin{DoxyCompactList}\small\item\em Objeto que contiene parametros de configuracion. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_face_b_t_1_1_face_b_t_a4456736625bb4b08b76951dbbf7b7eaa}{cfg}}
+\begin{DoxyCompactList}\small\item\em Objeto de configuracion especifica C\+O\+N\+F\+IG. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_face_b_t_1_1_face_b_t_add39f81f6de74d12483f4180e5a06d29}{fn}}
+\begin{DoxyCompactList}\small\item\em Ubicacion del filtro Haar. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_face_b_t_1_1_face_b_t_ad1494315f834e5591116b960b7c4b909}{face\+Detector}}
+\begin{DoxyCompactList}\small\item\em Ruta absoluta del filtro Haar. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_face_b_t_1_1_face_b_t_aa7cfb934d57a9f7b21d05ff5cedb95a1}{s\+Key}}
+\begin{DoxyCompactList}\small\item\em Clave de suscripcion de Azure. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_face_b_t_1_1_face_b_t_af768b1f81785e8008c14dca18114a0d6}{server}}
+\begin{DoxyCompactList}\small\item\em Servidor de Azure. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_face_b_t_1_1_face_b_t_a94215284ec2e86d0f419830e92161d2d}{group\+Name}}
+\begin{DoxyCompactList}\small\item\em Grupo de personas de Azure. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Descripción detallada}
+Clase principal de \mbox{\hyperlink{class_face_b_t_1_1_face_b_t}{Face\+BT}}. 
+
+Contiene atributos y funciones para la gestion de la comunicacion con un terminal de serie mediante Bluetooth 
+
+\subsection{Documentación del constructor y destructor}
+\mbox{\Hypertarget{class_face_b_t_1_1_face_b_t_a577945ffe52fd053fabb2cf47b55dad2}\label{class_face_b_t_1_1_face_b_t_a577945ffe52fd053fabb2cf47b55dad2}} 
+\index{Face\+B\+T\+::\+Face\+BT@{Face\+B\+T\+::\+Face\+BT}!\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}!Face\+B\+T\+::\+Face\+BT@{Face\+B\+T\+::\+Face\+BT}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+init\+\_\+\+\_\+()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily def Face\+B\+T.\+Face\+B\+T.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+
+Contructor. 
+
+
+
+\subsection{Documentación de las funciones miembro}
+\mbox{\Hypertarget{class_face_b_t_1_1_face_b_t_a52e80d7d39f01c59794927eba5ff833d}\label{class_face_b_t_1_1_face_b_t_a52e80d7d39f01c59794927eba5ff833d}} 
+\index{Face\+B\+T\+::\+Face\+BT@{Face\+B\+T\+::\+Face\+BT}!identify@{identify}}
+\index{identify@{identify}!Face\+B\+T\+::\+Face\+BT@{Face\+B\+T\+::\+Face\+BT}}
+\subsubsection{\texorpdfstring{identify()}{identify()}}
+{\footnotesize\ttfamily def Face\+B\+T.\+Face\+B\+T.\+identify (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{mode }\end{DoxyParamCaption})}
+
+
+
+Ejecuta la identificacion facial. 
+
+Soporta tres modos de envio\+:~\newline
+
+\begin{DoxyItemize}
+\item Texto con la información sobre las personas identificadas~\newline
+
+\item Imagen capturada con las personas señaladas~\newline
+
+\item Archivo J\+S\+ON con la informacion de las persona identificadas~\newline
+
+\begin{DoxyParams}{Parámetros}
+{\em mode} & Modo de ejecucion de la identificacion. \\
+\hline
+\end{DoxyParams}
+
+\end{DoxyItemize}\mbox{\Hypertarget{class_face_b_t_1_1_face_b_t_af35d86c0311c080589128342dcb414a0}\label{class_face_b_t_1_1_face_b_t_af35d86c0311c080589128342dcb414a0}} 
+\index{Face\+B\+T\+::\+Face\+BT@{Face\+B\+T\+::\+Face\+BT}!read\+Serial@{read\+Serial}}
+\index{read\+Serial@{read\+Serial}!Face\+B\+T\+::\+Face\+BT@{Face\+B\+T\+::\+Face\+BT}}
+\subsubsection{\texorpdfstring{read\+Serial()}{readSerial()}}
+{\footnotesize\ttfamily def Face\+B\+T.\+Face\+B\+T.\+read\+Serial (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+
+Lee el puerto de serie Bluetooth. 
+
+\begin{DoxyReturn}{Devuelve}
+Texto leido del puerto de serie. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_face_b_t_1_1_face_b_t_a6f362adf4c828653782877a661b4714d}\label{class_face_b_t_1_1_face_b_t_a6f362adf4c828653782877a661b4714d}} 
+\index{Face\+B\+T\+::\+Face\+BT@{Face\+B\+T\+::\+Face\+BT}!send\+Serial@{send\+Serial}}
+\index{send\+Serial@{send\+Serial}!Face\+B\+T\+::\+Face\+BT@{Face\+B\+T\+::\+Face\+BT}}
+\subsubsection{\texorpdfstring{send\+Serial()}{sendSerial()}}
+{\footnotesize\ttfamily def Face\+B\+T.\+Face\+B\+T.\+send\+Serial (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{text }\end{DoxyParamCaption})}
+
+
+
+Envia un string mediante puerto de serie. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em text} & Texto a enviar. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_face_b_t_1_1_face_b_t_a4ca8c746966a8a3716113db50b0ce01d}\label{class_face_b_t_1_1_face_b_t_a4ca8c746966a8a3716113db50b0ce01d}} 
+\index{Face\+B\+T\+::\+Face\+BT@{Face\+B\+T\+::\+Face\+BT}!turn\+Off@{turn\+Off}}
+\index{turn\+Off@{turn\+Off}!Face\+B\+T\+::\+Face\+BT@{Face\+B\+T\+::\+Face\+BT}}
+\subsubsection{\texorpdfstring{turn\+Off()}{turnOff()}}
+{\footnotesize\ttfamily def Face\+B\+T.\+Face\+B\+T.\+turn\+Off (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+
+Apaga la Raspberry Pi. 
+
+
+
+\subsection{Documentación de los datos miembro}
+\mbox{\Hypertarget{class_face_b_t_1_1_face_b_t_a8a32158fd07c69e41e9236481a6d4c83}\label{class_face_b_t_1_1_face_b_t_a8a32158fd07c69e41e9236481a6d4c83}} 
+\index{Face\+B\+T\+::\+Face\+BT@{Face\+B\+T\+::\+Face\+BT}!camera@{camera}}
+\index{camera@{camera}!Face\+B\+T\+::\+Face\+BT@{Face\+B\+T\+::\+Face\+BT}}
+\subsubsection{\texorpdfstring{camera}{camera}}
+{\footnotesize\ttfamily Face\+B\+T.\+Face\+B\+T.\+camera}
+
+
+
+Objeto de Pi\+Camera. 
+
+\mbox{\Hypertarget{class_face_b_t_1_1_face_b_t_a4456736625bb4b08b76951dbbf7b7eaa}\label{class_face_b_t_1_1_face_b_t_a4456736625bb4b08b76951dbbf7b7eaa}} 
+\index{Face\+B\+T\+::\+Face\+BT@{Face\+B\+T\+::\+Face\+BT}!cfg@{cfg}}
+\index{cfg@{cfg}!Face\+B\+T\+::\+Face\+BT@{Face\+B\+T\+::\+Face\+BT}}
+\subsubsection{\texorpdfstring{cfg}{cfg}}
+{\footnotesize\ttfamily Face\+B\+T.\+Face\+B\+T.\+cfg}
+
+
+
+Objeto de configuracion especifica C\+O\+N\+F\+IG. 
+
+\mbox{\Hypertarget{class_face_b_t_1_1_face_b_t_afde401ea3aeb8b1c6098a6525083a4f2}\label{class_face_b_t_1_1_face_b_t_afde401ea3aeb8b1c6098a6525083a4f2}} 
+\index{Face\+B\+T\+::\+Face\+BT@{Face\+B\+T\+::\+Face\+BT}!config@{config}}
+\index{config@{config}!Face\+B\+T\+::\+Face\+BT@{Face\+B\+T\+::\+Face\+BT}}
+\subsubsection{\texorpdfstring{config}{config}}
+{\footnotesize\ttfamily Face\+B\+T.\+Face\+B\+T.\+config}
+
+
+
+Objeto que contiene parametros de configuracion. 
+
+\mbox{\Hypertarget{class_face_b_t_1_1_face_b_t_ad1494315f834e5591116b960b7c4b909}\label{class_face_b_t_1_1_face_b_t_ad1494315f834e5591116b960b7c4b909}} 
+\index{Face\+B\+T\+::\+Face\+BT@{Face\+B\+T\+::\+Face\+BT}!face\+Detector@{face\+Detector}}
+\index{face\+Detector@{face\+Detector}!Face\+B\+T\+::\+Face\+BT@{Face\+B\+T\+::\+Face\+BT}}
+\subsubsection{\texorpdfstring{face\+Detector}{faceDetector}}
+{\footnotesize\ttfamily Face\+B\+T.\+Face\+B\+T.\+face\+Detector}
+
+
+
+Ruta absoluta del filtro Haar. 
+
+\mbox{\Hypertarget{class_face_b_t_1_1_face_b_t_add39f81f6de74d12483f4180e5a06d29}\label{class_face_b_t_1_1_face_b_t_add39f81f6de74d12483f4180e5a06d29}} 
+\index{Face\+B\+T\+::\+Face\+BT@{Face\+B\+T\+::\+Face\+BT}!fn@{fn}}
+\index{fn@{fn}!Face\+B\+T\+::\+Face\+BT@{Face\+B\+T\+::\+Face\+BT}}
+\subsubsection{\texorpdfstring{fn}{fn}}
+{\footnotesize\ttfamily Face\+B\+T.\+Face\+B\+T.\+fn}
+
+
+
+Ubicacion del filtro Haar. 
+
+\mbox{\Hypertarget{class_face_b_t_1_1_face_b_t_aa3042288058c758f0bc83a01161d1c93}\label{class_face_b_t_1_1_face_b_t_aa3042288058c758f0bc83a01161d1c93}} 
+\index{Face\+B\+T\+::\+Face\+BT@{Face\+B\+T\+::\+Face\+BT}!font@{font}}
+\index{font@{font}!Face\+B\+T\+::\+Face\+BT@{Face\+B\+T\+::\+Face\+BT}}
+\subsubsection{\texorpdfstring{font}{font}}
+{\footnotesize\ttfamily Face\+B\+T.\+Face\+B\+T.\+font}
+
+
+
+Fuente para el rotulado de caras. 
+
+\mbox{\Hypertarget{class_face_b_t_1_1_face_b_t_a94215284ec2e86d0f419830e92161d2d}\label{class_face_b_t_1_1_face_b_t_a94215284ec2e86d0f419830e92161d2d}} 
+\index{Face\+B\+T\+::\+Face\+BT@{Face\+B\+T\+::\+Face\+BT}!group\+Name@{group\+Name}}
+\index{group\+Name@{group\+Name}!Face\+B\+T\+::\+Face\+BT@{Face\+B\+T\+::\+Face\+BT}}
+\subsubsection{\texorpdfstring{group\+Name}{groupName}}
+{\footnotesize\ttfamily Face\+B\+T.\+Face\+B\+T.\+group\+Name}
+
+
+
+Grupo de personas de Azure. 
+
+\mbox{\Hypertarget{class_face_b_t_1_1_face_b_t_a7cdbf80ff5f32f8e8d0b36bfbc262e57}\label{class_face_b_t_1_1_face_b_t_a7cdbf80ff5f32f8e8d0b36bfbc262e57}} 
+\index{Face\+B\+T\+::\+Face\+BT@{Face\+B\+T\+::\+Face\+BT}!port@{port}}
+\index{port@{port}!Face\+B\+T\+::\+Face\+BT@{Face\+B\+T\+::\+Face\+BT}}
+\subsubsection{\texorpdfstring{port}{port}}
+{\footnotesize\ttfamily Face\+B\+T.\+Face\+B\+T.\+port}
+
+
+
+Puerto serie. 
+
+\mbox{\Hypertarget{class_face_b_t_1_1_face_b_t_af768b1f81785e8008c14dca18114a0d6}\label{class_face_b_t_1_1_face_b_t_af768b1f81785e8008c14dca18114a0d6}} 
+\index{Face\+B\+T\+::\+Face\+BT@{Face\+B\+T\+::\+Face\+BT}!server@{server}}
+\index{server@{server}!Face\+B\+T\+::\+Face\+BT@{Face\+B\+T\+::\+Face\+BT}}
+\subsubsection{\texorpdfstring{server}{server}}
+{\footnotesize\ttfamily Face\+B\+T.\+Face\+B\+T.\+server}
+
+
+
+Servidor de Azure. 
+
+\mbox{\Hypertarget{class_face_b_t_1_1_face_b_t_aa7cfb934d57a9f7b21d05ff5cedb95a1}\label{class_face_b_t_1_1_face_b_t_aa7cfb934d57a9f7b21d05ff5cedb95a1}} 
+\index{Face\+B\+T\+::\+Face\+BT@{Face\+B\+T\+::\+Face\+BT}!s\+Key@{s\+Key}}
+\index{s\+Key@{s\+Key}!Face\+B\+T\+::\+Face\+BT@{Face\+B\+T\+::\+Face\+BT}}
+\subsubsection{\texorpdfstring{s\+Key}{sKey}}
+{\footnotesize\ttfamily Face\+B\+T.\+Face\+B\+T.\+s\+Key}
+
+
+
+Clave de suscripcion de Azure. 
+

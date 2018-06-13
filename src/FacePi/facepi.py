@@ -1,57 +1,103 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+"""
+File: FacePi.py
+Description: Aplicacion de deteccion de caras con GUI
+Author: Alonso Serrano
+Created: 180529
+Version: 180613
+"""
+
 import sys
+import time
+import configparser
+from datetime import datetime
+import os, shutil
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from PyQt5.QtPrintSupport import *
-import time
 
-
-from datetime import datetime
 from picamera.array import PiRGBArray
 from picamera import PiCamera
-import os, shutil
 import cognitive_face as CF
-
 import cv2 as cv2
+
 import FCModule.faceCrop as fc
 import FCModule.FCTools as FCT
 from FCModule.face import Face
-import configparser
 
-
-class App(QDialog):
- 
+## Clase principal de FacePi
+#
+# Genera el GUI y contiene funciones para la gestion del interfaz. 
+# Contiene funciones para la identificacion de rostros mediante captura o
+# carga de imagenes
+class FacePi(QDialog):
+    ## Contructor
     def __init__(self):
         super().__init__()
+        ## @var title
+        # titulo de la aplicacion 
         self.title = 'FacePi'
-        #self.showMaximized()
+        ## @var left
+        # Posicion izquierda de la aplicacion 
         self.left = 50
+        ## @var top
+        # Posicion superior de la aplicacion 
         self.top = 50
+        ## @var width
+        # Ancho de la aplicacion 
         self.width = 1240
+        ## @var height
+        # Alto de la aplicacion 
         self.height = 900
-        
+        ## @var label
+        # Contenedor de objetos         
         self.label = QLabel(self)
-        
-        #self.textContainer = QLabel(self)
+        ## @var textContainer
+        # Contenedor de texto de consola 
         self.textContainer = QTextEdit(self)
         self.textContainer.setReadOnly(True)
         self.textContainer.setMaximumHeight(300)
-        
+        ## @var pixmap
+        # Contenedor de imagenes        
         self.pixmap=QPixmap(1240,720)
-        self.camera=PiCamera() #inicia camara
-        self.camera.resolution = (1920,1088) #resolucion
+        ## @var camera
+        # Objeto de PiCamera 
+        self.camera=PiCamera() 
+        self.camera.resolution = (1920,1088) 
+        ## @var img
+        # Guarda la imagen mostrada en pantalla
         self.img = fc.captureImage(self.camera)
+        ## @var iniFile
+        # Archivo de configuracion
         self.iniFile='facepi.ini'
-        self.font=cv2.FONT_HERSHEY_SIMPLEX #tipo de fuente
+        ## @var font
+        # Fuente para el rotulado de caras
+        self.font=cv2.FONT_HERSHEY_SIMPLEX
+        ## @var config
+        # Objeto que contiene parametros de configuracion
         self.config=configparser.ConfigParser()
+        
         #valores por defecto
-        self.faceDetector = 'utils/haarcascade_frontalface_alt2.xml' #filtro Haar
-        self.sKey = '6ff97ccedba642f78dc07a821122fc4d'  # Clave de subscripción.
-        self.server = 'northeurope' #servidor
-        self.groupName = "conocidos" #grupo de personas
-        self.waitTime = 20 #segundos entre detecciones
-
-
+        
+        ## @var faceDetector
+        # Ubicacion del filtro Haar
+        self.faceDetector = 'utils/haarcascade_frontalface_alt2.xml' 
+        ## @var sKey
+        # Clave de suscripcion de Azure
+        self.sKey = '6ff97ccedba642f78dc07a821122fc4d'  
+        ## @var server
+        # Servidor de Azure
+        self.server = 'northeurope' 
+        ## @var groupName
+        # Grupo de personas de Azure
+        self.groupName = "conocidos" 
+        ## @var waitTime
+        # Tiempo de espera
+        self.waitTime = 20 
+        ## @var reconBtn
+        # Boton de reconocimiento 
         self.reconBtn=QPushButton("Reconocer")
         self.reconBtn.setFixedWidth(100)
         self.reconBtn.clicked.connect(self.identify)
@@ -60,49 +106,32 @@ class App(QDialog):
         CF.Key.set(self.sKey)
         CF.BaseUrl.set('https://'+self.server+'.api.cognitive.microsoft.com/face/v1.0/')
 
-        ### COMPROBACION DIRECTORIOS
         if not os.path.exists('temp'):
            os.makedirs('temp')
-        #if not os.path.exists('img'):
-           #os.makedirs('img')
            
         self.readConfig(self.iniFile)
         self.initUI()
-        
+    
+    ## Genera el interfaz grafico.
     def initUI(self):
         self.setWindowTitle(self.title)
-
-        #exitAction = QAction("Salir", self)
-        #exitAction.triggered.connect(self.appExit)
-
-        #mainMenu = self.menuBar()
-        #fileMenu = mainMenu.addMenu('Principal')
-        #fileMenu.addAction(exitAction)
-        
         self.setGeometry(self.left, self.top, self.width, self.height)
         self.setFixedSize(self.width, self.height)
-        #self.setCentralWidget()
         self.createGridLayout()
         windowLayout = QVBoxLayout()
         windowLayout.addWidget(self.horizontalGroupBox)
         self.setLayout(windowLayout)
- 
         self.show()
         self.printC('Iniciando FacePi')
-
+        
+    ## Crea la disposicion de objetos en gradilla.
     def createGridLayout(self):
         self.horizontalGroupBox = QGroupBox()
         layout = QVBoxLayout()
-
-        #layout.setColumnStretch(1, 4)
-        #layout.setColumnStretch(2, 4)
-        #label = QLabel(self)
-        #pixmap = QPixmap('2.jpg')
         split1=QSplitter(Qt.Vertical)
 
         self.label.setPixmap(self.pixmap)
         split1.addWidget(self.label) 
-        #layout.addStretch()
 
         split2=QSplitter(Qt.Horizontal)
         captureBtn=QPushButton("Capturar")
@@ -134,14 +163,13 @@ class App(QDialog):
         split2.addWidget(cfgBtn)
         
         split1.addWidget(split2)
-         
-        #textContainer = QLabel(self)
-        #self.textContainer.setText("Probando")
         split1.addWidget(self.textContainer) 
         layout.addWidget(split1)
  
         self.horizontalGroupBox.setLayout(layout)
- 
+    
+    ## Lee la configuracion del sistema.
+    # @param iniFile Archivo de configuracion
     def readConfig(self, iniFile):
         self.config.read(iniFile)
         cfg=self.config['CONFIG']
@@ -151,11 +179,14 @@ class App(QDialog):
         self.server=cfg['server']
         self.groupName=cfg['groupname']
         self.waitTime=int(cfg['waittime'])
-
+    
+    ## Salva la configuracion al archivo de configuracion.
+    # @param iniFile Archivo de configuracion
     def saveConfig(self, iniFile):
         with open(iniFile, 'w') as configfile:
             self.config.write(configfile)
-
+    
+    ## Carga los dialogos de configuracion y salva los parametros.
     def configApp(self):
         key, keyOk= self.getKey()
         if not keyOk:
@@ -182,7 +213,8 @@ class App(QDialog):
             CF.BaseUrl.set('https://'+self.server+'.api.cognitive.microsoft.com/face/v1.0/')
         else:
             self.alertDialog("No se han salvado cambios")
-          
+    
+    ## Dialogo para solicitud de clave.
     def getKey(self):
         dlg=QInputDialog(self)
         dlg.setFixedSize(1000,1000)
@@ -192,7 +224,8 @@ class App(QDialog):
             return key, True
         else:
             return "", False
-
+    
+    ## Dialogo para solicitud de servidor.
     def getServer(self):
         key, okp = QInputDialog.getText(self, "Configuracion", "Servidor: ", QLineEdit.Normal, self.server)
         if okp and key != '':
@@ -200,6 +233,8 @@ class App(QDialog):
             return key, True
         else:
             return "", False
+    
+    ## Dialogo para solicitud de grupo.
     def getGroup(self):
         key, okp = QInputDialog.getText(self, "Configuracion", "Grupo: ", QLineEdit.Normal, self.groupName)
         if okp and key != '':
@@ -208,18 +243,15 @@ class App(QDialog):
         else:
             return "", False
         
-    def closeEvent(self, event):
-        #print('Pulsando X')
-        self.appExit()
-        #self.deleteLater()
-        #print('Pulsando X')
-        
-
+    
+    ## Lee el puerto de serie Bluetooth.
+    # @return nowStr String con la marca temporal.
     def getTimestamp(self):
        now=datetime.now()
        nowStr=str(now.year)+str(now.month)+str(now.day)+'_'+str(now.hour)+str(now.minute)+str(now.second)
        return nowStr
     
+    ## Captura una imagen.
     def capture(self):
         now=datetime.now()
         self.printC("Capturando imagen: "+str(now))
@@ -228,58 +260,53 @@ class App(QDialog):
         self.pixmap=QPixmap('temp/temp.jpg')
         self.pixmap=self.pixmap.scaled(1024,720,Qt.KeepAspectRatio)
         self.label.setPixmap(self.pixmap)
-
         self.reconBtn.setEnabled(True)
-
+    
+    ## Identifica rostros.
     def identify(self):
-        faceList=fc.faceDetect(self.faceDetector, self.img, cv2) #detecta
-        #finalImage=None
-        #files=[]
+        faceList=fc.faceDetect(self.faceDetector, self.img, cv2) 
         personDetected = False
         if len(faceList) == 0:
             self.printC('No se han detectado caras')
             cv2.imwrite('temp/temp.jpg', self.img)
-            return # vuelve al principio sin esperar
+            return 
         else:
             self.printC('Cara/s detectada/s')
-            fc.faceCrop(self.img, cv2, faceList) #si hay caras se recortan
+            fc.faceCrop(self.img, cv2, faceList) 
         
         for face in faceList:
             isPerson=FCT.identifyFace(CF, self.groupName, face)
-            if isPerson is True: #no debe ser un objeto
+            if isPerson is True: 
                 personDetected = True
                 FCT.paintImage(cv2, self.font, self.img, face)
                 self.printC("Sujeto "+face.name)
         cv2.imwrite('temp/temp.jpg', self.img)
 
-        #if personDetected is True:
-            
-            #self.printC("Guardando imagen")
-            #cv2.imwrite('img/image'+nowStr+'.jpg', self.img)
-            #cv2.imwrite('temp/temp.jpg', self.img)
-            #self.printC("Esperando "+str(self.waitTime)+ " segundos para siguiente ejecución")
-            #time.sleep(self.waitTime)
-            #self.label.setPixmap('temp/temp.jpg')
-            #return True
         self.pixmap=QPixmap('temp/temp.jpg')
         self.pixmap=self.pixmap.scaled(1024,720,Qt.KeepAspectRatio)
         self.label.setPixmap(self.pixmap) 
 
-
+    
+    ## Escribe un mensaje en la consola.
+    # @param text
     def printC(self, text):
         msg = self.getTimestamp()+" " + text + '\n'
         self.textContainer.insertPlainText(msg)
         self.textContainer.moveCursor(QTextCursor.End)
-
+    
+    ## Limpia la consola.
     def clearC(self):
         self.textContainer.clear()
-
+    
+    ## Genera un cuadro de alerta.
+    # @param msg Texto del mensaje de alerta
     def alertDialog(self, msg):
         ad = QMessageBox(self)
         ad.setText(msg)
         ad.setIcon(QMessageBox.Critical)
         ad.show()
-
+    
+    ## Salva la imagen mediante cuadro de seleccion de archivos.
     def saveImage(self):
         dialog=QFileDialog()
         dialog.setDefaultSuffix('jpg')
@@ -287,19 +314,17 @@ class App(QDialog):
         if not path:
             return
         try:
-            #with open(path, 'w') as f:
             print(path)
             cv2.imwrite((path+'.jpg'), self.img)
         except Exception as e:
             self.alertDialog(str(e))
-
+    
+    ## Carga imagen mediante cuadro de seleccion de archivos.
     def loadImage(self):
         path, _ = QFileDialog().getOpenFileName(self, "Cargar imagen", "", "Imagenes (*.jpg)")
         if not path:
             return
         try:
-            #with open(path, 'w') as f:
-            print(path)
             self.img=cv2.imread(path)
             self.pixmap=QPixmap(path)
             self.pixmap=self.pixmap.scaled(1024,720,Qt.KeepAspectRatio)
@@ -308,7 +333,8 @@ class App(QDialog):
             
         except Exception as e:
             self.alertDialog(str(e))
-
+    
+    ## Gestiona el cierre de la aplicacion.
     def appExit(self):
         folder = './temp'
         for file in os.listdir(folder):
@@ -319,27 +345,8 @@ class App(QDialog):
             except Exception as e:
                 self.alertDialog(str(e))
         sys.exit()
-    
-    """      
-    def prueba(self):
-        #self.printC("Exito")
-        #self.pixmap=QPixmap('1.jpeg')
-        self.pixmap=self.pixmap.scaled(720,720,Qt.KeepAspectRatio)
-        self.label.setPixmap(self.pixmap)
-        personDetected=self.capture()
-        self.pixmap=QPixmap('temp/temp.jpg')
-        self.pixmap=self.pixmap.scaled(1024,720,Qt.KeepAspectRatio)
-        self.label.setPixmap(self.pixmap)      
-        if personDetected:
-            self.printC("Cara detectada")
-        else:
-            self.printC("No se han detectado caras")
-     """       
 
-
- 
- 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    ex = App()
+    ex = FacePi()
     sys.exit(app.exec_())
