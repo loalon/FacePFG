@@ -1,10 +1,11 @@
 var searchData=
 [
-  ['sendserial',['sendSerial',['../class_face_b_t_1_1_face_b_t.html#a6f362adf4c828653782877a661b4714d',1,'FaceBT::FaceBT']]],
-  ['server',['server',['../class_face_b_t_1_1_face_b_t.html#af768b1f81785e8008c14dca18114a0d6',1,'FaceBT.FaceBT.server()'],['../namespace_face_recon.html#a78159752a247e46ae64caea5570a6889',1,'FaceRecon.server()']]],
-  ['setcontentview',['setContentView',['../classcom_1_1loalon_1_1pfg_1_1facepal_1_1_app_compat_preference_activity.html#aaaa2c55c420cd029906a1ec249a2db62',1,'com.loalon.pfg.facepal.AppCompatPreferenceActivity.setContentView(@LayoutRes int layoutResID)'],['../classcom_1_1loalon_1_1pfg_1_1facepal_1_1_app_compat_preference_activity.html#acb8ea15f72b5f052ef347cba2b8ead7a',1,'com.loalon.pfg.facepal.AppCompatPreferenceActivity.setContentView(View view)'],['../classcom_1_1loalon_1_1pfg_1_1facepal_1_1_app_compat_preference_activity.html#ae35d9258f0c07d79e4f8c9f16ac196e8',1,'com.loalon.pfg.facepal.AppCompatPreferenceActivity.setContentView(View view, ViewGroup.LayoutParams params)']]],
-  ['setsupportactionbar',['setSupportActionBar',['../classcom_1_1loalon_1_1pfg_1_1facepal_1_1_app_compat_preference_activity.html#aac76dd0bd0fdcd1a027481856c085cd5',1,'com::loalon::pfg::facepal::AppCompatPreferenceActivity']]],
-  ['settingsactivity',['SettingsActivity',['../classcom_1_1loalon_1_1pfg_1_1facepal_1_1_settings_activity.html',1,'com::loalon::pfg::facepal']]],
-  ['settingsactivity_2ejava',['SettingsActivity.java',['../_settings_activity_8java.html',1,'']]],
-  ['skey',['sKey',['../class_face_b_t_1_1_face_b_t.html#aa7cfb934d57a9f7b21d05ff5cedb95a1',1,'FaceBT.FaceBT.sKey()'],['../namespace_face_recon.html#a5c8b2fa43564cbbd3abf3d1cacef7e8c',1,'FaceRecon.sKey()']]]
+  ['paintallfaces',['paintAllFaces',['../namespace_f_c_module_1_1_f_c_tools.html#a10adfb32d85cc6173537e97ee7afea11',1,'FCModule::FCTools']]],
+  ['paintimage',['paintImage',['../namespace_f_c_module_1_1_f_c_tools.html#a476cbac52df88ddaae5b43da6465013e',1,'FCModule::FCTools']]],
+  ['persondetected',['personDetected',['../namespace_face_recon.html#ac4b8075620307b113830af1893363bbe',1,'FaceRecon']]],
+  ['personid',['personID',['../class_f_c_module_1_1face_1_1_face.html#a9eb1f17f0ed52af706762346be0f9a52',1,'FCModule::face::Face']]],
+  ['pixmap',['pixmap',['../classfacepi_1_1_face_pi.html#a265ba93b91b05aff63e24ffedbd8b488',1,'facepi::FacePi']]],
+  ['port',['port',['../class_face_b_t_1_1_face_b_t.html#a7cdbf80ff5f32f8e8d0b36bfbc262e57',1,'FaceBT::FaceBT']]],
+  ['printc',['printC',['../classfacepi_1_1_face_pi.html#ac94b516a6dd221032d2ec103f8af3242',1,'facepi::FacePi']]],
+  ['processfinish',['processFinish',['../interfacecom_1_1loalon_1_1pfg_1_1facepal_1_1_async_face_croper_1_1_async_response.html#a4ab44c680b82ae478b409e8869e819b6',1,'com::loalon::pfg::facepal::AsyncFaceCroper::AsyncResponse']]]
 ];

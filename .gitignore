@@ -4,6 +4,7 @@
 /docs/imagenes
 /docs/otros
 /docs/mantemp
+/docs/*.docx
 /src/facePal/*.iml
 /src/facePal/.gradle
 /src/facePal/local.properties
@@ -14,6 +15,9 @@
 /src/facePal/captures
 /src/facePal/.externalNativeBuild
 /src/FCModule/build
+/src/FCModule/build1
 /src/FCModule/dist
+/src/FCModule/dist1
 /src/FCModule/FCModule.egg-info
+/src/FCModule/FCModule.egg-info1
 /src/FCModule/FCModule/__pycache__

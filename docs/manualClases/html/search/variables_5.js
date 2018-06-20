@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['lrcorner',['lrCorner',['../class_f_c_module_1_1face_1_1_face.html#a43bf5b7efff377dfe7d6a3e25a58c0cc',1,'FCModule::face::Face']]]
+  ['groupname',['groupName',['../class_face_b_t_1_1_face_b_t.html#a94215284ec2e86d0f419830e92161d2d',1,'FaceBT.FaceBT.groupName()'],['../classfacepi_1_1_face_pi.html#a8b55286218a2ba8914171c238f09c7bf',1,'facepi.FacePi.groupName()'],['../namespace_face_recon.html#ae44f8e751a650fcfa6bc7d2a61242cc1',1,'FaceRecon.groupName()']]]
 ];

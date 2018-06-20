@@ -1,9 +1,7 @@
 var searchData=
 [
-  ['testazure',['testAzure',['../namespace_f_c_module_1_1_f_c_tools.html#a97937928e5d262ee170874d1a84cf612',1,'FCModule::FCTools']]],
-  ['tobase64',['toBase64',['../classcom_1_1loalon_1_1pfg_1_1facepal_1_1_util.html#a363e942720417034c6c52fe4dd21df31',1,'com::loalon::pfg::facepal::Util']]],
-  ['trainactivity',['TrainActivity',['../classcom_1_1loalon_1_1pfg_1_1facepal_1_1_train_activity.html',1,'com::loalon::pfg::facepal']]],
-  ['trainactivity_2ejava',['TrainActivity.java',['../_train_activity_8java.html',1,'']]],
-  ['traingroup',['trainGroup',['../classcom_1_1loalon_1_1pfg_1_1facepal_1_1_util.html#a59c6bb634708c5835281c91ead1b80bf',1,'com::loalon::pfg::facepal::Util']]],
-  ['turnoff',['turnOff',['../class_face_b_t_1_1_face_b_t.html#a4ca8c746966a8a3716113db50b0ce01d',1,'FaceBT::FaceBT']]]
+  ['readconfig',['readConfig',['../classfacepi_1_1_face_pi.html#a966fe4796c56e70b656ccd92df60cbb9',1,'facepi::FacePi']]],
+  ['readserial',['readSerial',['../class_face_b_t_1_1_face_b_t.html#af35d86c0311c080589128342dcb414a0',1,'FaceBT::FaceBT']]],
+  ['reconbtn',['reconBtn',['../classfacepi_1_1_face_pi.html#a3683c8fce62f0046f757d1c8dead6e7b',1,'facepi::FacePi']]],
+  ['resolution',['resolution',['../namespace_face_recon.html#a6401bc73862ba52d12acc4e195359b84',1,'FaceRecon']]]
 ];

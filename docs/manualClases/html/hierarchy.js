@@ -4,6 +4,9 @@ var hierarchy =
     [ "FCModule.face.Face", "class_f_c_module_1_1face_1_1_face.html", null ],
     [ "FaceBT.FaceBT", "class_face_b_t_1_1_face_b_t.html", null ],
     [ "com.loalon.pfg.facepal.MiniSnack", "classcom_1_1loalon_1_1pfg_1_1facepal_1_1_mini_snack.html", null ],
+    [ "QDialog", null, [
+      [ "facepi.FacePi", "classfacepi_1_1_face_pi.html", null ]
+    ] ],
     [ "com.loalon.pfg.facepal.Util", "classcom_1_1loalon_1_1pfg_1_1facepal_1_1_util.html", null ],
     [ "AppCompatActivity", null, [
       [ "com.loalon.pfg.facepal.AboutActivity", "classcom_1_1loalon_1_1pfg_1_1facepal_1_1_about_activity.html", null ],

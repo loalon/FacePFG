@@ -1,0 +1,44 @@
+\hypertarget{_face_recon_8py}{}\section{Referencia del Archivo E\+:/\+One\+Drive.personal/\+One\+Drive/0.P\+F\+G/src/\+Face\+Recon/\+Face\+Recon.py}
+\label{_face_recon_8py}\index{E\+:/\+One\+Drive.\+personal/\+One\+Drive/0.\+P\+F\+G/src/\+Face\+Recon/\+Face\+Recon.\+py@{E\+:/\+One\+Drive.\+personal/\+One\+Drive/0.\+P\+F\+G/src/\+Face\+Recon/\+Face\+Recon.\+py}}
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+ \mbox{\hyperlink{namespace_face_recon}{Face\+Recon}}
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespace_face_recon_ac6ec5c173cf48f7c65fc970e1e079ca9}{Face\+Recon.\+camera}} = Pi\+Camera()
+\begin{DoxyCompactList}\small\item\em C\+O\+N\+F\+I\+G\+U\+R\+A\+C\+I\+ON. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespace_face_recon_a6401bc73862ba52d12acc4e195359b84}{Face\+Recon.\+resolution}}
+\item 
+\mbox{\hyperlink{namespace_face_recon_aa83a22879c0d6299597d46b065e09c4c}{Face\+Recon.\+font}} = cv2.\+F\+O\+N\+T\+\_\+\+H\+E\+R\+S\+H\+E\+Y\+\_\+\+S\+I\+M\+P\+L\+EX
+\item 
+\mbox{\hyperlink{namespace_face_recon_a020b74724169b8fc02c88453680fa3cc}{Face\+Recon.\+config}} = configparser.\+Config\+Parser()
+\item 
+\mbox{\hyperlink{namespace_face_recon_a6a0cb127a374ad0eb5705d0f49a40040}{Face\+Recon.\+cfg}} = config\mbox{[}\textquotesingle{}C\+O\+N\+F\+IG\textquotesingle{}\mbox{]}
+\item 
+\mbox{\hyperlink{namespace_face_recon_aaadefd1ee1352d2f1b2fdf3ea4db8390}{Face\+Recon.\+fn}} = cfg\mbox{[}\textquotesingle{}facedetector\textquotesingle{}\mbox{]}
+\item 
+\mbox{\hyperlink{namespace_face_recon_a52d7b32070be8a278850cdb6afd2d301}{Face\+Recon.\+face\+Detector}} = os.\+path.\+join(os.\+path.\+dirname(\+\_\+\+\_\+file\+\_\+\+\_\+), fn)
+\item 
+\mbox{\hyperlink{namespace_face_recon_a5c8b2fa43564cbbd3abf3d1cacef7e8c}{Face\+Recon.\+s\+Key}} = cfg\mbox{[}\textquotesingle{}skey\textquotesingle{}\mbox{]}
+\item 
+\mbox{\hyperlink{namespace_face_recon_a78159752a247e46ae64caea5570a6889}{Face\+Recon.\+server}} = cfg\mbox{[}\textquotesingle{}server\textquotesingle{}\mbox{]}
+\item 
+\mbox{\hyperlink{namespace_face_recon_ae44f8e751a650fcfa6bc7d2a61242cc1}{Face\+Recon.\+group\+Name}} = cfg\mbox{[}\textquotesingle{}groupname\textquotesingle{}\mbox{]}
+\item 
+int \mbox{\hyperlink{namespace_face_recon_a1cec4fb530e8a7a1b10ac48890f36e7b}{Face\+Recon.\+wait\+Time}} = 20
+\item 
+\mbox{\hyperlink{namespace_face_recon_ac1dfb5855321e10d5338ad161bfa8151}{Face\+Recon.\+now}} = datetime.\+now()
+\begin{DoxyCompactList}\small\item\em C\+O\+M\+P\+R\+O\+B\+A\+C\+I\+ON D\+I\+R\+E\+C\+T\+O\+R\+I\+OS. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{namespace_face_recon_af54252e1ad4d24d516c64eaaa88905ce}{Face\+Recon.\+now\+Str}} = \textquotesingle{}\+\_\+\textquotesingle{}+str(now.\+year)+str(now.\+month)+str(now.\+day)+\textquotesingle{}\+\_\+\textquotesingle{}+str(now.\+hour)+str(now.\+minute)+str(now.\+second)
+\item 
+\mbox{\hyperlink{namespace_face_recon_a65dbfeade36a516a4fbd5cd1c44c5682}{Face\+Recon.\+img}} = fc.\+capture\+Image(camera)
+\item 
+\mbox{\hyperlink{namespace_face_recon_aaf2856e061dd5456e2ff875905fcc51b}{Face\+Recon.\+face\+List}} = fc.\+face\+Detect(face\+Detector, img, cv2)
+\item 
+bool \mbox{\hyperlink{namespace_face_recon_ac4b8075620307b113830af1893363bbe}{Face\+Recon.\+person\+Detected}} = False
+\item 
+\mbox{\hyperlink{namespace_face_recon_ad661554f5aa9213b00b4d791a65a29eb}{Face\+Recon.\+is\+Person}} = F\+C\+T.\+identify\+Face(CF, group\+Name, face)
+\end{DoxyCompactItemize}
