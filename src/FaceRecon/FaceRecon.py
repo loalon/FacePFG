@@ -29,7 +29,7 @@ camera.resolution = (1920,1088) #resolucion
 font=cv2.FONT_HERSHEY_SIMPLEX #tipo de fuente
 
 config=configparser.ConfigParser()
-config.read("FaceRecon.ini")
+config.read(os.path.join(os.path.dirname(__file__), "FaceRecon.ini"))
 cfg=config['CONFIG']
 fn=cfg['facedetector']
 faceDetector = os.path.join(os.path.dirname(__file__), fn)

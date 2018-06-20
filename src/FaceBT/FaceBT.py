@@ -39,7 +39,7 @@ class FaceBT:
 
         self.font=cv2.FONT_HERSHEY_SIMPLEX #tipo de fuente
         self.config=configparser.ConfigParser()
-        self.config.read("FaceBT.ini")
+        self.config.read(os.path.join(os.path.dirname(__file__), "FaceBT.ini"))
         self.cfg=self.config['CONFIG']
         self.fn=self.cfg['facedetector']
         self.faceDetector = os.path.join(os.path.dirname(__file__), self.fn)

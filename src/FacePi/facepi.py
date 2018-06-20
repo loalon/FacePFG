@@ -71,7 +71,7 @@ class FacePi(QDialog):
         self.img = fc.captureImage(self.camera)
         ## @var iniFile
         # Archivo de configuracion
-        self.iniFile='facepi.ini'
+        self.iniFile=os.path.join(os.path.dirname(__file__), 'facepi.ini')
         ## @var font
         # Fuente para el rotulado de caras
         self.font=cv2.FONT_HERSHEY_SIMPLEX
