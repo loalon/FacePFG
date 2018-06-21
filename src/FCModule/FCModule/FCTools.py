@@ -92,7 +92,7 @@ def addFace(service, personGroup, personName, image):
 # @param personGroup Grupo de entrenamiento
 # @param personName Nombre real de la persona
 def deletePerson(service, personGroup, personName):
-    personID=getPersonID(service, personGroup, name)
+    personID=getPersonID(service, personGroup, personName)
     service.person.delete(personGroup,personID)
     return 0
 
