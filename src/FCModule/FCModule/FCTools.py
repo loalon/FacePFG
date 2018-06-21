@@ -94,6 +94,7 @@ def addFace(service, personGroup, personName, image):
 def deletePerson(service, personGroup, personName):
     personID=getPersonID(service, personGroup, personName)
     service.person.delete(personGroup,personID)
+    service.person_group.train(personGroup)
     return 0
 
 ##Borra a un grupo

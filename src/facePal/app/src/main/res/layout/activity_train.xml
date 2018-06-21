@@ -29,7 +29,8 @@
         android:layout_height="46dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Name" />
+        android:text="Name"
+        android:digits="@string/app_lan" />
 
     <Button
         android:layout_width="wrap_content"

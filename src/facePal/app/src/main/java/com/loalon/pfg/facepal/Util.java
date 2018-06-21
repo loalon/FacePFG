@@ -289,8 +289,10 @@ public class Util {
                 JSONObject jsonObject = new JSONObject(jsonArray.get(0).toString());
                 String caraid = jsonObject.getString("faceId");
                 String candid = jsonObject.getString("candidates");
+                System.out.println("candidatos: " + candid);
                 JSONArray candArray = new JSONArray(candid);
                 if (candArray.length()==0) {
+
                     return "NO_CANDIDATE";
                 }
                 JSONObject jsonObject2 = new JSONObject(candArray.get(0).toString());

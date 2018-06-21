@@ -4,6 +4,8 @@
     <string name="title_activity_settings">Configuracion</string>
     <string name="action_about">Acerca de...</string>
 
+    <string name="app_lan">abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ</string>
+
     <!-- Strings related to Settings -->
 
 
