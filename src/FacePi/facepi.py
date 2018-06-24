@@ -280,6 +280,7 @@ class FacePi(QDialog):
                 personDetected = True
                 FCT.paintImage(cv2, self.font, self.img, face)
                 self.printC("Sujeto "+face.name)
+                self.printC("Confianza "+face.confidence)
         cv2.imwrite('temp/temp.jpg', self.img)
 
         self.pixmap=QPixmap('temp/temp.jpg')
